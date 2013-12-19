@@ -1,0 +1,30 @@
+development: &development
+  protocol: 'http'
+  host: localhost
+  port: 5984
+  prefix: farmdat
+  suffix: development
+  username: admin
+  password: admin
+
+test:
+  <<: *development
+  suffix: test
+
+production:
+  protocol: 'https'
+  host: aptos.cloudant.com
+  port: 443
+  prefix: farmdat
+  suffix: production
+  username: aptos
+  password: wry246WRY
+
+staging:
+  protocol: 'https'
+  host: aptos.cloudant.com
+  port: 443
+  prefix: farmdat
+  suffix: staging
+  username: aptos
+  password: wry246WRY
