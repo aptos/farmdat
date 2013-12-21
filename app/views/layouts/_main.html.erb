@@ -1,1 +1,13 @@
 <h1>greetings!</h1>
+
+<% if current_user %>
+welcome <%= current_user.name %>
+<% else %>
+sign in
+<p>
+  <%= link_to "Sign in with linkedin", "/signin/linkedin" %>
+</p>
+<p>
+  <%= link_to "Sign in with google", "/signin/google_login" %>
+</p>
+<% end %>

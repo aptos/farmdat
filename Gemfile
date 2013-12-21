@@ -1,10 +1,18 @@
 source 'https://rubygems.org'
 
+ruby "2.0.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+gem 'foreman'
 # server
 gem 'unicorn'
+
+# authentication
+gem 'omniauth'
+gem 'omniauth-linkedin'
+gem 'omniauth-google-oauth2'
 
 # Abort requests that are taking too long; a Rack::Timeout::Error will be raised.
 # unicorn or other thread-safe server must be used.

@@ -6,10 +6,6 @@ module ApplicationHelper
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
 
-	def user_signed_in?
-		return true if current_user
-	end
-
 	def request_country
 		@geoip ||= GeoIP.new("#{Rails.root}/db/GeoIP.dat")
 		request.remote_ip
@@ -30,22 +26,9 @@ module ApplicationHelper
 	#
 	# access restrictions
 	#
-	def restricted
-		unless current_user and current_user.admin
-			raise ActionController::RoutingError.new("You should not be here. That page")
-			# redirect_to(root_url, :alert => "Access denied.") and return
-		end
-	end
 
 	def admin?
 		current_user.admin
-	end
-
-	def correct_user?
-		@user = User.find(params[:id])
-		unless current_user == @user
-			redirect_to root_url, :alert => "Access denied."
-		end
 	end
 
 	def authenticate_user!
