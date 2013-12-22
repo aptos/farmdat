@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require angular.min
+//= require ui-bootstrap-custom-tpls-0.7.0.js
+//= require app
 //= require_tree .
