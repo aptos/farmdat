@@ -39,6 +39,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
+    bcrypt-ruby (3.1.2)
     builder (3.1.4)
     capybara (2.2.0)
       mime-types (>= 1.16)
@@ -129,6 +130,9 @@ GEM
     omniauth-google-oauth2 (0.2.1)
       omniauth (~> 1.0)
       omniauth-oauth2
+    omniauth-identity (1.1.1)
+      bcrypt-ruby (~> 3.0)
+      omniauth (~> 1.0)
     omniauth-linkedin (0.1.0)
       omniauth-oauth (~> 1.0)
     omniauth-oauth (1.0.1)
@@ -268,6 +272,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-identity
   omniauth-linkedin
   poltergeist
   premailer-rails

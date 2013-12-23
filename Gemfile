@@ -14,6 +14,7 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-identity'
 
 # Abort requests that are taking too long; a Rack::Timeout::Error will be raised.
 # unicorn or other thread-safe server must be used.

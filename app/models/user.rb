@@ -8,6 +8,10 @@ class User < CouchRest::Model::Base
   unique_id :email
   timestamps!
 
+  def self.from_omniauth(auth)
+    User.find(auth['info']['email']) || create_with_omniauth(auth)
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.email = auth['info']['email']

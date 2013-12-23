@@ -11,19 +11,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth = request.env["omniauth.auth"]
-    logger.info "++++ Successful Sign In with #{params[:provider]} INFO: #{auth['info'].inspect}"
+    user = User.from_omniauth(env["omniauth.auth"])
 
-    user = User.find(auth['info']['email'])
-    unless user
-      user = User.create_with_omniauth(auth)
-      logger.info "New User Created: #{user.inspect}"
-
-      # UserMailer.welcome_email(user.id).deliver
-    end
     user.visits += 1
     user.save!
 
+    logger.info "Signin Succeeded: #{user.inspect}"
+    logger.info "Current User: #{current_user.inspect}"
     url = session[:return_to] || root_path
     session[:return_to] = nil
     url = root_path if url.eql?('/signout')

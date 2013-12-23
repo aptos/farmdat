@@ -2,11 +2,13 @@ Farmdat::Application.routes.draw do
 	root :to => "pages#home"
 
   # Authentications
-  get '/auth/:provider/callback' => 'sessions#create'
+  match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get '/signin' => 'sessions#new'
   get '/signin/:provider' => 'sessions#new'
   get '/signout' => 'sessions#destroy'
   get '/auth/failure' => 'sessions#failure'
+
+  resources :identities
 
   # Must be admin to check the resque status
   mount SecureResqueServer.new, :at => '/resque'
