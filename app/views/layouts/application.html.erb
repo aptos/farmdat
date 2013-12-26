@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="farmdat" lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Farmdat</title>
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+
+  <!-- Stylesheet Assets -->
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+
+  <!-- SEO and Social helpers -->
+  <meta name="description" content="Grower's Notebook" />
+  <meta name="headline" content="Grower's Notebook" />
+  <meta name="keywords" content="viticulture, enology, wine making, grapes, farming, brix, harvest" />
+  <meta property="og:title" content="Grower's Notebook" />
+  <meta property="og:description" content="Grower's Notebook" />
+  <meta property="og:url" content="http://www.growersnotebook.com" />
+  <meta property="og:image" content="http://www.growersnotebook.com/assets/growersnotebook.png" />
+  <meta property="og:type" content="website" />
+  <meta property="twitter:site" content="@GrowersNotebook" />
+  <meta property="twitter:url" content="http://www.growersnotebook.com" />
+  <meta property="twitter:title" content="Grower's Notebookk" />
+  <meta property="twitter:description" content="Grower's Notebook" />
+
   <%= csrf_meta_tags %>
 </head>
-<body>
 
 <%= yield %>
 
+  <!-- Load javascript last -->
+  <%= javascript_include_tag "application" %>
 </body>
 </html>

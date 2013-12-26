@@ -6,9 +6,13 @@ Farmdat::Application.routes.draw do
   get '/signin' => 'sessions#new'
   get '/signin/:provider' => 'sessions#new'
   get '/signout' => 'sessions#destroy'
-  get '/auth/failure' => 'sessions#failure'
-
+  get '/auth/failure' => 'accounts#password_recovery'
   resources :identities
+
+  # Accounts
+  get "/accounts/signin_page" => 'accounts#signin_page'
+  match "/accounts/password_recovery" => 'accounts#password_recovery', via: [:get, :post]
+  get "/accounts/create" => 'accounts#create'
 
   # Must be admin to check the resque status
   mount SecureResqueServer.new, :at => '/resque'

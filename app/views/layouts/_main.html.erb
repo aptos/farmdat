@@ -7,31 +7,5 @@
 <% if current_user %>
   welcome <%= current_user.name %>
 <% else %>
-  sign in
-  <p>
-    <%= link_to "Sign in with linkedin", "/signin/linkedin" %>
-  </p>
-  <p>
-    <%= link_to "Sign in with google", "/signin/google_login" %>
-  </p>
-  <p>
-    <%= link_to "Sign in with facebook", "/signin/facebook" %>
-  </p>
-  <p>
-    <strong>Don't use these services?</strong>
-    <%= link_to "Create an account", new_identity_path %> or login below.
-  </p>
-
-  <%= form_tag "/auth/identity/callback" do %>
-    <div class="field">
-      <%= label_tag :auth_key, "Email" %><br>
-      <%= text_field_tag :auth_key %>
-    </div>
-    <div class="field">
-      <%= label_tag :password %><br>
-      <%= password_field_tag :password %>
-    </div>
-    <div class="actions"><%= submit_tag "Login" %></div>
-  <% end %>
-  </p>
+  <%= link_to "sign in", "/accounts/signin_page" %>
 <% end %>

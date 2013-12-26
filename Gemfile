@@ -35,6 +35,9 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 4.0.0'
 gem 'quiet_assets', :group => :development
 
+# icon fonts
+gem "font-awesome-rails"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
