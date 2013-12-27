@@ -651,7 +651,8 @@ a.signin-link:hover {
   border: none;
   box-shadow: 0 0 5px #78b310;
 }
-.authenty.password-recovery input[type="email"] {
+.authenty.password-recovery input[type="email"],
+.authenty.password-recovery input[type="password"] {
   border-radius: 0;
   box-shadow: none;
   padding-left: 10px;
@@ -659,6 +660,26 @@ a.signin-link:hover {
   height: 45px;
   color: #505050;
 }
+.authenty.password-recovery .pw-wrap {
+  position: relative;
+}
+.authenty.password-recovery .pw-wrap .fa-lock {
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  color: #505050;
+  font-size: 14pt;
+  padding: 11px 16px;
+  background-color: #EBEBEB;
+}
+.authenty.password-recovery input[type="password"] {
+  padding: 20px 0 20px 60px;
+  border-radius: 0;
+  border: 1px solid #7A8086;
+  margin-bottom: 20px;
+  color: #505050;
+}
+
 .authenty.password-recovery .brand {
   text-align: center;
   margin-top: 40px;

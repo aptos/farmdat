@@ -4,9 +4,11 @@ class User < CouchRest::Model::Base
   property :name, String
   property :info, Hash
   property :visits, Integer, default: 1
-
+  property :auth_token, String
   unique_id :email
   timestamps!
+
+  before_create { generate_auth_token }
 
   def self.from_omniauth(auth)
     User.find(auth['info']['email']) || create_with_omniauth(auth)
@@ -22,6 +24,13 @@ class User < CouchRest::Model::Base
 
   design do
     view :by_email
+    view :by_auth_token
+  end
+
+  def generate_auth_token
+    begin
+      self[:auth_token] = SecureRandom.urlsafe_base64(12,false)
+    end while User.by_auth_token.key(self[:auth_token]).first
   end
 
 end

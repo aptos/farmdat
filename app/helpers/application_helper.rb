@@ -3,7 +3,9 @@ module ApplicationHelper
 	# about our user
 	#
 	def current_user
-		@current_user ||= User.find(session[:user_id]) if session[:user_id]
+		# @current_user ||= User.find(session[:user_id]) if session[:user_id]
+
+    @current_user ||= User.by_auth_token.key(cookies[:auth_token]).first if cookies[:auth_token]
 	end
 
 	def request_country

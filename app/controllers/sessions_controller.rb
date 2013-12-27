@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.from_omniauth(env["omniauth.auth"])
+    cookies.permanent[:auth_token] = user.auth_token
 
     user.visits += 1
     user.save!
@@ -27,6 +28,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    cookies.delete(:auth_token)
     reset_session
     redirect_to root_url
   end

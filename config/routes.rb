@@ -12,6 +12,8 @@ Farmdat::Application.routes.draw do
   # Accounts
   get "/accounts/signin_page" => 'accounts#signin_page'
   match "/accounts/password_recovery" => 'accounts#password_recovery', via: [:get, :post]
+  get "/accounts/password_reset/:token" => 'accounts#password_reset'
+  post "/accounts/password_update/:token" => 'accounts#password_update'
   get "/accounts/create" => 'accounts#create'
 
   # Must be admin to check the resque status

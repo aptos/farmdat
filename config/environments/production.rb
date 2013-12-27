@@ -103,4 +103,9 @@ Farmdat::Application.configure do
     :enable_starttls_auto => true
   }
 
+  config.notifications = {
+    :from => "bswilkerson@gmail.com",
+    :url => "http://www.growersnotebook.com",
+    :mailto_info => "bswilkerson@gmail.com"
+  }
 end

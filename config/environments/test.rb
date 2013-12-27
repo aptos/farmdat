@@ -33,4 +33,10 @@ Farmdat::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.notifications = {
+    :from => "bswilkerson@gmail.com",
+    :url => "http://localhost:5000",
+    :mailto_info => "bswilkerson@gmail.com"
+  }
 end
