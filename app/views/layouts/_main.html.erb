@@ -1,21 +1,38 @@
-<body>
-  <div class="screen-content">
-    <div class="image-header-bleed">
-      <div class="image-src" style="background-image: url(<%= asset_path 'welcome.jpg'%>)"></div>
-    </div>
-
-    <header class="hero hero-home layout-single-column">
-      <div class="align-middle layout-single-column layout-foreground layout-fill-height">
-        <div class="align-block">
-          <h1 class="hero-title">Growers Notebook</h1>
-          <p class="hero-description hero-description-tagline">Vineyard Logbooks for the Winegrowing Community</p>
-        </div>
-      </div>
-    </header>
-
-    <% if current_user %>
-    welcome <%= current_user.name %>
-    <% else %>
-    <%= link_to "sign in", "/accounts/signin_page" %>
-    <% end %>
+<div class="screen-content">
+  <div class="image-header-bleed">
+    <div class="image-src" style="background-image: url(<%= asset_path 'welcome.jpg'%>)"></div>
   </div>
+
+  <header class="hero hero-home layout-single-column">
+    <div class="align-middle layout-single-column layout-foreground layout-fill-height">
+      <div class="align-block">
+        <h1 class="hero-title">Growers Notebook</h1>
+        <p class="hero-description hero-description-tagline">Vineyard Logbooks for the Winegrowing Community</p>
+      </div>
+    </div>
+  </header>
+  <nav class="nav-tabs nav-tabs-light layout-single-column">
+    <ul class="nav-tabs-list">
+      <% if current_user %>
+      <li class="nav-tabs-item active">
+        <a class="nav-tabs-anchor" href="/">Welcome <%= current_user.name %></a>
+      </li>
+      <li class="nav-tabs-item ">
+        <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
+      </li>
+      <% else %>
+      <li class="nav-tabs-item active">
+        <a class="nav-tabs-anchor" href="/">Welcome</a>
+      </li>
+      <li class="nav-tabs-item ">
+        <a class="nav-tabs-anchor" href="/accounts/signin_page">Start</a>
+      </li>
+      <% end %>
+    </ul>
+  </nav>
+  <div class="background-white">
+    <div class="bucket layout-single-column">
+      <h2>this is some content</h2>
+    </div>
+  </div>
+</div>
