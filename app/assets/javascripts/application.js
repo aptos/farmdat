@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require lodash.min
 //= require angular.min
+//= require angular-route.min
+//= require angular-animate.min
+//= require angular-sanitize.min
+//= require restangular.min
 //= require ui-bootstrap-custom-tpls-0.7.0.js
 //= require app
 //= require_tree .

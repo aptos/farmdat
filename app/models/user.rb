@@ -1,5 +1,6 @@
 class User < CouchRest::Model::Base
   property :email, type: String
+  property :admin, TrueClass, :default => false, :read_only => true
   property :provider, type: String
   property :name, String
   property :info, Hash

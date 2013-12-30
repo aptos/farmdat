@@ -12,3 +12,45 @@ Gloria Hallelujah
 */
 
 .nav, .pagination, .carousel a { cursor: pointer; }
+
+body {
+  padding:0;
+  color:#333;
+  font-size:16px;
+  line-height:1.6;
+  background:#fff;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+p, li {
+  color:#555;
+  line-height:1.6;
+}
+/* Don't change color of links */
+a { line-height: 1.6;}
+
+a,
+a:focus,
+a:hover,
+a:active {
+  outline:0 !important;
+  color: #3498db;
+}
+a:hover {
+  text-decoration:underline;
+}
+
+h1, h2, h3, h4, h5 {
+  color:#555;
+  margin-top:5px;
+  text-shadow:none;
+  text-shadow:0 0 1px #f6f6f6;
+  font-weight:normal !important;
+}
+
+h1, h2, h3 {
+  font-family:"Sorts Mill Goudy", serif;
+}
+h1 i, h2 i, h3 i, h4 i, h5 i {
+  margin-right:7px;
+}

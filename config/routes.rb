@@ -16,6 +16,9 @@ Farmdat::Application.routes.draw do
   post "/accounts/password_update/:token" => 'accounts#password_update'
   get "/accounts/create" => 'accounts#create'
 
+  # Vineyards CRUD
+  resources :vineyards
+
   # Must be admin to check the resque status
   mount SecureResqueServer.new, :at => '/resque'
 

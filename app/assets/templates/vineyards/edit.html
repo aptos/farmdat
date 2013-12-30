@@ -1,0 +1,13 @@
+<div class="container">
+  <form role="form-inline" name="vineyardEditForm">
+    <div class="form-group">
+      <label class="sr-only" for="vineyardName">Vinyard Name</label>
+      <h1>
+        <input class="col-md-10" type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
+      </h1>
+      <p>
+        <textarea class="col-md-6" name="Location" geocode placeholder="Street, City, State", rows="4" ng-model="vineyard.location" latlong="latLong" maxlength="256" name="location" autocomplete="off"></textarea>
+      </p>
+    </div>
+  </form>
+</div>
