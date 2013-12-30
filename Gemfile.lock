@@ -104,6 +104,7 @@ GEM
     jwt (0.1.8)
       multi_json (>= 1.5)
     kgio (2.8.1)
+    leaflet-rails (0.6.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -269,6 +270,7 @@ DEPENDENCIES
   geoip
   jbuilder (~> 1.2)
   jquery-rails
+  leaflet-rails
   mailgun!
   memcachier
   nokogiri

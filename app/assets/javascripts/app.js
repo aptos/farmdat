@@ -6,7 +6,7 @@
 //= require_self
 
 var farmdatModule = angular.module('farmdat',['ngRoute','ngAnimate','ngSanitize','ngDebounce','ui.bootstrap',
-  ,'restangular','farmdatServices', 'maps']);
+  ,'restangular','farmdatServices', 'maps', 'leaflet-directive']);
   // 'farmdatFilters']);
 
 farmdatModule.config(['$routeProvider',function($routeProvider) {

@@ -59,6 +59,9 @@ gem 'mailgun', :path => 'lib/mailgun'
 # geoip to get country of requester
 gem 'geoip'
 
+# leaflet maps
+gem 'leaflet-rails'
+
 # Storage on S3
 gem 'aws-sdk', '~> 1.0'
 

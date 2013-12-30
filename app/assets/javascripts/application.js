@@ -19,5 +19,9 @@
 //= require angular-sanitize.min
 //= require restangular.min
 //= require ui-bootstrap-custom-tpls-0.7.0.js
+//= require leaflet
+//= require leaflet.markercluster
+//= require angular-leaflet-directive
+//= reqquire Google
 //= require app
 //= require_tree .

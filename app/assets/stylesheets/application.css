@@ -13,6 +13,10 @@
  *= require font-awesome
  *= require animate.min
  *= require authenty
+ *= require leaflet
+ *= require leaflet.ie
+ *= require MarkerCluster
+ *= require MarkerCluster.Default
  *= require layouts
  *= require custom
  *= require_tree .

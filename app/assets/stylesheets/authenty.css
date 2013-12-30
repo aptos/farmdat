@@ -16,6 +16,11 @@
 .authenty h6 {
   font-weight: 400;
 }
+
+.background-dark .authenty h3 {
+  color: white;
+}
+
 .authenty h1 {
   font-weight: 700;
   letter-spacing: -1px;

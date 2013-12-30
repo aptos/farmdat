@@ -6,8 +6,11 @@
         <input class="col-md-10" type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
       </h1>
       <p>
-        <textarea class="col-md-6" name="Location" geocode placeholder="Street, City, State", rows="4" ng-model="vineyard.location" latlong="latLong" maxlength="256" name="location" autocomplete="off"></textarea>
-      </p>
-    </div>
-  </form>
+        <textarea class="col-md-6" name="Location" geocode placeholder="Street, City, State", rows="4" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
+        <div class="col-md-6">
+        <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" height="380px" width="380px"></div>
+        </div>
+     </p>
+   </div>
+ </form>
 </div>
