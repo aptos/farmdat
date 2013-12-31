@@ -2,6 +2,8 @@ html, body {
   height: 100%;
 }
 
+$label: #006AB5;
+
 .screen-content {
   position: relative;
   overflow: auto;
@@ -163,4 +165,28 @@ html, body {
   border-top-color: #fff;
 }
 
+.map-medium {
+  height: 380px;
+  margin-bottom: 10px;
+}
 
+@media all and (max-width: 640px) {
+  .table-condensed {
+    td, td[class*="span"] {
+      display: block;
+      width: 95%;
+    }
+    .input-label { color: $label; }
+    .input { border-top:none; }
+    .input-help { float: left; padding-right: 6px; }
+  }
+  .table-striped {
+    td, td[class*="span"] {
+      display: block;
+      width: 95%;
+    }
+    .item-label { color: $label; }
+    .item { border-top:none; }
+    .item-help { float: left; padding-right: 6px; }
+  }
+}

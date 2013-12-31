@@ -4,6 +4,11 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
   var saveFinished = function () {_.delay( function() {$scope.saveInProgress = false; $scope.$apply();}, 500)};
 
   angular.extend($scope, {
+    defaults: {
+      touchZoom: false,
+      scrollWheelZoom: false,
+      minZoom: 3
+    },
     center: {
       lat: 36.97,
       lng: -121.89,
@@ -13,11 +18,6 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
     },
     layers: {
       baselayers: {
-        googleTerrain: {
-          name: 'Google Terrain',
-          layerType: 'TERRAIN',
-          type: 'google'
-        },
         googleHybrid: {
           name: 'Google Hybrid',
           layerType: 'HYBRID',
@@ -27,7 +27,12 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
           name: 'Google Streets',
           layerType: 'ROADMAP',
           type: 'google'
-        }
+        },
+        googleTerrain: {
+          name: 'Google Terrain',
+          layerType: 'TERRAIN',
+          type: 'google'
+        },
       }
     }
   });
@@ -61,6 +66,10 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
       $scope.latLong = $scope.vineyard.latlong;
       $scope.saveInProgress = false;
     }, saveFinished);
+  } else {
+    $scope.vineyard = {
+      blocks: [{number: 1}]
+    }
   }
 
   var saveUpdates = function (newVal, oldVal) {

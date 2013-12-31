@@ -1,26 +1,80 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-1 save-status">
+    <div class="col-xs-6 col-sm-6 col-md-6 save-status">
       <span ng-show="saveInProgress">Saving...</span>
       <span ng-show="!saveInProgress">Saved</span>
     </div>
-    <div class="col-md-4 btn-set pull-right">
+    <div class="col-xs-6 col-sm-6 col-md-6 btn-set pull-right">
       <button type="button" class="btn btn-default btn-delete">Delete</button>
       <button type="button" class="btn btn-success">Publish</button>
     </div>
   </div>
   <form role="form-inline" name="vineyardEditForm">
     <div class="form-group">
-      <label class="sr-only" for="vineyardName">Vinyard Name</label>
-      <h1>
-        <input class="col-md-12 no-distraction text-center" type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
-      </h1>
-      <p>
-        <textarea class="col-md-6 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="4" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
-        <div class="col-md-6">
-          <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" height="380px" width="380px"></div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <label class="sr-only" for="vineyardName">Vinyard Name</label>
+          <h1>
+            <input class="col-xs-12 col-sm-12 col-md-12 no-distraction text-center" type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
+          </h1>
         </div>
-      </p>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <label class="sr-only" for="Location">Location</label>
+          <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="3" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
+          <label class="sr-only" for="Description">Description</label>
+          <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" rows="6" name="Description" ng-model="vineyard.description" placeholder="Description">
+          </textarea>
+          <div class="col-xs-12 col-sm-12 col-md-12 btn-set">
+            <legend>Farming Methods</legend>
+            <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.sustainable]" ng-click="vineyard.methods.sustainable=!vineyard.methods.sustainable">Sustainable</button>
+            <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.organic]" ng-click="vineyard.methods.organic=!vineyard.methods.organic">Organic</button>
+            <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.biodynamic]" ng-click="vineyard.methods.biodynamic=!vineyard.methods.biodynamic">Biodynamic</button>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <legend>Vineyard Specs</legend>
+      <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="block in vineyard.blocks">
+        <h4>Block 1 - <input ng-model="block.name" placeholder="Name"></input></h4>
+        <table class="span8 table table-condensed">
+          <tr><td class="span1 muted input-label" >Acreage</td>
+            <td class="input">
+              <input name="Acreage" type="text" ng-model="block.acreage" class="span6 text_field" placeholder="12">
+            </td>
+          </tr>
+          <tr><td class="span1 muted input-label" >Varietal</td>
+            <td class="input">
+              <input name="Varietal" type="text" ng-model="block.varietal" class="span6 text_field" placeholder="Pinot Noir">
+            </td>
+          </tr>
+          <tr><td class="span1 muted input-label" >Clones</td>
+            <td class="input">
+              <input name="Clones" type="text" ng-model="block.clones" class="span6 text_field" placeholder="Martini">
+            </td>
+          </tr>
+          <tr><td class="span1 muted input-label" >Rootstock</td>
+            <td class="input">
+              <input name="Rootstock" type="text" ng-model="block.rootstock" class="span6 text_field" placeholder="Riparia gloire">
+            </td>
+          </tr>
+          <tr><td class="span1 muted input-label" >Year Planted</td>
+            <td class="input">
+              <input name="Year" type="text" ng-model="block.year" class="span6 text_field" placeholder="1986">
+            </td>
+          </tr>
+          <tr><td class="span1 muted input-label" >Trellis Style</td>
+            <td class="input">
+              <input name="Trellis" type="text" ng-model="block.trellis" class="span6 text_field" placeholder="7' VSP">
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </form>
 </div>
