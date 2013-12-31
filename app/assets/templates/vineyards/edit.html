@@ -1,16 +1,26 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-1 save-status">
+      <span ng-show="saveInProgress">Saving...</span>
+      <span ng-show="!saveInProgress">Saved</span>
+    </div>
+    <div class="col-md-4 btn-set pull-right">
+      <button type="button" class="btn btn-default btn-delete">Delete</button>
+      <button type="button" class="btn btn-success">Publish</button>
+    </div>
+  </div>
   <form role="form-inline" name="vineyardEditForm">
     <div class="form-group">
       <label class="sr-only" for="vineyardName">Vinyard Name</label>
       <h1>
-        <input class="col-md-10" type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
+        <input class="col-md-12 no-distraction text-center" type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
       </h1>
       <p>
-        <textarea class="col-md-6" name="Location" geocode placeholder="Street, City, State", rows="4" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
+        <textarea class="col-md-6 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="4" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
         <div class="col-md-6">
-        <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" height="380px" width="380px"></div>
+          <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" height="380px" width="380px"></div>
         </div>
-     </p>
-   </div>
- </form>
+      </p>
+    </div>
+  </form>
 </div>

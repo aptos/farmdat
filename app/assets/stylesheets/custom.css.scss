@@ -50,7 +50,21 @@ h1, h2, h3, h4, h5 {
 
 h1, h2, h3 {
   font-family:"Sorts Mill Goudy", serif;
+  input { font-family:"Sorts Mill Goudy", serif; }
 }
+
+.sans {
+ font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+
 h1 i, h2 i, h3 i, h4 i, h5 i {
   margin-right:7px;
+}
+
+textarea.no-distraction, input.no-distraction {
+  border: 1px solid rgba(221, 221, 221, 0.43);
+}
+
+.btn {
+  @include transition( background 0.2s ease );
 }

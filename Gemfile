@@ -33,6 +33,7 @@ gem 'jquery-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+gem 'bourbon'
 gem 'quiet_assets', :group => :development
 
 # icon fonts
