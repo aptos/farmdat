@@ -40,40 +40,43 @@
     </div>
     <div class="row">
       <legend>Vineyard Specs</legend>
-      <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="block in vineyard.blocks">
-        <h4>Block 1 - <input ng-model="block.name" placeholder="Name"></input></h4>
+      <div class="col-xs-12 col-sm-6 col-md-4 no-distraction" ng-repeat="block in vineyard.blocks">
+        <h4>Block {{$index + 1}} - <input ng-model="block.name" placeholder="Name"></input> </h4>
         <table class="span8 table table-condensed">
-          <tr><td class="span1 muted input-label" >Acreage</td>
+          <tr><td class="muted input-label" >Acreage</td>
             <td class="input">
               <input name="Acreage" type="text" ng-model="block.acreage" class="span6 text_field" placeholder="12">
             </td>
           </tr>
-          <tr><td class="span1 muted input-label" >Varietal</td>
+          <tr><td class="muted input-label" >Varietal</td>
             <td class="input">
               <input name="Varietal" type="text" ng-model="block.varietal" class="span6 text_field" placeholder="Pinot Noir">
             </td>
           </tr>
-          <tr><td class="span1 muted input-label" >Clones</td>
+          <tr><td class="muted input-label" >Clones</td>
             <td class="input">
               <input name="Clones" type="text" ng-model="block.clones" class="span6 text_field" placeholder="Martini">
             </td>
           </tr>
-          <tr><td class="span1 muted input-label" >Rootstock</td>
+          <tr><td class="muted input-label" >Rootstock</td>
             <td class="input">
               <input name="Rootstock" type="text" ng-model="block.rootstock" class="span6 text_field" placeholder="Riparia gloire">
             </td>
           </tr>
-          <tr><td class="span1 muted input-label" >Year Planted</td>
+          <tr><td class="muted input-label" >Year Planted</td>
             <td class="input">
               <input name="Year" type="text" ng-model="block.year" class="span6 text_field" placeholder="1986">
             </td>
           </tr>
-          <tr><td class="span1 muted input-label" >Trellis Style</td>
+          <tr><td class="muted input-label" >Trellis Style</td>
             <td class="input">
               <input name="Trellis" type="text" ng-model="block.trellis" class="span6 text_field" placeholder="7' VSP">
             </td>
           </tr>
         </table>
+      </div>
+      <div class="cols-xs-12 col-sm-1 col-md-1">
+        <span ng-click="add_block()"><i class="fa fa-plus-circle clickable-icon"></i></span>
       </div>
     </div>
   </form>

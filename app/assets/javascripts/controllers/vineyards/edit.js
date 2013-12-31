@@ -58,6 +58,10 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
     $scope.center.zoom = 15;
   });
 
+  $scope.add_block = function () {
+    $scope.vineyard.blocks.push({number: $scope.vineyard.blocks.length});
+  };
+
   if ($routeParams.id) {
     console.info("get",$routeParams.id )
     $scope.saveInProgress = true;
