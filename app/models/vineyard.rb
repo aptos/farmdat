@@ -18,6 +18,10 @@ class Vineyard < CouchRest::Model::Base
     view :by_owner
   end
 
+  design do
+    view :by_name
+  end
+
   def visit
     self.views = 0 unless self.views
     self.views += 1

@@ -1,19 +1,19 @@
 //= require header
 //= require_tree ./controllers
-//require filters
-//= require_tree ./directives
 //= require_tree ./services
+//= require_tree ./directives
+//require filters
 //= require_self
 
 var farmdatModule = angular.module('farmdat',['ngRoute','ngAnimate','ngSanitize','ngDebounce','ui.bootstrap',
-  ,'restangular','farmdatServices', 'maps', 'leaflet-directive']);
+  ,'restangular','farmdatServices', 'maps', 'leaflet-directive','farmdatDirectives']);
   // 'farmdatFilters']);
 
 farmdatModule.config(['$routeProvider',function($routeProvider) {
   $routeProvider.
   // Start
   when('/start',{templateUrl: 'assets/welcome.html', controller: StartCtrl}).
-  // when('/vineyards',{templateUrl: 'assets/vineyards/index.html', controller: VineyardListCtrl}).
+  when('/vineyards',{templateUrl: 'assets/vineyards/index.html', controller: VineyardListCtrl}).
   when('/vineyards/edit',{templateUrl: 'assets/vineyards/edit.html', controller: VineyardEditCtrl}).
   when('/vineyards/edit/:id',{templateUrl: 'assets/vineyards/edit.html', controller: VineyardEditCtrl}).
     // Default

@@ -1,7 +1,7 @@
 class VineyardsController < ApplicationController
 
   def index
-    @vineyards = Vineyard.stale('update_after').all
+    @vineyards = Vineyard.by_name.stale('update_after').all
     render :json => @vineyards
   end
 
@@ -62,7 +62,7 @@ class VineyardsController < ApplicationController
       end
     end
     @vineyard.destroy
-    respond_with(status: 'Deleted')
+    render :json => { status: 'Deleted' }
   end
 
   def get_attachment

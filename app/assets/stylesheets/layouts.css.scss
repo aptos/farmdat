@@ -61,6 +61,11 @@ $label: #006AB5;
   height: 380px;
 }
 
+.hero-standalone {
+  padding: 100px 0 40px;
+  height: auto;
+}
+
 .hero-title {
   font-family: 'Sorts Mill Goudy', serif;
   font-weight: 700;
@@ -146,6 +151,7 @@ $label: #006AB5;
   padding-bottom: 0;
   border-top: 1px #dededc solid;
   padding-bottom: 0;
+  border-bottom: none!important;
 }
 .nav-tabs-item {
   display: inline-block;
@@ -195,10 +201,18 @@ $label: #006AB5;
   padding-left: 15px;
 }
 
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .map-medium {
   height: 380px;
   margin-bottom: 10px;
 }
+
+.margin-top-40 { margin-top: 40px;}
 
 @media all and (max-width: 640px) {
   .table-condensed {

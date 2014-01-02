@@ -1,0 +1,22 @@
+<div class="screen-content">
+  <div class="row metabar">
+    <div class="col-xs-6 col-sm-6 col-md-6 btn-set pull-right">
+      <button type="button" class="btn btn-success">New Collection</button>
+    </div>
+  </div>
+  <header class="hero hero-standalone layout-single-column ">
+    <h1 class="hero-title">Vineyard Collections</h1>
+    <p class="hero-description">Vineyards you've created or are following</p>
+    <div class="hero-actions btn-set">
+      <div class="search-box">
+        <input type="text" class="form-control" ng-model="query" placeholder="Search" >
+      </div>
+    </div>
+  </header>
+
+</div>
+<div class="bucket layout-single-column">
+  <div ng-repeat="vineyard in vineyards">
+    {{vineyard.name}}
+  </div>
+</div>

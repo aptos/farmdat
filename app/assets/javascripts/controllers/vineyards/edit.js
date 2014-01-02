@@ -65,7 +65,7 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
     $scope.vineyard.blocks.splice(index, 1);
   };
 
-  if ($routeParams.id) {
+  if (!!$routeParams && $routeParams.id) {
     $scope.saveInProgress = true;
     Restangular.one('vineyards',$routeParams.id).get().then(function (data) {
       $scope.vineyard = data;
@@ -98,5 +98,11 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
     }
   };
   $scope.$watch('vineyard', $debounce(saveUpdates, 2000), true);
+
+  $scope.delete_me = function () {
+    console.info("delete requested!");
+    $scope.saveInProgress = true;
+    $scope.vineyard.remove().then($location.path("/"));
+  };
 }
 VineyardEditCtrl.$inject = ['$scope', '$debounce','$routeParams','$location','Restangular'];
