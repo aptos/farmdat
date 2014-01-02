@@ -50,7 +50,6 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
 
   $scope.$watch('latlong', function () {
     if (!$scope.latlong || !$scope.vineyard) return;
-    console.info("latlong", $scope.latlong);
     $scope.vineyard.latlong = $scope.latlong;
     $scope.center.lat = $scope.latlong[0];
     $scope.center.lng = $scope.latlong[1];
@@ -59,11 +58,14 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
   });
 
   $scope.add_block = function () {
-    $scope.vineyard.blocks.push({number: $scope.vineyard.blocks.length});
+    $scope.vineyard.blocks.push({id: $scope.vineyard.blocks.length});
+  };
+
+  $scope.delete_block = function (index) {
+    $scope.vineyard.blocks.splice(index, 1);
   };
 
   if ($routeParams.id) {
-    console.info("get",$routeParams.id )
     $scope.saveInProgress = true;
     Restangular.one('vineyards',$routeParams.id).get().then(function (data) {
       $scope.vineyard = data;
@@ -72,19 +74,22 @@ function VineyardEditCtrl($scope, $debounce, $routeParams, $location, Restangula
     }, saveFinished);
   } else {
     $scope.vineyard = {
-      blocks: [{number: 1}]
-    }
+      blocks: [{id: 1}],
+      image_url: "/assets/welcome.jpg"
+    };
   }
+
+  $scope.header_image = function () {
+    return "image-src style='background-image: url('" + vineyard.image_url + "')";
+  };
 
   var saveUpdates = function (newVal, oldVal) {
     if ((newVal != oldVal) && ($scope.vineyardEditForm.$valid) && (!$scope.saveInProgress)) {
       $scope.saveInProgress = true;
       if ($scope.vineyard._id) {
-        console.info("put...", $scope.vineyard);
         $scope.vineyard.put().then(saveFinished,saveFinished);
       } else {
         Restangular.all('vineyards').post($scope.vineyard).then(function (data) {
-          console.info("post...", $scope.vineyard);
           $scope.vineyard = Restangular.copy(data);
           $scope.saveInProgress = false;
           $location.path($location.path() + "/" + $scope.vineyard._id);

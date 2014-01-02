@@ -31,6 +31,9 @@ $label: #006AB5;
   height: 450px;
   pointer-events: none;
 }
+.image-header-bleed.with-metabar {
+  height: 380px;
+}
 
 .bucket {
   padding-top: 30px;
@@ -63,11 +66,25 @@ $label: #006AB5;
   font-weight: 700;
   font-style: normal;
   font-size: 50px;
-  line-height: 2;
+  line-height: 2em;
   color: #333332;
   margin-bottom: 8px;
   outline: 0;
   word-break: break-word;
+  input {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: #fff;
+    font-family: 'Sorts Mill Goudy', serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 2em;
+    font-size: 1em;
+    text-align:center;
+  }
+  input:focus {
+    outline-color: white;
+  }
 }
 .hero-home .hero-description {
   font-family: 'Raleway', serif;
@@ -163,6 +180,19 @@ $label: #006AB5;
 .nav-tabs-light .nav-tabs-anchor:hover, .nav-tabs-light .active .nav-tabs-anchor {
   color: #fff;
   border-top-color: #fff;
+}
+
+.metabar {
+  display: block;
+  z-index: 500;
+  position: absolute;
+  top: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 65px;
+  padding-left: 15px;
 }
 
 .map-medium {

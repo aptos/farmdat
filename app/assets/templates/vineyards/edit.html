@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6 save-status">
+<div class="screen-content">
+  <div class="row metabar">
+    <div class="col-xs-1 col-sm-1 col-md-1 save-status">
       <span ng-show="saveInProgress">Saving...</span>
       <span ng-show="!saveInProgress">Saved</span>
     </div>
@@ -9,14 +9,30 @@
       <button type="button" class="btn btn-success">Publish</button>
     </div>
   </div>
+  <div class="image-header-bleed with-metabar">
+    <div class="image-src" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
+  </div>
+
+  <header class="hero hero-home layout-single-column">
+    <div class="align-middle layout-single-column layout-foreground layout-fill-height">
+      <div class="align-block">
+        <label class="sr-only" for="vineyardName">Vinyard Name</label>
+        <div class="hero-title">
+          <input type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
+        </div>
+        <p class="hero-description hero-description-tagline">
+          {{vineyard.location}}
+        </p>
+      </div>
+    </div>
+  </header>
+
+</div>
+<div class="container">
   <form role="form-inline" name="vineyardEditForm">
     <div class="form-group">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-          <label class="sr-only" for="vineyardName">Vinyard Name</label>
-          <h1>
-            <input class="col-xs-12 col-sm-12 col-md-12 no-distraction text-center" type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required>
-          </h1>
         </div>
       </div>
       <div class="row">
@@ -38,46 +54,57 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <legend>Vineyard Specs</legend>
-      <div class="col-xs-12 col-sm-6 col-md-4 no-distraction" ng-repeat="block in vineyard.blocks">
-        <h4>Block {{$index + 1}} - <input ng-model="block.name" placeholder="Name"></input> </h4>
-        <table class="span8 table table-condensed">
-          <tr><td class="muted input-label" >Acreage</td>
-            <td class="input">
-              <input name="Acreage" type="text" ng-model="block.acreage" class="span6 text_field" placeholder="12">
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Varietal</td>
-            <td class="input">
-              <input name="Varietal" type="text" ng-model="block.varietal" class="span6 text_field" placeholder="Pinot Noir">
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Clones</td>
-            <td class="input">
-              <input name="Clones" type="text" ng-model="block.clones" class="span6 text_field" placeholder="Martini">
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Rootstock</td>
-            <td class="input">
-              <input name="Rootstock" type="text" ng-model="block.rootstock" class="span6 text_field" placeholder="Riparia gloire">
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Year Planted</td>
-            <td class="input">
-              <input name="Year" type="text" ng-model="block.year" class="span6 text_field" placeholder="1986">
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Trellis Style</td>
-            <td class="input">
-              <input name="Trellis" type="text" ng-model="block.trellis" class="span6 text_field" placeholder="7' VSP">
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="cols-xs-12 col-sm-1 col-md-1">
-        <span ng-click="add_block()"><i class="fa fa-plus-circle clickable-icon"></i></span>
-      </div>
+    <!--
+    <!-- Vineyard Specs
+  -->
+  <div class="row">
+    <legend>Vineyard Specs</legend>
+    <div class="col-xs-12 col-sm-6 col-md-4 no-distraction" ng-repeat="block in vineyard.blocks">
+      <h4 ng-mouseenter="show_delete=true" ng-mouseleave="show_delete=false">
+        Block {{$index + 1}} - <input ng-model="block.name" placeholder="Name"></input>
+        <span ng-show="show_delete && vineyard.blocks.length > 1" ng-click="delete_block($index)"><i class="fa fa-minus-circle delete-icon"></i></span>
+      </h4>
+      <table class="span8 table table-condensed">
+        <tr><td class="muted input-label" >Acreage</td>
+          <td class="input">
+            <input name="Acreage" type="text" ng-model="block.acreage" class="span6 text_field" placeholder="12">
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Varietal</td>
+          <td class="input">
+            <input name="Varietal" type="text" ng-model="block.varietal" class="span6 text_field" placeholder="Pinot Noir">
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Clones</td>
+          <td class="input">
+            <input name="Clones" type="text" ng-model="block.clones" class="span6 text_field" placeholder="Martini">
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Rootstock</td>
+          <td class="input">
+            <input name="Rootstock" type="text" ng-model="block.rootstock" class="span6 text_field" placeholder="Riparia gloire">
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Year Planted</td>
+          <td class="input">
+            <input name="Year" type="number" ng-model="block.year" class="span6 text_field" placeholder="1986">
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Vine Spacing</td>
+          <td class="input">
+            <input name="Spacing" type="text" ng-model="block.spacing" class="span6 text_field" placeholder="4' x 8'">
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Trellis Style</td>
+          <td class="input">
+            <input name="Trellis" type="text" ng-model="block.trellis" class="span6 text_field" placeholder="7' VSP">
+          </td>
+        </tr>
+      </table>
     </div>
-  </form>
+    <div class="cols-xs-12 col-sm-1 col-md-1">
+      <span ng-click="add_block()"><i class="fa fa-plus-circle clickable-icon"></i></span>
+    </div>
+  </div>
+</form>
 </div>

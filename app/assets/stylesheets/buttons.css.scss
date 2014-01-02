@@ -1,8 +1,9 @@
 
 .save-status {
-  margin-top: 15px;
-  padding-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px;
   color: #999999;
+  background-color:#fff;
 }
 
 .btn-set {
@@ -39,4 +40,14 @@
 .clickable-icon:hover {
   font-size: 2.2em;
   color:#ccc;
+}
+
+.delete-icon {
+  cursor:pointer;
+  color:#cc5454;
+  @include transition( all 0.2s ease );
+}
+
+.delete-icon:hover {
+  color:#e62929;
 }
