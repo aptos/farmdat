@@ -5,6 +5,7 @@ class Vineyard < CouchRest::Model::Base
   property :owner_name, String
   property :location, String
   property :latlong, Array
+  property :center, Hash
   property :description, String
   property :image_url, String
   property :methods, Hash

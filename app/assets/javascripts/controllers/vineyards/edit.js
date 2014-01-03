@@ -1,4 +1,4 @@
-function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location, Restangular, $log) {
+function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location, Restangular, $log, $timeout) {
 
   $scope.saveInProgress = false;
   var saveFinished = function () {_.delay( function() {$scope.saveInProgress = false; $scope.$apply();}, 500)};
@@ -15,6 +15,12 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
       zoom: 10
     },
     markers: {
+      m1: {
+        lat: 36.97,
+        lng: -121.89,
+        focus: true,
+        draggable: true
+      }
     },
     layers: {
       baselayers: {
@@ -54,13 +60,23 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
 
   $scope.$watch('latlong', function () {
     if (!$scope.latlong || !$scope.vineyard) return;
-    $scope.vineyard.latlong = $scope.latlong;
-    $scope.center.lat = $scope.latlong[0];
-    $scope.center.lng = $scope.latlong[1];
-    $scope.markers.m1 = {lat: $scope.latlong[0], lng: $scope.latlong[1], focus: true, draggable: true};
-    $scope.center.zoom = 15;
-    angular.extend($scope,$scope.markers) ;
+    $scope.update_markers();
   });
+
+  $scope.update_markers = function () {
+    console.info("updated laglong", $scope.latlong)
+    $scope.vineyard.latlong = $scope.latlong;
+    $scope.center.lat = $scope.markers.m1.lat = $scope.latlong[0];
+    $scope.center.lng = $scope.markers.m1.lng = $scope.latlong[1];
+    $scope.center.zoom = ($scope.center.zoom < 15) ? 15 : $scope.center.zoom ;
+    angular.extend($scope,$scope.markers) ;
+    $scope.$safeApply();
+  };
+
+  $scope.update_center = function () {
+    $scope.center = $scope.vineyard.center;
+    $scope.$safeApply();
+  }
 
   $scope.$on('leafletDirectiveMarker.dragend', function(event, args){
     console.info("moved", $scope.m1)
@@ -81,6 +97,8 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
       $scope.vineyard = data;
       $scope.latlong = $scope.vineyard.latlong;
       $scope.saveInProgress = false;
+      $timeout($scope.update_markers, 1000);
+      $timeout($scope.update_center, 1000);
     }, saveFinished);
   } else {
     $scope.vineyard = {
@@ -97,6 +115,7 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   var saveUpdates = function (newVal, oldVal) {
     if ((newVal != oldVal) && ($scope.vineyardEditForm.$valid) && (!$scope.saveInProgress)) {
       $scope.saveInProgress = true;
+      $scope.vineyard.center = $scope.center;
       if ($scope.vineyard._id) {
         $scope.vineyard.put().then(saveFinished,saveFinished);
       } else {
@@ -120,4 +139,4 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
     $scope.vineyard.remove().then($location.path("/"));
   };
 }
-VineyardEditCtrl.$inject = ['$rootScope','$scope', '$debounce','$routeParams','$location','Restangular', '$log'];
+VineyardEditCtrl.$inject = ['$rootScope','$scope', '$debounce','$routeParams','$location','Restangular', '$log', '$timeout'];
