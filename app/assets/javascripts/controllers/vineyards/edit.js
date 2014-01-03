@@ -1,7 +1,7 @@
-function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location, Restangular, $log, $timeout) {
+function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location, Restangular, $log, $timeout, Elevation) {
 
   $scope.saveInProgress = false;
-  var saveFinished = function () {_.delay( function() {$scope.saveInProgress = false; $scope.$apply();}, 500)};
+  var saveFinished = function () {_.delay( function() {$scope.saveInProgress = false; $scope.$apply();}, 500); };
 
   angular.extend($scope, {
     defaults: {
@@ -61,10 +61,12 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   $scope.$watch('latlong', function () {
     if (!$scope.latlong || !$scope.vineyard) return;
     $scope.update_markers();
+    Elevation.location($scope.latlong).then(function (elevation) {
+      $scope.vineyard.elevation = elevation;
+    });
   });
 
   $scope.update_markers = function () {
-    console.info("updated laglong", $scope.latlong)
     $scope.vineyard.latlong = $scope.latlong;
     $scope.center.lat = $scope.markers.m1.lat = $scope.latlong[0];
     $scope.center.lng = $scope.markers.m1.lng = $scope.latlong[1];
@@ -76,10 +78,9 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   $scope.update_center = function () {
     $scope.center = $scope.vineyard.center;
     $scope.$safeApply();
-  }
+  };
 
   $scope.$on('leafletDirectiveMarker.dragend', function(event, args){
-    console.info("moved", $scope.m1)
     $scope.latlong = [$scope.m1.lat, $scope.m1.lng];
   });
 
@@ -89,6 +90,9 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
 
   $scope.delete_block = function (index) {
     $scope.vineyard.blocks.splice(index, 1);
+    _.foreEach($scope.vineyard.blocks, function (block, index) {
+      block.id = index;
+    });
   };
 
   if (!!$routeParams && $routeParams.id) {
@@ -103,7 +107,7 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   } else {
     $scope.vineyard = {
       blocks: [{id: 1}],
-      image_url: "/assets/welcome.jpg"
+      // image_url: "/assets/welcome.jpg"
     };
     get_location();
   }
@@ -139,4 +143,4 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
     $scope.vineyard.remove().then($location.path("/"));
   };
 }
-VineyardEditCtrl.$inject = ['$rootScope','$scope', '$debounce','$routeParams','$location','Restangular', '$log', '$timeout'];
+VineyardEditCtrl.$inject = ['$rootScope','$scope', '$debounce','$routeParams','$location','Restangular', '$log', '$timeout', 'Elevation'];

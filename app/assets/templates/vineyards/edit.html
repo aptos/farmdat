@@ -13,7 +13,7 @@
       <button ng-show="vineyard.published" type="button" class="btn" >Published</button>
     </div>
   </div>
-  <div class="image-header-bleed with-metabar">
+  <div class="image-header-bleed with-metabar" ng-show="vineyard.image_url">
     <div class="image-src" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
   </div>
 
@@ -55,7 +55,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6">
           <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
-          {{m1.lat}},{{m1.lng}}
+          <span>{{m1.lat}},{{m1.lng}}</span> <span ng-show="vineyard.elevation" class="pull-right">el: {{vineyard.elevation | inFeet}}</span>
         </div>
       </div>
     </div>

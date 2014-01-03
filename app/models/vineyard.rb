@@ -6,6 +6,7 @@ class Vineyard < CouchRest::Model::Base
   property :location, String
   property :latlong, Array
   property :center, Hash
+  property :elevation, Float
   property :description, String
   property :image_url, String
   property :methods, Hash

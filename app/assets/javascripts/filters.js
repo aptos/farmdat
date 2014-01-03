@@ -1,5 +1,11 @@
 var farmdatFilters = angular.module('farmdatFilters', []);
 
+farmdatFilters.filter('inFeet', function() {
+  return function(meters, format) {
+    return Math.floor(parseInt(meters, 10) * 3.280839895) + "ft";
+  };
+});
+
 farmdatFilters.filter('timeAgo', function() {
   return function(dateString, format) {
     return moment(dateString).fromNow();
