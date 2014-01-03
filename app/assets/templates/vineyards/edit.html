@@ -9,7 +9,8 @@
         Really? &nbsp &nbsp <a href="" ng-click="showDelete=false">Nope</a> | <a href="" ng-click="delete_me()">Yes, I'm sure</a>
       </span>
       <button type="button" class="btn btn-default btn-delete" ng-click="showDelete=true">Delete</button>
-      <button type="button" class="btn btn-success">Publish</button>
+      <button ng-show="!vineyard.published" type="button" class="btn btn-success" ng-click="publish()">Publish</button>
+      <button ng-show="vineyard.published" type="button" class="btn" >Published</button>
     </div>
   </div>
   <div class="image-header-bleed with-metabar">
@@ -54,6 +55,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6">
           <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
+          {{m1.lat}},{{m1.lng}}
         </div>
       </div>
     </div>

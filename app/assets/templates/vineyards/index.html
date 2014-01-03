@@ -1,11 +1,11 @@
 <div class="screen-content">
   <div class="row metabar">
     <div class="col-xs-6 col-sm-6 col-md-6 btn-set pull-right">
-      <button type="button" class="btn btn-success">New Collection</button>
+      <button type="button" class="btn btn-success" ng-click="add_vineyard()">New Vineyard</button>
     </div>
   </div>
   <header class="hero hero-standalone layout-single-column ">
-    <h1 class="hero-title">Vineyard Collections</h1>
+    <h1 class="hero-title">Vineyard Collection</h1>
     <p class="hero-description">Vineyards you've created or are following</p>
     <div class="hero-actions btn-set">
       <div class="search-box">
@@ -15,8 +15,12 @@
   </header>
 
 </div>
-<div class="bucket layout-single-column">
-  <div ng-repeat="vineyard in vineyards">
-    {{vineyard.name}}
-  </div>
+<div class="container">
+  <div class="col-xs-6 col-sm-6 col-md-6">
+  <ul class="scrolling-list" ng-repeat="vineyard in vineyards">
+    <li>
+      <h4>{{vineyard.name}}</h4>
+      <p>{{vineyard.location}}</p>
+    </li>
+  </ul>
 </div>

@@ -214,6 +214,10 @@ $label: #006AB5;
 
 .margin-top-40 { margin-top: 40px;}
 
+ul.scrolling-list {
+ list-style: none;
+}
+
 @media all and (max-width: 640px) {
   .table-condensed {
     td, td[class*="span"] {

@@ -25,6 +25,8 @@ maps.directive('geocode', ['$debounce', function($debounce) {
 
       scope.$watch(attrs.ngModel, function(value, oldValue) {
         if (value === oldValue) { return; }
+        // if (typeof(oldValue) === 'undefined') { return; }
+        console.info("update from geocode")
         getLocation(value, function(response) {
           scope[attrs.latlong] = response;
           scope.$apply();

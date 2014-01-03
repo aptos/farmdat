@@ -10,6 +10,7 @@ class Vineyard < CouchRest::Model::Base
   property :methods, Hash
   property :blocks, Array
   property :attachments, Hash
+  property :published, String
   property :views, Integer, :default => 0
 
   timestamps!
