@@ -22,6 +22,7 @@
 //= require leaflet
 //= require leaflet.markercluster
 //= require angular-leaflet-directive
-//= reqquire Google
+//= require Google
+//= require ng-s3upload
 //= require app
 //= require_tree .

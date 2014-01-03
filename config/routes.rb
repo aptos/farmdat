@@ -19,6 +19,9 @@ Farmdat::Application.routes.draw do
   # Vineyards CRUD
   resources :vineyards
 
+  # S3 upload signature server
+  resources :signed_url, only: :index
+
   # Must be admin to check the resque status
   mount SecureResqueServer.new, :at => '/resque'
 

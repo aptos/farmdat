@@ -6,24 +6,24 @@ module ApplicationHelper
 		# @current_user ||= User.find(session[:user_id]) if session[:user_id]
 
     @current_user ||= User.by_auth_token.key(cookies[:auth_token]).first if cookies[:auth_token]
-	end
+  end
 
-	def request_country
-		@geoip ||= GeoIP.new("#{Rails.root}/db/GeoIP.dat")
-		request.remote_ip
-		return "US" if request.remote_ip == "127.0.0.1"
-		country = @geoip.country(request.remote_ip).country_code2 rescue "Unknown"
-		return country
-	end
+  def request_country
+    @geoip ||= GeoIP.new("#{Rails.root}/db/GeoIP.dat")
+    request.remote_ip
+    return "US" if request.remote_ip == "127.0.0.1"
+    country = @geoip.country(request.remote_ip).country_code2 rescue "Unknown"
+    return country
+  end
 
-	def mobile_device?
-		logger.info "**** Mobile? #{request.user_agent}"
+  def mobile_device?
+    logger.info "**** Mobile? #{request.user_agent}"
     if params[:mobile_override]
     	params[:mobile_override] == "1"
     else
     	(request.user_agent =~ /Mobile|webOS/) && (request.user_agent !~ /iPad/)
     end
-	end
+  end
 
 	#
 	# access restrictions
