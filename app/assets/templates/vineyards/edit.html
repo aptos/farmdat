@@ -28,7 +28,7 @@
         <p ng-show="vineyard.location" class="hero-description hero-description-tagline animated fadeIn">
           <span contenteditable ng-model="vineyard.location" strip-br="true"></span>
         </p>
-        <div s3-upload ng-model="vineyard.image_url" bucket="'aptos'" s3-upload-options="{getOptionsUri: '/signed_url'}" >
+        <div s3-upload ng-model="vineyard.image_url" bucket="'aptos'" s3-upload-options="upload_options" >
       </div>
     </div>
   </header>

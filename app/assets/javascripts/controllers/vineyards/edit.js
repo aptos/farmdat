@@ -133,6 +133,12 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   };
   $scope.$watch('vineyard', $debounce(saveUpdates, 2000), true);
 
+  $scope.upload_options = {
+    getOptionsUri: '/signed_url',
+    filetype: 'image.*',
+    maxSize: [960, 1200]
+  };
+
   $scope.publish = function () {
     $scope.vineyard.published = true;
   };
