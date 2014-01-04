@@ -269,9 +269,6 @@ template: '<div class="upload-wrap">' +
 '<input type="file" style="display: none"/>' +
 '</div>'
 
-      //   '<div class="progress progress-striped" ng-class="{active: uploading}" ng-show="attempt" style="margin-top: 10px">' +
-      //   '<div class="bar" style="width: {{ progress }}%;" ng-class="barClass()"></div>' +
-      //   '</div>' +
-    };
-  }]);
+};
+}]);
 })(window, document);
