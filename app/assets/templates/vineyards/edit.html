@@ -28,38 +28,37 @@
         <p ng-show="vineyard.location" class="hero-description hero-description-tagline animated fadeIn">
           <span contenteditable ng-model="vineyard.location" strip-br="true"></span>
         </p>
-        <div s3-upload ng-model="vineyard.image_url" bucket="'aptos'" s3-upload-options="upload_options" >
-      </div>
+
+        <div aws-uploader browse-button="addDocument" folder="get_folder()" ng-model="vineyard.image_url" resize="max_size" rename="vineyard._id"></div>
+      </header>
     </div>
-  </header>
-</div>
-<div class="container margin-top-40">
-  <form role="form-inline" name="vineyardEditForm">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6">
-          <label class="sr-only" for="Location">Location</label>
-          <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="3" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
-          <label class="sr-only" for="Description">Description</label>
-          <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" rows="6" name="Description" ng-model="vineyard.description" placeholder="Description">
-          </textarea>
-          <div class="col-xs-12 col-sm-12 col-md-12 btn-set">
-            <legend>Farming Methods</legend>
-            <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.sustainable]" ng-click="vineyard.methods.sustainable=!vineyard.methods.sustainable">Sustainable</button>
-            <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.organic]" ng-click="vineyard.methods.organic=!vineyard.methods.organic">Organic</button>
-            <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.biodynamic]" ng-click="vineyard.methods.biodynamic=!vineyard.methods.biodynamic">Biodynamic</button>
+    <div class="container margin-top-40">
+      <form role="form-inline" name="vineyardEditForm">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+              <label class="sr-only" for="Location">Location</label>
+              <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="3" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
+              <label class="sr-only" for="Description">Description</label>
+              <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" rows="6" name="Description" ng-model="vineyard.description" placeholder="Description">
+              </textarea>
+              <div class="col-xs-12 col-sm-12 col-md-12 btn-set">
+                <legend>Farming Methods</legend>
+                <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.sustainable]" ng-click="vineyard.methods.sustainable=!vineyard.methods.sustainable">Sustainable</button>
+                <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.organic]" ng-click="vineyard.methods.organic=!vineyard.methods.organic">Organic</button>
+                <button ng-class="{false:'btn btn-success', true:'btn btn-default'}[!vineyard.methods.biodynamic]" ng-click="vineyard.methods.biodynamic=!vineyard.methods.biodynamic">Biodynamic</button>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+              <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
+              <span>{{m1.lat}},{{m1.lng}}</span> <span ng-show="vineyard.elevation" class="pull-right">el: {{vineyard.elevation | inFeet}}</span>
+            </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
-          <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
-          <span>{{m1.lat}},{{m1.lng}}</span> <span ng-show="vineyard.elevation" class="pull-right">el: {{vineyard.elevation | inFeet}}</span>
-        </div>
-      </div>
-    </div>
     <!--
     <!-- Vineyard Specs
   -->

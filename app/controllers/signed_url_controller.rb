@@ -3,11 +3,17 @@ class SignedUrlController < ApplicationController
   respond_to :json
 
   def index
-    raise "ENV MISSING: 'AWS_ACCESS_KEY_ID'" unless ENV['AWS_ACCESS_KEY_ID'] && ENV['AWS_S3_BUCKET']
+    raise "ENV MISSING: 'AWS_ACCESS_KEY_ID'" unless ENV['AWS_ACCESS_KEY_ID']
+
+    folder = params[:folder]
+    folder ||= "uploads"
+    key = "uploads/#{params[:folder]}/${filename}"
     render json: {
-      policy:    s3_upload_policy,
+      policy: create_s3_upload_policy,
       signature: s3_upload_signature,
-      key:       ENV['AWS_ACCESS_KEY_ID']
+      access_key: ENV['AWS_ACCESS_KEY_ID'],
+      bucket: ENV['AWS_S3_BUCKET'],
+      key: key
     }
   end
 
@@ -25,8 +31,8 @@ class SignedUrlController < ApplicationController
         { "bucket" =>  ENV['AWS_S3_BUCKET']},
         [ "starts-with", "$key", "" ],
         { "acl" => "public-read" },
-        [ "starts-with", "$Content-Type", "" ],
-        [ "content-length-range", 0, 10 * 1024 * 1024 ]
+        ["starts-with", "$name", ""],
+        ["starts-with", "$success_action_status", ""]
       ]
       }.to_json).gsub(/\n/,'')
   end
