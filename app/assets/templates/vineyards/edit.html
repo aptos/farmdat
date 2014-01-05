@@ -10,7 +10,7 @@
       </span>
       <button type="button" class="btn btn-default btn-delete" ng-click="showDelete=true">Delete</button>
       <button ng-show="!vineyard.published" type="button" class="btn btn-success" ng-click="publish()">Publish</button>
-      <button ng-show="vineyard.published" type="button" class="btn" >Published</button>
+      <button ng-show="vineyard.published" type="button" class="btn btn-success" ng-click="finished()">Finished</button>
     </div>
   </div>
   <div class="image-header-bleed with-metabar" ng-show="vineyard.image_url">
@@ -25,8 +25,8 @@
           <!-- <input type="text" maxlength="64" placeholder="Vineyard Name" ng-model="vineyard.name" required> -->
           <span contenteditable ng-model="vineyard.name" placeholder="Vineyard Name" required />
         </div>
-        <p ng-show="vineyard.location" class="hero-description hero-description-tagline animated fadeIn">
-          <span contenteditable ng-model="vineyard.location" strip-br="true"></span>
+        <p ng-show="vineyard.appellation" class="hero-description hero-description-tagline animated fadeIn">
+          <span contenteditable ng-model="vineyard.appellation" strip-br="true"></span>
         </p>
 
         <div aws-uploader browse-button="addDocument" folder="get_folder()" ng-model="vineyard.image_url" resize="max_size" rename="vineyard._id"></div>
@@ -35,16 +35,18 @@
     <div class="container margin-top-40">
       <form role="form-inline" name="vineyardEditForm">
         <div class="form-group">
-          <div class="row">
+<!--           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6">
+              <label class="sr-only" for="Appellation">Appellation</label>
+              <input class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" type="text" name="Appellation" name="appellation" ng-model="vineyard.appellation" placeholder="Appellation"></input>
               <label class="sr-only" for="Location">Location</label>
               <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="3" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
               <label class="sr-only" for="Description">Description</label>
-              <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" rows="6" name="Description" ng-model="vineyard.description" placeholder="Description">
+              <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction description" rows="6" name="Description" ng-model="vineyard.description" placeholder="Description">
               </textarea>
               <div class="col-xs-12 col-sm-12 col-md-12 btn-set">
                 <legend>Farming Methods</legend>

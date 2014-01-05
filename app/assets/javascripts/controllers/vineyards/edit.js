@@ -144,6 +144,10 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
     $scope.vineyard.published = true;
   };
 
+  $scope.finished = function () {
+    $location.path("vineyards/" + $scope.vineyard._id);
+  };
+
   $scope.delete_me = function () {
     console.info("delete requested!");
     $scope.saveInProgress = true;

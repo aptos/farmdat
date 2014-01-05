@@ -3,6 +3,7 @@ class Vineyard < CouchRest::Model::Base
   property :name, String
   property :owner, String
   property :owner_name, String
+  property :appellation, String
   property :location, String
   property :latlong, Array
   property :center, Hash

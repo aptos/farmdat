@@ -14,6 +14,7 @@ farmdatModule.config(['$routeProvider',function($routeProvider) {
   when('/start',{templateUrl: 'assets/welcome.html', controller: StartCtrl}).
   when('/vineyards',{templateUrl: 'assets/vineyards/index.html', controller: VineyardListCtrl}).
   when('/vineyards/edit',{templateUrl: 'assets/vineyards/edit.html', controller: VineyardEditCtrl}).
+  when('/vineyards/:id',{templateUrl: 'assets/vineyards/show.html', controller: VineyardShowCtrl}).
   when('/vineyards/edit/:id',{templateUrl: 'assets/vineyards/edit.html', controller: VineyardEditCtrl}).
     // Default
     otherwise({templateUrl: 'assets/welcome.html', controller: StartCtrl});

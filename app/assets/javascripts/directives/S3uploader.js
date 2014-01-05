@@ -22,6 +22,7 @@ aws.directive('awsUploader',[ '$http', function ($http) {
         // create folder name at upload time, supports function to return dynamic folder name
         if (attrs.folder) folder = scope.$eval(attrs.folder);
 
+
         $http({ method: 'GET', url: 'signed_url', params: {folder: folder} }).
         success(function (data) {
           params = {
@@ -63,7 +64,6 @@ aws.directive('awsUploader',[ '$http', function ($http) {
 
       if (attrs.resize) {
         scope.aws_uploader.settings.resize = scope.$eval(attrs.resize);
-        console.info("file resized", scope.$eval(attrs.resize) );
       }
 
       scope.aws_uploader.init();
