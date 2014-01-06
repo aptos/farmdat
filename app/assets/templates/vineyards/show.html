@@ -4,11 +4,11 @@
       <button type="button" class="btn btn-info" ng-click="edit()">Edit</button>
     </div>
   </div>
-  <div class="image-header-bleed with-metabar" ng-show="vineyard.image_url">
-    <div class="image-src" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
+  <div class="image-header-bleed" ng-show="vineyard.image_url">
+    <div class="image-src" ng-class="{true: 'dimmed'}[dimmed]" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
   </div>
 
-  <header class="hero hero-home layout-single-column">
+  <header class="hero hero-home layout-single-column" ng-mouseenter="dimmed=true" ng-mouseleave="dimmed=false">
     <div class="align-middle layout-single-column layout-foreground layout-fill-height">
       <div class="align-block">
         <div class="hero-title">
@@ -17,70 +17,81 @@
         <p ng-show="vineyard.appellation" class="hero-description hero-description-tagline">
           {{vineyard.appellation}}
         </p>
-      </header>
-    </div>
-    <div class="container margin-top-40">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6">
-          <span class="col-xs-12 col-sm-12 col-md-12 sans">{{vineyard.appellation}}</span>
-          <span class="col-xs-12 col-sm-12 col-md-12 sans ">{{vineyard.location}}</span>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <p class="description">{{vineyard.description}}</p>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-12 btn-set">
-            <legend>Farming Methods</legend>
-            <button class="btn btn-success" ng-show="vineyard.methods.sustainable">Sustainable</button>
-            <button class="btn btn-success" ng-show="vineyard.methods.organic">Organic</button>
-            <button class="btn btn-success" ng-show="vineyard.methods.biodynamic">Biodynamic</button>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
-          <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
-          <span>{{m1.lat}},{{m1.lng}}</span> <span ng-show="vineyard.elevation" class="pull-right">el: {{vineyard.elevation | inFeet}}</span>
-        </div>
       </div>
     </div>
-    <div class="container margin-top-40">
-      <legend>Vineyard Specs</legend>
-      <div class="col-xs-12 col-sm-6 col-md-4 no-distraction" ng-repeat="block in vineyard.blocks">
-        <h4>Block {{$index + 1}} - {{block.name}}</h4>
-        <table class="span8 table table-striped borderless">
-          <tr><td class="muted item-label" >Acreage</td>
-            <td class="item">
-              {{block.acreage}}
-            </td>
-          </tr>
-          <tr><td class="muted item-label" >Varietal</td>
-            <td class="item">
-              {{block.varietal}}
-            </td>
-          </tr>
-          <tr><td class="muted item-label" >Clones</td>
-            <td class="item">
-              {{block.clones}}
-            </td>
-          </tr>
-          <tr><td class="muted item-label" >Rootstock</td>
-            <td class="item">
-              {{block.rootstock}}
-            </td>
-          </tr>
-          <tr><td class="muted item-label" >Year Planted</td>
-            <td class="item">
-              {{block.year}}
-            </td>
-          </tr>
-          <tr><td class="muted item-label" >Vine Spacing</td>
-            <td class="item">
-              {{block.spacing}}
-            </td>
-          </tr>
-          <tr><td class="muted item-label" >Trellis Style</td>
-            <td class="item">
-              {{block.trellis}}
-            </td>
-          </tr>
-        </table>
+  </header>
+  <nav class="nav-tabs nav-tabs-light layout-single-column" ng-mouseenter="dimmed=true" ng-mouseleave="dimmed=false">
+    <ul class="nav-tabs-list">
+      <li class="nav-tabs-item active">
+        <a class="nav-tabs-anchor" href="/">Welcome</a>
+      </li>
+      <li class="nav-tabs-item ">
+        <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container margin-top-40">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <span class="col-xs-12 col-sm-12 col-md-12 sans">{{vineyard.appellation}}</span>
+        <span class="col-xs-12 col-sm-12 col-md-12 sans ">{{vineyard.location}}</span>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <p class="description">{{vineyard.description}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 btn-set">
+          <legend>Farming Methods</legend>
+          <button class="btn btn-success" ng-show="vineyard.methods.sustainable">Sustainable</button>
+          <button class="btn btn-success" ng-show="vineyard.methods.organic">Organic</button>
+          <button class="btn btn-success" ng-show="vineyard.methods.biodynamic">Biodynamic</button>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
+        <span>{{m1.lat}},{{m1.lng}}</span> <span ng-show="vineyard.elevation" class="pull-right">el: {{vineyard.elevation | inFeet}}</span>
       </div>
     </div>
   </div>
+  <div class="container margin-top-40">
+    <legend>Vineyard Specs</legend>
+    <div class="col-xs-12 col-sm-6 col-md-4 no-distraction" ng-repeat="block in vineyard.blocks">
+      <h4>Block {{$index + 1}} - {{block.name}}</h4>
+      <table class="span8 table table-striped borderless">
+        <tr><td class="muted item-label" >Acreage</td>
+          <td class="item">
+            {{block.acreage}}
+          </td>
+        </tr>
+        <tr><td class="muted item-label" >Varietal</td>
+          <td class="item">
+            {{block.varietal}}
+          </td>
+        </tr>
+        <tr><td class="muted item-label" >Clones</td>
+          <td class="item">
+            {{block.clones}}
+          </td>
+        </tr>
+        <tr><td class="muted item-label" >Rootstock</td>
+          <td class="item">
+            {{block.rootstock}}
+          </td>
+        </tr>
+        <tr><td class="muted item-label" >Year Planted</td>
+          <td class="item">
+            {{block.year}}
+          </td>
+        </tr>
+        <tr><td class="muted item-label" >Vine Spacing</td>
+          <td class="item">
+            {{block.spacing}}
+          </td>
+        </tr>
+        <tr><td class="muted item-label" >Trellis Style</td>
+          <td class="item">
+            {{block.trellis}}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
-function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout) {
+function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout, Elevation) {
 
- angular.extend($scope, {
+  angular.extend($scope, {
     defaults: {
       touchZoom: false,
       scrollWheelZoom: false,
@@ -53,6 +53,13 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout)
     $scope.$safeApply();
   };
 
+  $scope.$on('leafletDirectiveMarker.dragend', function(event, args){
+    $scope.latlong = [$scope.m1.lat, $scope.m1.lng];
+    Elevation.location($scope.latlong).then(function (elevation) {
+      $scope.vineyard.elevation = elevation;
+    });
+  });
+
   $scope.edit = function () {
     $location.path("vineyards/edit/" + $scope.vineyard._id);
   };
@@ -65,4 +72,4 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout)
   });
 
 }
-VineyardShowCtrl.$inject = ['$scope', 'Restangular', '$routeParams', '$location','$timeout'];
+VineyardShowCtrl.$inject = ['$scope', 'Restangular', '$routeParams', '$location','$timeout', 'Elevation'];
