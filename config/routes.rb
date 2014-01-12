@@ -22,6 +22,9 @@ Farmdat::Application.routes.draw do
   # S3 upload signature server
   resources :signed_url, only: :index
 
+  # serve some constants as meta
+  resources :meta, only: :index
+
   # Must be admin to check the resque status
   mount SecureResqueServer.new, :at => '/resque'
 

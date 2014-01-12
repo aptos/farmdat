@@ -227,6 +227,10 @@ ul.scrolling-list {
  list-style: none;
 }
 
+.table-set {
+  margin-bottom: 30px;
+}
+
 @media all and (max-width: 640px) {
   .table-condensed {
     td, td[class*="span"] {

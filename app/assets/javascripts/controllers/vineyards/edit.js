@@ -1,4 +1,8 @@
-function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location, Restangular, $log, $timeout, Elevation) {
+function VineyardEditCtrl(Storage, $scope, $debounce, $routeParams, $location, Restangular, $log, $timeout, Elevation, $http) {
+
+  $scope.selected = undefined;
+  $scope.avas = Storage.fetch("meta").avas;
+  $scope.grapes = Storage.fetch("meta").grapes;
 
   $scope.saveInProgress = false;
   var saveFinished = function () {_.delay( function() {$scope.saveInProgress = false; $scope.$apply();}, 500); };
@@ -25,17 +29,17 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
     layers: {
       baselayers: {
         googleHybrid: {
-          name: 'Google Hybrid',
+          name: 'Satellite',
           layerType: 'HYBRID',
           type: 'google'
         },
         googleRoadmap: {
-          name: 'Google Streets',
+          name: 'Streets',
           layerType: 'ROADMAP',
           type: 'google'
         },
         googleTerrain: {
-          name: 'Google Terrain',
+          name: 'Terrain',
           layerType: 'TERRAIN',
           type: 'google'
         },
@@ -90,8 +94,8 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
 
   $scope.delete_block = function (index) {
     $scope.vineyard.blocks.splice(index, 1);
-    _.foreEach($scope.vineyard.blocks, function (block, index) {
-      block.id = index;
+    angular.forEach($scope.vineyard.blocks, function (block, id) {
+      block.id = id;
     });
   };
 
@@ -107,7 +111,6 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   } else {
     $scope.vineyard = {
       blocks: [{id: 1}],
-      // image_url: "/assets/welcome.jpg"
     };
     get_location();
   }
@@ -117,8 +120,9 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   };
 
   var saveUpdates = function (newVal, oldVal) {
-    if ((newVal != oldVal) && ($scope.vineyardEditForm.$valid) && (!$scope.saveInProgress)) {
+    if ((newVal != oldVal) && ($scope.vineyardEditForm.$valid) && (!$scope.saveInProgress) && (!!$scope.vineyard.name)) {
       $scope.saveInProgress = true;
+      $scope.vineyard.name = $scope.vineyard.name.replace("&nbsp;",'').trim();
       $scope.vineyard.center = $scope.center;
       if ($scope.vineyard._id) {
         $scope.vineyard.put().then(saveFinished,saveFinished);
@@ -138,7 +142,7 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
     if (!!$scope.vineyard) {
       return 'photos/' + $scope.vineyard._id;
     }
-  }
+  };
 
   $scope.publish = function () {
     $scope.vineyard.published = true;
@@ -149,9 +153,13 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   };
 
   $scope.delete_me = function () {
-    console.info("delete requested!");
+    console.info("delete requested!", $scope.vineyard);
     $scope.saveInProgress = true;
-    $scope.vineyard.remove().then($location.path("/"));
+    if ($scope.vineyard._id) {
+      $scope.vineyard.remove().then($location.path("/"));
+    } else {
+      $location.path("/");
+    }
   };
 }
-VineyardEditCtrl.$inject = ['$rootScope','$scope', '$debounce','$routeParams','$location','Restangular', '$log', '$timeout', 'Elevation'];
+VineyardEditCtrl.$inject = ['Storage','$scope', '$debounce','$routeParams','$location','Restangular', '$log', '$timeout', 'Elevation', '$http'];

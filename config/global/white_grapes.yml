@@ -1,0 +1,501 @@
+---
+default:
+  names:
+    - Aedani
+    - Aidani
+    - Aidini
+    - AlamÃ­s
+    - Alarije
+    - Alarijen
+    - Albalonga
+    - Albana
+    - Albanello bianco
+    - Albaranzeuli bianco
+    - Albarello
+    - Albarola
+    - Albillo
+    - Altesse
+    - Alvarinho
+    - Amigne
+    - Ansonica
+    - Ansonica
+    - Antao Vaz
+    - Aragnan blanc
+    - Arbane
+    - Arbois
+    - Arinto
+    - Arneis
+    - Arnsburger
+    - Arrufiac
+    - Arrufiat
+    - Arvine
+    - Asprinio bianco
+    - Assario branco
+    - Assyrtico
+    - Assyrtiko
+    - Athiri
+    - Aubin
+    - Aubin vert
+    - Aurelius
+    - Auxerrois blanc
+    - Avesso
+    - Azal branco
+    - Bacchus
+    - Baco blanc
+    - Baiyu
+    - Balzac blanc
+    - Banat Riesling
+    - Banat Rizling
+    - Barbera bianca
+    - Barcelo
+    - Bariadorgia
+    - Baroque
+    - Belina
+    - Benedino
+    - Besgano bianco
+    - Bia blanc
+    - Biancame
+    - Bianchello
+    - Bianchetta Trevigiana
+    - Bianchetti Genovese
+    - Bianco d'Alessano
+    - Biancolella
+    - Biancone
+    - Bical
+    - Blanc de Morgex
+    - Boais
+    - Bombino bianco
+    - Borba blanca
+    - Bordelesa Zuri
+    - Borrado das Moscas
+    - Bosco
+    - Bourboulenc
+    - Bouvier
+    - BratislavskÃ© biele
+    - Breidecker
+    - Brustiano bianco
+    - Bual
+    - Bukettraube
+    - Buonamico
+    - Burger
+    - Cainho branco
+    - CalagraÃ±o
+    - Camaralet
+    - Canari blanc
+    - Cape Riesling
+    - Carica l'Asino
+    - Carignan blanc
+    - Cascarolo bianco
+    - Catarratto
+    - Cayetana
+    - Cerceal
+    - Cerceal
+    - Cereza
+    - Chardonnay
+    - Chasan
+    - Chasselas
+    - Chenel
+    - Chenin blanc
+    - Clairette
+    - Clare Riesling
+    - Claret de Gascogne
+    - Claret de Gers
+    - Claverie
+    - Cococciola
+    - Cocur
+    - Coda di Volpe
+    - Codega
+    - Codega
+    - Colombard
+    - Completer
+    - Cortese
+    - Courbu
+    - Courtillier MusquÃ©
+    - Crato
+    - Crato bianco
+    - Crato branco
+    - Criolla Grande
+    - Crouchen
+    - Cserszegi FÅ±szeres
+    - Cygne blanc
+    - Dattier
+    - Debina
+    - Debit
+    - Diagalves
+    - Dimiat
+    - Dinka
+    - Dona blanca
+    - Donzelinho branco
+    - Doradillo
+    - Drupeggio
+    - Durella
+    - Ehrenfelser
+    - Elbling
+    - Emerald Riesling
+    - Emir Karasi
+    - Encruzado
+    - Erbaluce
+    - Esagna
+    - Escanyavella
+    - Esgana Cao
+    - Esgana CÃ£o
+    - Esquitxagos
+    - EzerjÃ³
+    - Faber
+    - Faberrebe
+    - Falanghina
+    - False Pedro
+    - Favorita
+    - Favorita
+    - Fendant
+    - Fernao Pires
+    - Ferral
+    - Fetiaska
+    - Fiano
+    - Findling
+    - FiÃ©
+    - FiÃ© gris
+    - FiÃ©t
+    - Flora
+    - Folle blanche
+    - FologosÃ£o
+    - Francavida
+    - Francusa
+    - Freiburger
+    - Freisamer
+    - Friulano
+    - Fromenteau
+    - Frontignan
+    - Furmint
+    - Galego Dourado
+    - Garganega
+    - Garnacha blanca
+    - Garnacha blanca
+    - Garrido
+    - Gellewza
+    - GewÃ¼rztraminer
+    - GirÃ³ blanc
+    - Gloria
+    - Godello
+    - Goldburger
+    - Goldriesling
+    - Gouais blanc
+    - Gouveio
+    - Gouveio
+    - Graisse
+    - Grasa
+    - Grauburgunder
+    - GraÅ¡evina
+    - Grecanico
+    - Grechetto
+    - Greco
+    - Greco bianco
+    - Green Hungarian
+    - Grenache blanc
+    - Grenache blanc
+    - Grenache gris
+    - Grey Riesling
+    - Grignolino
+    - Grillo
+    - Grk Bijeli
+    - Grolleau gris
+    - Gros Manseng
+    - Gros Plant
+    - GrÃ¼ner Veltliner
+    - Guardavalle
+    - Guarnaccia bianca
+    - Gutedel
+    - Gutenborner
+    - Hondarrabi Zuri
+    - Humagne blanche
+    - Huxelrebe
+    - HÃ¡rslevelÅ±
+    - Incrocio Manzoni
+    - Inzolia
+    - Inzolia
+    - Irsai Oliver
+    - Irsai OlivÃ©r
+    - Irsay Oliver
+    - Italia
+    - Izkiriota Handi
+    - Izkiriota Ttipi
+    - IzsÃ¡ki
+    - IzsÃ¡ki SarfehÃ©r
+    - JacquÃ¨re
+    - Jampal
+    - JaÃ©n blanca
+    - Johannisberg Riesling
+    - Juhfark
+    - Juwel
+    - Kanzler
+    - Keknyelu
+    - Kerner
+    - Klein Rauschling
+    - Klevner
+    - Klingelberger
+    - Knipperle
+    - Koshu
+    - Ladikino
+    - Lado
+    - Lagarino bianco
+    - Lagorthi
+    - Lauzet
+    - Lazki Rizling
+    - Len de l'El
+    - Len de l'Elh
+    - LeÃ nyka
+    - Listan
+    - Loin-de-l'oeil
+    - Loureira
+    - Luglienga
+    - Lumassina
+    - Macabeo
+    - Macabeo
+    - Macabeu
+    - Macabeu
+    - Maceratino
+    - Madeleine Angevine
+    - Malagousia
+    - Malagoussia
+    - Malvar
+    - Malvasia
+    - Malvoisie
+    - Manteudo
+    - Mantonico bianco
+    - Maria Gomes
+    - Marsanne
+    - Marzemina bianca
+    - Mauzac
+    - Melon de Bourgogne
+    - Melon de Bourgogne
+    - Merlot blanc
+    - Merseguera
+    - Meslier St-FranÃ§ois
+    - MezesfehÃ©r
+    - Minella bianca
+    - Miousap
+    - Misket
+    - Molette
+    - Moll
+    - Monbadon
+    - Montonico bianco
+    - Montu
+    - Morio-Muskat
+    - Moscatel Rosada
+    - Moscatel branco
+    - Moscatel de Austria
+    - Moscatel de MÃ¡laga
+    - Moscatell
+    - Moscato
+    - Moschofilero
+    - Moscophilero
+    - Mosler
+    - Mtsvane
+    - Muscadelle
+    - Muscadet
+    - Muscadet
+    - Muscat
+    - Muscat Blanc Ã Petits Grains
+    - Muscat Frontignan
+    - Muscat Ottonel
+    - Muscat of Alexandria
+    - Muskateller
+    - Nasco
+    - Neherleschol
+    - Neuburger
+    - Nobling
+    - Nosiola
+    - Nuragus
+    - Olaszrizling
+    - Ondenc
+    - Optima
+    - Oraniensteiner
+    - Orion
+    - Ortega
+    - Ortrugo
+    - OrÃ©mus
+    - Pagedebit
+    - Pallagrello bianco
+    - Palomino
+    - Pampanino
+    - Pampanuto
+    - Pardillo
+    - Pardina
+    - Parellada
+    - Pascal blanc
+    - Passerina
+    - Pecorello
+    - Pecorino
+    - Pedro GimÃ©nez
+    - Pedro Luis
+    - Pedro XimÃ©nez
+    - Perle
+    - Perrum
+    - Petit Courbu
+    - Petit Manseng
+    - Petit Meslier
+    - Petite Arvine
+    - Picardin
+    - Piccolit
+    - Piccolito
+    - Picolit
+    - Picpoul
+    - Pigato
+    - Pignerol
+    - Pignoletto
+    - Pineau de la Loire
+    - Pinella
+    - Pinot bianco
+    - Pinot blanc
+    - Pinot grigio
+    - Pinot gris
+    - Pinot jaune
+    - Piquepoult
+    - Plant de Graisse
+    - Planta Fina
+    - Planta Nova
+    - Plavai
+    - PoÅ¡ip
+    - PriÃ© blanc
+    - Prosecco
+    - Prunesta
+    - Rabigato
+    - Rabo de Ovelha
+    - Raisin blanc
+    - Rauschling
+    - Regner
+    - Reichensteiner
+    - Retagliado bianco
+    - Rheinriesling
+    - Rhoditis
+    - Rhoditis
+    - Ribolla
+    - Rieslaner
+    - Riesling
+    - Riesling Italico
+    - Rivaner
+    - Rkatsiteli
+    - Rkatsiteli
+    - Robola
+    - Robola
+    - Roditis
+    - Roditis
+    - Rolle
+    - Rolle
+    - Rollo
+    - Romorantin
+    - Rossese bianco
+    - Roter Veltliner
+    - Rotgipfler
+    - Roupeiro
+    - Roupeiro
+    - Roussanne
+    - Roussette
+    - Rovello bianco
+    - Ruffiac
+    - RÃ¨ze
+    - Sabro
+    - Sacy
+    - Saint-Pierre DorÃ©
+    - Sarfeher
+    - Sauvignon blanc
+    - Sauvignon gris
+    - Sauvignon vert
+    - Sauvignonasse
+    - Savagnin
+    - Savagnin blanc
+    - Savatiano
+    - Scheurebe
+    - SchÃ¶nburger
+    - Septiner
+    - Sercial
+    - Sercial
+    - Sereksia
+    - Sideritis
+    - Siegerrebe
+    - Silvaner
+    - Sipon
+    - Smederevka
+    - Spagnol
+    - SpÃ¤trot
+    - Ste Marie
+    - Steen
+    - Sultana
+    - Sylvaner
+    - Symphony
+    - SzÃ¼rkebarÃ¡t
+    - SÃ¡rfehÃ©r
+    - SÃ©millon
+    - Tamares
+    - TamarÃªz
+    - Tamianka
+    - Taminga
+    - TamÃ®ioasa
+    - Tempranillo blanco
+    - Terrantez
+    - Terret gris
+    - Timorasso
+    - Tocai Friulano
+    - Torbato
+    - Torontel
+    - TorrontÃ©s
+    - Tourbat
+    - Trajadura
+    - Traminac
+    - Traminer
+    - Tramini
+    - Tramini
+    - Trbljan
+    - Trebbiano
+    - Trebbiano
+    - Treixadura
+    - Tresallier
+    - Trousseau gris
+    - Tsaoussi
+    - Tsolikauri
+    - TÃ©oulier
+    - Ugni blanc
+    - Ugni blanc
+    - Verdea
+    - Verdeca
+    - Verdejo
+    - Verdelho
+    - Verdello
+    - Verdesse
+    - Verdia
+    - Verdicchio
+    - Verdil
+    - Verdiso
+    - Verdoncho
+    - Verdosilla
+    - Verduzzo
+    - Verduzzo Trevigiano
+    - Vermentino
+    - Vernaccia
+    - Veroga
+    - Vespaiola
+    - Vilana
+    - Vinhao
+    - Viognier
+    - Viosinho
+    - Vital (grape)
+    - Vitovska
+    - Viura
+    - Viura
+    - Voskehat
+    - Vugava
+    - Weissburgunder
+    - Weisser Gutedel
+    - Weldra
+    - Welschriesling
+    - WÃ¼rzer
+    - Xarello
+    - XarelÂ·lo
+    - Xuri Zerratua
+    - Xynisteri
+    - Zala GyÃ¶ngye
+    - Zalema
+    - Zefir
+    - Zenit
+    - Zeusz
+    - Zierfandler

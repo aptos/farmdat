@@ -20,12 +20,12 @@
       </div>
     </div>
   </header>
-  <nav class="nav-tabs nav-tabs-light layout-single-column" ng-mouseenter="dimmed=true" ng-mouseleave="dimmed=false">
+  <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[vineyard.image_url]" ng-mouseenter="dimmed=true" ng-mouseleave="dimmed=false">
     <ul class="nav-tabs-list">
-      <li class="nav-tabs-item active">
+      <li class="nav-tabs-item">
         <a class="nav-tabs-anchor" href="/">Welcome</a>
       </li>
-      <li class="nav-tabs-item ">
+      <li class="nav-tabs-item">
         <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
       </li>
     </ul>
@@ -33,7 +33,7 @@
   <div class="container margin-top-40">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-6">
-        <span class="col-xs-12 col-sm-12 col-md-12 sans">{{vineyard.appellation}}</span>
+        <span class="col-xs-12 col-sm-12 col-md-12 sans"><a ng-href="{{ava_url}}">{{vineyard.appellation}}</a></span>
         <span class="col-xs-12 col-sm-12 col-md-12 sans ">{{vineyard.location}}</span>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <p class="description">{{vineyard.description}}</p>
@@ -53,7 +53,7 @@
   </div>
   <div class="container margin-top-40">
     <legend>Vineyard Specs</legend>
-    <div class="col-xs-12 col-sm-6 col-md-4 no-distraction" ng-repeat="block in vineyard.blocks">
+    <div class="col-xs-12 col-sm-6 col-md-4 no-distraction table-set" ng-repeat="block in vineyard.blocks">
       <h4>Block {{$index + 1}} - {{block.name}}</h4>
       <table class="span8 table table-striped borderless">
         <tr><td class="muted item-label" >Acreage</td>

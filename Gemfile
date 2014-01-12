@@ -27,6 +27,9 @@ gem 'memcachier'
 # db is couch
 gem 'couchrest_model', '2.0.1'
 
+# static config file support
+gem 'global'
+
 # javascript assets
 gem 'underscore-rails'
 gem 'jquery-rails'
@@ -41,9 +44,6 @@ gem "font-awesome-rails"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
 
 # add redis and resque for email delivery
 gem 'redis'

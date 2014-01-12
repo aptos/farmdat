@@ -1,0 +1,454 @@
+---
+default:
+  names:
+    - Abbuoto
+    - Aboto
+    - Abouriou
+    - Abrusco
+    - Acolon
+    - Aghiorghitiko
+    - Agiorgitiko
+    - Aglianico
+    - Agliano
+    - Aladasturi
+    - Albaranzeuli nero
+    - Albarossa
+    - Aleatico
+    - Alexandrouli
+    - Alfrocheiro Preto
+    - Alicante Bouschet
+    - Alicante Ganzin
+    - AlvarelhÃ£o
+    - Amorghiano
+    - Ancellotta
+    - AndrÃ©
+    - Aramon
+    - Areni
+    - Arrouya noir
+    - Aspiran
+    - Aubun
+    - Auxerrois
+    - Avana
+    - Avarengo
+    - Azal Espanhol
+    - Baga
+    - Barbarossa
+    - Barbaroux
+    - Barbera
+    - Barsalinga
+    - Bastardo
+    - Bastardo Magarach
+    - Beaujolais
+    - Bellone
+    - Black Muscat
+    - Blatina
+    - Blauburger
+    - Blauburgunder
+    - Blauer Portugieser
+    - Blauer Portuguiser
+    - Blauer Wildbacher
+    - Bobal
+    - Bombino nero
+    - Bonarda
+    - Bonarda Piemontese
+    - Bondola
+    - Borgonja Crna
+    - Bouteillan noir
+    - Bovale
+    - Bracciola nera
+    - Brachetto or Braquet
+    - Brajda Mala
+    - Brajdica
+    - Brancelho
+    - Brancellao
+    - Bratkovina
+    - Brocol
+    - Brun ArgentÃ©
+    - Brun Fourca
+    - BÃ©quignol noir
+    - Cabernet Cubin
+    - Cabernet Franc
+    - Cabernet Mitos
+    - Cabernet Sauvignon
+    - Cabernet Severny
+    - Caddiu
+    - Caddiu Nieddu
+    - Cagnulari see Graciano
+    - CaiÃ±o tinto
+    - Caladoc
+    - Calitor
+    - Callet
+    - Caloria
+    - Camaraou noir
+    - Canaiolo
+    - Canari noir
+    - Canina nera
+    - Cannonau
+    - Carcajolo nero
+    - Carignan
+    - Carignane
+    - Carignano
+    - CariÃ±ena
+    - Carmine
+    - CarmÃ©nÃ¨re
+    - Carnelian
+    - CastelÃ£o
+    - CastelÃ£o
+    - Castets
+    - Catanese nero
+    - Catanese nero
+    - Cecubo
+    - Cencibel
+    - Centurian
+    - Cesanese
+    - Charbono
+    - Cienna
+    - Ciliegiolo
+    - Cinsault
+    - Cinsaut
+    - Colombana nera
+    - Colorino
+    - Complexa
+    - Cornalin d'Aoste
+    - Cornalin see Rouge du Pays
+    - Cornifesto
+    - Corvina
+    - Corvinone
+    - Cot
+    - Counoise
+    - Crljenak KaÅ¡telanski
+    - Croatina
+    - CÃ©sar
+    - DarkenuÅ¡a
+    - Dolcetto
+    - Domina
+    - Dornfelder
+    - Douce Noire grise
+    - Douce noir
+    - Dunkelfelder
+    - Duras
+    - Dureza
+    - Durif
+    - Early Burgunder
+    - Early Burgundy
+    - Ederena
+    - EnfarinÃ© noir
+    - Espadeiro
+    - Farana
+    - Fer
+    - Forcallat tinta
+    - Fortana
+    - Franconia
+    - Frappato
+    - Freisa
+    - Fumin
+    - Gaglioppo
+    - Gamaret
+    - Gamashara
+    - Gamay
+    - Gamay 15
+    - Gamay Beaujolais
+    - Gamay St-Laurent
+    - Gamay du RhÃ´ne
+    - Gamay noir
+    - GamÃ©
+    - Garanoir
+    - Garnacha
+    - Garnatxa
+    - Garrut
+    - Gouget noir
+    - Graciano
+    - Grand noir de la Calmette
+    - Greco nero
+    - Grenache
+    - Grignolino
+    - Grisa nera
+    - Grolleau
+    - Gropello
+    - Gros Verdot
+    - Groslot
+    - Guarnaccia
+    - Gueuche noir
+    - Helfensteiner
+    - Heroldrebe
+    - Hondarribi Beltza
+    - Hron
+    - Humagne Rouge
+    - Jaen
+    - Jaubertin
+    - Joubertin
+    - Juan Garcia
+    - Juan IbÃ¡Ã±ez
+    - Jurancon noir
+    - Jurkovica
+    - Kadarka
+    - Kakhet
+    - Kalecik Karasi
+    - Kindzmarauli
+    - Kotsifali
+    - Kratosija
+    - KÃ©kfrankos
+    - KÃ©koporto
+    - KÃ©koportÃ³
+    - Lacrima di Morro
+    - Lacrima nera
+    - Lagrein
+    - Lambrusco
+    - Lemberger
+    - Liatiko
+    - Limnio
+    - Listan negro
+    - Lladoner Pelut
+    - Lledoner Pelut
+    - LÃ©on Millot
+    - Madrasa
+    - Magarach Bastardo
+    - Magarach Ruby
+    - Magaratch Ruby
+    - Magliocco Canino
+    - Magliocco Dolce
+    - Magyarfrankos
+    - Maiolica
+    - Malbec
+    - Malbec Argente Negret de la Canourgue
+    - Malvasia di Schierano
+    - Malvasia nera
+    - Mammolo
+    - Mandelari
+    - Mandelaria
+    - Mandolari
+    - Manseng noir
+    - Manto negro
+    - Mara
+    - Marasovka
+    - Maratheftiko
+    - Marselan
+    - Marsigliana
+    - Marsigliana nera
+    - Marzemino
+    - Mataro
+    - Matrassa
+    - Mauzac noir
+    - Mavro
+    - Mavrodafni
+    - Mavrodaphne
+    - Mavroudi
+    - Mavrud
+    - Mayorquin
+    - Mazuelo
+    - Meghrabujr
+    - Melnik
+    - Melnik
+    - Mencia
+    - Merenzao
+    - Merille
+    - Merlot
+    - Miguel del Arco
+    - Milgranet
+    - Millot
+    - Mission
+    - Modrulj
+    - Molinara
+    - Monastrell
+    - Mondeuse
+    - Monica
+    - Montepulciano
+    - Montuni
+    - MontÃ¹
+    - Moreto
+    - Moristel
+    - Moristel
+    - Mornen noir
+    - Morrastel Bouschet
+    - Mourisco tinto
+    - MourvÃ¨dre
+    - MouyssaguÃ¨s
+    - Mujuretuli
+    - Muscardin
+    - Muscat Bouschet
+    - Muscat Hamburg
+    - MÃ¼llerebe
+    - Napa Gamay
+    - Nebbiolo
+    - Negoska
+    - Negrara
+    - Negroamaro
+    - Negru de Dragasani
+    - Nerello Cappuccio
+    - Nerello Mascalese
+    - Neretto di Bairo
+    - Nerkarat
+    - Nero Buono di Cori
+    - Nero d'Avola
+    - Nero di Troia
+    - Neyret
+    - Niedda
+    - Nielluccio
+    - Nincusa
+    - Nocera
+    - Noir Hatif
+    - Notardomenico
+    - NÃ©grette
+    - Oeillade noire
+    - Ojaleshi
+    - Olivella nera
+    - Oporto
+    - Oseleta
+    - Ottavianello
+    - Pais
+    - Pallagrello nero
+    - Pamid
+    - Pascale di Cagliari
+    - Pelaverga
+    - Peloursin
+    - Perda
+    - Perdal
+    - Periquita
+    - Perricone
+    - Persan
+    - Petit Bouschet
+    - Petit Rouge
+    - Petit Verdot
+    - Petite Sirah
+    - Piccola nera
+    - Piedirosso
+    - Pignerol
+    - Pignola Valtellinese
+    - Pignolo
+    - Pineau d'Aunis
+    - Pinot Meunier
+    - Pinot St. George
+    - Pinot nero
+    - Pinot noir
+    - Pinotage
+    - Piquepoul noir
+    - Plant Abouriou
+    - Plant PrÃ©coce
+    - Plassa
+    - Plavac Plavina
+    - Plavina
+    - Plavina Mala
+    - Plavina Sitnah
+    - Plavina Velka
+    - Plavinac
+    - Plavka
+    - Plavka Mala
+    - Plousard
+    - Pollera nera
+    - Portan
+    - Portugais
+    - Poulsard
+    - Pressac de Bourgogne
+    - Preto Martinho
+    - Preto de MortÃ¡gua
+    - Prieto Picudo
+    - Primitivo
+    - Prokupac
+    - PrÃ©coce NaugÃ©
+    - PrÃ©coce Noir
+    - Raboso
+    - Ramisco
+    - Reberger
+    - Refosco
+    - RefoÅ¡k
+    - Rimava
+    - Roche
+    - Roesler
+    - Rondinella
+    - Rossese
+    - Rossignola
+    - Rossola nera
+    - Rossolino nero
+    - Rotberger
+    - Rotburger
+    - Rouchet
+    - Rubintos
+    - Ruby Cabernet
+    - RuchÃ©
+    - Rufeta
+    - Rufete
+    - Sagrantino
+    - Saint-Macaire
+    - San Giuseppe nero
+    - Sangiovese
+    - Saperavi
+    - Saperavi
+    - Schiava
+    - Schioppettino
+    - Schwarzriesling
+    - SchÃ¶nburger
+    - Sciacarello
+    - Sciascinoso
+    - Segalin
+    - Serra
+    - Servanin
+    - Sgaretta
+    - Sgavetta
+    - Shiraz
+    - Shiroka Melnishka Losa
+    - St. Laurent
+    - Sumarello
+    - Sumoll
+    - Susumaiello
+    - Svatovavrinecke
+    - Syrah
+    - SÃ©galin
+    - Tannat
+    - Tarrango
+    - Tazzelenghe
+    - Tempranillo
+    - Termarina rossa
+    - Teroldego
+    - Teroldego Rotaliano
+    - Terret noir
+    - Thiniatiko
+    - Tibouren
+    - Tinta Amarela
+    - Tinta Barroca
+    - Tinta Caiada
+    - Tinta Carvalha
+    - Tinta Carvalha
+    - Tinta Francisca
+    - Tinta Madeira
+    - Tinta Miuda
+    - Tinta Negra Mole
+    - Tinta Pinheira
+    - Tinta Roriz
+    - Tinta del Pais
+    - Tinto CÃ£o
+    - Torneiro
+    - Touriga Franca
+    - Touriga Francesa
+    - Touriga Nacional
+    - Tranese
+    - Trepat
+    - Trevisana nera
+    - Trincadeira
+    - Troiano
+    - Trollinger
+    - Trousseau
+    - Turca
+    - Ull de Llebre
+    - Usakhelauri
+    - Uva Rara
+    - Uva della Marina.
+    - Uva di Barletta
+    - Uva di Canosa
+    - Uva di Troia
+    - Vaccarese
+    - VaccarÃ¨se
+    - ValdiguiÃ©
+    - Valentino nero
+    - Velika Plavka
+    - Vermentino nero
+    - Vespolina
+    - Vien de Nus
+    - Volidza
+    - Volitsa
+    - Vranac
+    - Wildbacher
+    - Wrothham Pinot
+    - Xynomavro
+    - Zinfandel
+    - Zweigelt
+    - Zweigeltrebe

@@ -6,7 +6,7 @@ aws.directive('awsUploader',[ '$http', function ($http) {
     require:'ngModel',
     link:function (scope, element, attrs, ngModel) {
       var folder = 'uploads';
-      var browse_button = attrs.browseButton || 'addFile';
+      var browse_button = 'addDocument';
       var progress = {
         start: function (file) {
           scope.progressVisible = true;
@@ -46,7 +46,7 @@ aws.directive('awsUploader',[ '$http', function ($http) {
         multiple_queues: true,
         max_file_size:'10mb',
         multipart: true,
-        browse_button: attrs.browseButton,
+        browse_button: browse_button,
         preinit: {
           UploadFile: function (up, file) {
             up.settings.url = scope.bucket_url;

@@ -29,35 +29,48 @@ farmdatModule.config(['$routeProvider',function($routeProvider) {
   provider.setRestangularFields({ id: "_id" })
 }]);
 
-farmdatModule.run(['$rootScope', '$window', function($rootScope, $window) {
+farmdatModule.run(['$rootScope', '$window', 'Restangular', 'Storage', function($rootScope, $window, Restangular, Storage) {
 
-  $rootScope.$safeApply = function() {
-    var $scope, fn, force = false;
-    if(arguments.length == 1) {
-      var arg = arguments[0];
-      if(typeof arg == 'function') {
-        fn = arg;
+  var metadata = Storage.fetch('meta');
+  if (!metadata) {
+    Restangular.one('meta').get().then(function (data) {
+      console.info("Got meta",data);
+      Storage.set('meta', data, 60);
+    }, function(response, getResponseHeaders) {
+      if (response.data['error']) {
+        console.info("error fetching metadata from server", response.data['error']);
       }
-      else {
-        $scope = arg;
-      }
+    });
+  }
+
+
+ $rootScope.$safeApply = function() {
+  var $scope, fn, force = false;
+  if(arguments.length == 1) {
+    var arg = arguments[0];
+    if(typeof arg == 'function') {
+      fn = arg;
     }
     else {
-      $scope = arguments[0];
-      fn = arguments[1];
-      if(arguments.length == 3) {
-        force = !!arguments[2];
-      }
+      $scope = arg;
     }
-    $scope = $scope || this;
-    fn = fn || function() { };
-    if(force || !$scope.$$phase) {
-      $scope.$apply ? $scope.$apply(fn) : $scope.apply(fn);
+  }
+  else {
+    $scope = arguments[0];
+    fn = arguments[1];
+    if(arguments.length == 3) {
+      force = !!arguments[2];
     }
-    else {
-      fn();
-    }
-  };
+  }
+  $scope = $scope || this;
+  fn = fn || function() { };
+  if(force || !$scope.$$phase) {
+    $scope.$apply ? $scope.$apply(fn) : $scope.apply(fn);
+  }
+  else {
+    fn();
+  }
+};
 
   // basic media query for angularjs
   $rootScope.mobile = function() {

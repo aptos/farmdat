@@ -15,7 +15,7 @@ Gloria Hallelujah
 
 body {
   padding:0;
-  color:#333;
+  color:#503e2b;
   font-size:16px;
   line-height:1.6;
   background:#fff;
@@ -23,7 +23,7 @@ body {
 }
 
 p, li {
-  color:#555;
+  color:#6B3800;
   line-height:1.6;
 }
 /* Don't change color of links */
@@ -34,17 +34,16 @@ a:focus,
 a:hover,
 a:active {
   outline:0 !important;
-  color: #3498db;
+  color: #8F8FA8;
 }
 a:hover {
   text-decoration:underline;
 }
 
-h1, h2, h3, h4, h5 {
-  color:#555;
+h1, h2, h3, h4, h5, legend {
+  color:#503e2b;
   margin-top:5px;
   text-shadow:none;
-  text-shadow:0 0 1px #f6f6f6;
   font-weight:normal !important;
 }
 

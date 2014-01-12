@@ -1,0 +1,206 @@
+---
+default:
+  names:
+  - Alexander Valley AVA
+  - Alexandria Lakes AVA
+  - Alta Mesa AVA
+  - Altus AVA
+  - Ancient Lakes AVA
+  - Anderson Valley AVA
+  - Antelope Valley of the California High Desert AVA
+  - Applegate Valley AVA
+  - Arkansas Mountain AVA
+  - Arroyo Grande Valley AVA
+  - Arroyo Seco AVA
+  - Atlas Peak AVA
+  - Augusta AVA
+  - Bell Mountain AVA
+  - Ben Lomond Mountain AVA
+  - Benmore Valley AVA
+  - Bennett Valley AVA
+  - Borden Ranch AVA
+  - California Shenandoah Valley AVA
+  - Calistoga AVA
+  - Capay Valley AVA
+  - Carmel Valley AVA
+  - Catoctin AVA
+  - Cayuga Lake AVA
+  - Central Coast AVA
+  - Central Delaware Valley AVA
+  - Chalk Hill AVA
+  - Chalone AVA
+  - Chehalem Mountains AVA
+  - Chiles Valley AVA
+  - Cienega Valley AVA
+  - Clarksburg AVA
+  - Clear Lake AVA
+  - Clements Hills AVA
+  - Cole Ranch AVA
+  - Columbia Gorge AVA
+  - Columbia Valley AVA
+  - Coombsville AVA
+  - Cosumnes River AVA
+  - Covelo AVA
+  - Cucamonga Valley AVA
+  - Cumberland Valley AVA
+  - Diablo Grande AVA
+  - Diamond Mountain District AVA
+  - Dos Rios AVA
+  - Dry Creek Valley AVA
+  - Dundee Hills AVA
+  - Dunnigan Hills AVA
+  - Edna Valley AVA
+  - El Dorado AVA
+  - Eola-Amity Hills AVA
+  - Escondido Valley AVA
+  - Fair Play AVA
+  - Fennville AVA
+  - Fiddletown AVA
+  - Finger Lakes AVA
+  - Fort Ross-Seaview AVA
+  - Fredericksburg in the Texas Hill Country AVA
+  - Grand River Valley AVA
+  - Grand Valley AVA
+  - Green Valley of Russian River Valley AVA
+  - Guenoc Valley AVA
+  - Hames Valley AVA
+  - Happy Canyon of Santa Barbara AVA
+  - Haw River Valley AVA
+  - Hermann AVA
+  - High Valley AVA
+  - Horse Heaven Hills AVA
+  - Howell Mountain AVA
+  - Hudson River Region AVA
+  - Isle St. George AVA
+  - Jahant AVA
+  - Kanawha River Valley AVA
+  - Knights Valley AVA
+  - Lake Chelan AVA
+  - Lake Erie AVA
+  - Lake Michigan Shore AVA
+  - Lake Wisconsin AVA
+  - Lancaster Valley AVA
+  - Leelanau Peninsula AVA
+  - Lehigh Valley AVA
+  - Leona Valley AVA
+  - Lime Kiln Valley AVA
+  - Linganore AVA
+  - Livermore Valley AVA
+  - Lodi AVA
+  - Long Island AVA
+  - Loramie Creek AVA
+  - Los Carneros AVA
+  - Madera AVA
+  - Malibu-Newton Canyon AVA
+  - Martha's Vineyard AVA
+  - McDowell Valley AVA
+  - McMinnville AVA
+  - Mendocino AVA
+  - Mendocino Ridge AVA
+  - Merritt Island AVA
+  - Mesilla Valley AVA
+  - Middle Rio Grande Valley AVA
+  - Middleburg AVA
+  - Mimbres Valley AVA
+  - Mississippi Delta AVA
+  - Mokelumne River AVA
+  - Monterey AVA
+  - Monticello AVA
+  - Mt. Harlan AVA
+  - Mt. Veeder AVA
+  - Naches Heights AVA
+  - Napa Valley AVA
+  - Niagara Escarpment AVA
+  - North Coast AVA
+  - North Fork of Long Island AVA
+  - North Fork of Roanoke AVA
+  - North Yuba AVA
+  - Northern Neck George Washington Birthplace AVA
+  - Northern Sonoma AVA
+  - Oak Knoll District of Napa Valley AVA
+  - Oakville AVA
+  - Ohio River Valley AVA
+  - Old Mission Peninsula AVA
+  - Ozark Highlands AVA
+  - Ozark Mountain AVA
+  - Pacheco Pass AVA
+  - Paicines AVA
+  - Paso Robles AVA
+  - Pine Mountain-Cloverdale AVA
+  - Potter Valley AVA
+  - Puget Sound AVA
+  - Ramona Valley AVA
+  - Rattlesnake Hills AVA
+  - Red Hill Douglas County AVA
+  - Red Hills Lake County AVA
+  - Red Mountain AVA
+  - Redwood Valley AVA
+  - Ribbon Ridge AVA
+  - River Junction AVA
+  - Rockpile AVA
+  - Rocky Knob AVA
+  - Rogue Valley AVA
+  - Russian River Valley AVA
+  - Rutherford AVA
+  - Saddle Rock-Malibu AVA
+  - Salado Creek AVA
+  - San Antonio Valley AVA
+  - San Benito AVA
+  - San Bernabe AVA
+  - San Francisco Bay AVA
+  - San Lucas AVA
+  - San Pasqual Valley AVA
+  - San Ysidro District AVA
+  - Santa Clara Valley AVA
+  - Santa Cruz Mountains AVA
+  - Santa Lucia Highlands AVA
+  - Santa Maria Valley AVA
+  - Santa Ynez Valley AVA
+  - Seiad Valley AVA
+  - Seneca Lake AVA
+  - Shawnee Hills AVA
+  - Shenandoah Valley AVA
+  - Sierra Foothills AVA
+  - Sierra Pelona Valley AVA
+  - Sloughhouse AVA
+  - Snake River Valley AVA
+  - Snipes Mountain AVA
+  - Solano County Green Valley AVA
+  - Sonoita AVA
+  - Sonoma Coast AVA
+  - Sonoma Mountain AVA
+  - Sonoma Valley AVA
+  - South Coast AVA
+  - Southeastern New England AVA
+  - Southern Oregon AVA
+  - Spring Mountain District AVA
+  - St. Helena AVA
+  - Sta. Rita Hills AVA
+  - Stags Leap District AVA
+  - Suisun Valley AVA
+  - Swan Creek AVA
+  - Temecula Valley AVA
+  - Texas Davis Mountains AVA
+  - Texas High Plains AVA
+  - Texas Hill Country AVA
+  - Texoma AVA
+  - The Hamptons AVA
+  - Tracy Hills AVA
+  - Trinity Lakes AVA
+  - Umpqua Valley AVA
+  - Upper Mississippi River Valley AVA
+  - Upper Mississippi Valley AVA
+  - Virginia's Eastern Shore AVA
+  - Wahluke Slope AVA
+  - Walla Walla Valley AVA
+  - West Elks AVA
+  - Western Connecticut Highlands AVA
+  - Wild Horse Valley AVA
+  - Willamette Valley AVA
+  - Willow Creek AVA
+  - Yadkin Valley AVA
+  - Yakima Valley AVA
+  - Yamhill-Carlton District AVA
+  - York Mountain AVA
+  - Yorkville Highlands AVA
+  - Yountville AVA

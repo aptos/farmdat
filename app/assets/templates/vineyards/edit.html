@@ -29,7 +29,7 @@
           <span contenteditable ng-model="vineyard.appellation" strip-br="true"></span>
         </p>
 
-        <div aws-uploader browse-button="addDocument" folder="get_folder()" ng-model="vineyard.image_url" resize="max_size" rename="vineyard._id"></div>
+        <div aws-uploader folder="get_folder()" ng-model="vineyard.image_url" resize="max_size" rename="vineyard._id"></div>
       </header>
     </div>
     <div class="container margin-top-40">
@@ -42,7 +42,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6">
               <label class="sr-only" for="Appellation">Appellation</label>
-              <input class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" type="text" name="Appellation" name="appellation" ng-model="vineyard.appellation" placeholder="Appellation"></input>
+              <input class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" type="text" name="Appellation" name="appellation" ng-model="vineyard.appellation" typeahead="state for state in avas | filter:$viewValue | limitTo:8" placeholder="Appellation"></input>
               <label class="sr-only" for="Location">Location</label>
               <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="3" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
               <label class="sr-only" for="Description">Description</label>
@@ -79,7 +79,7 @@
         </tr>
         <tr><td class="muted input-label" >Varietal</td>
           <td class="input">
-            <input name="Varietal" type="text" ng-model="block.varietal" class="span6 text_field" placeholder="Pinot Noir">
+            <input name="Varietal" type="text" ng-model="block.varietal" class="span6 text_field" typeahead="variety for variety in grapes | filter:$viewValue | limitTo:8" placeholder="Pinot Noir">
           </td>
         </tr>
         <tr><td class="muted input-label" >Clones</td>

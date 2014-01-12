@@ -7,5 +7,9 @@ function VineyardListCtrl($scope, Restangular, $location) {
   $scope.add_vineyard = function () {
     $location.path('/vineyards/edit');
   };
+
+  $scope.open = function (id) {
+    $location.path('/vineyards/' + id);
+  };
 }
 VineyardListCtrl.$inject = ['$scope', 'Restangular', '$location'];

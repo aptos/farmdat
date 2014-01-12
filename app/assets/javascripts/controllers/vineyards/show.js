@@ -22,17 +22,17 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout,
     layers: {
       baselayers: {
         googleHybrid: {
-          name: 'Google Hybrid',
+          name: 'Satellite',
           layerType: 'HYBRID',
           type: 'google'
         },
         googleRoadmap: {
-          name: 'Google Streets',
+          name: 'Streets',
           layerType: 'ROADMAP',
           type: 'google'
         },
         googleTerrain: {
-          name: 'Google Terrain',
+          name: 'Terrain',
           layerType: 'TERRAIN',
           type: 'google'
         },
@@ -64,9 +64,12 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout,
     $location.path("vineyards/edit/" + $scope.vineyard._id);
   };
 
+  var wp_base_url = "http://en.wikipedia.org/wiki/";
+
   Restangular.one('vineyards',$routeParams.id).get().then(function (data) {
     $scope.vineyard = data;
     $scope.latlong = $scope.vineyard.latlong;
+    $scope.ava_url = (!!$scope.vineyard.appellation) ? wp_base_url + $scope.vineyard.appellation.replace("/\s/g","_") : wp_base_url + "Category:American_Viticultural_Areas";
     $timeout($scope.update_markers, 1000);
     $timeout($scope.update_center, 1000);
   });
