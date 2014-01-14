@@ -64,12 +64,15 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout,
     $location.path("vineyards/edit/" + $scope.vineyard._id);
   };
 
-  var wp_base_url = "http://en.wikipedia.org/wiki/";
+  $scope.wp_url = function (item) {
+     var base_url = "http://en.wikipedia.org/wiki/";
+     return base_url + item.replace("/\s/g","_");
+  };
 
   Restangular.one('vineyards',$routeParams.id).get().then(function (data) {
     $scope.vineyard = data;
     $scope.latlong = $scope.vineyard.latlong;
-    $scope.ava_url = (!!$scope.vineyard.appellation) ? wp_base_url + $scope.vineyard.appellation.replace("/\s/g","_") : wp_base_url + "Category:American_Viticultural_Areas";
+    $scope.ava_url = (!!$scope.vineyard.appellation) ? $scope.wp_url($scope.vineyard.appellation) : $scope.wp_url("Category:American_Viticultural_Areas");
     $timeout($scope.update_markers, 1000);
     $timeout($scope.update_center, 1000);
   });

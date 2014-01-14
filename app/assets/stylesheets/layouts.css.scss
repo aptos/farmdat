@@ -2,7 +2,7 @@ html, body {
   height: 100%;
 }
 
-$label: #006AB5;
+$label: #382B50;
 
 .screen-content {
   position: relative;
@@ -170,6 +170,7 @@ $label: #006AB5;
   list-style: none;
   margin-top: -1px;
   padding-left: 0px;
+  color: rgba(66, 66, 66, 0.35);
 }
 .nav-tabs-anchor {
   font-family: "Raleway", serif;
@@ -178,7 +179,7 @@ $label: #006AB5;
   display: block;
   font-size: 1em;
   text-transform: uppercase;
-  color: #b3b3b1;
+  color: rgb(51, 51, 50);
   padding: 20px 0;
 }
 .nav-tabs-light {

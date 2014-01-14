@@ -1,8 +1,10 @@
-function VineyardEditCtrl(Storage, $scope, $debounce, $routeParams, $location, Restangular, $log, $timeout, Elevation, $http) {
+function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location, Restangular, $log, $timeout, Elevation, $http) {
 
   $scope.selected = undefined;
-  $scope.avas = Storage.fetch("meta").avas;
-  $scope.grapes = Storage.fetch("meta").grapes;
+  $rootScope.getMeta().then(function (metadata) {
+    $scope.avas = metadata.avas;
+    $scope.grapes = metadata.grapes;
+  });
 
   $scope.saveInProgress = false;
   var saveFinished = function () {_.delay( function() {$scope.saveInProgress = false; $scope.$apply();}, 500); };
@@ -162,4 +164,4 @@ function VineyardEditCtrl(Storage, $scope, $debounce, $routeParams, $location, R
     }
   };
 }
-VineyardEditCtrl.$inject = ['Storage','$scope', '$debounce','$routeParams','$location','Restangular', '$log', '$timeout', 'Elevation', '$http'];
+VineyardEditCtrl.$inject = ['$rootScope','$scope', '$debounce','$routeParams','$location','Restangular', '$log', '$timeout', 'Elevation', '$http'];

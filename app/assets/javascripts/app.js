@@ -29,19 +29,27 @@ farmdatModule.config(['$routeProvider',function($routeProvider) {
   provider.setRestangularFields({ id: "_id" })
 }]);
 
-farmdatModule.run(['$rootScope', '$window', 'Restangular', 'Storage', function($rootScope, $window, Restangular, Storage) {
+farmdatModule.run(['$rootScope', '$window', '$q', 'Restangular', 'Storage', function($rootScope, $window, $q, Restangular, Storage) {
 
-  var metadata = Storage.fetch('meta');
-  if (!metadata) {
-    Restangular.one('meta').get().then(function (data) {
-      console.info("Got meta",data);
-      Storage.set('meta', data, 60);
-    }, function(response, getResponseHeaders) {
-      if (response.data['error']) {
-        console.info("error fetching metadata from server", response.data['error']);
-      }
-    });
-  }
+  $rootScope.getMeta = function () {
+    var deferred = $q.defer();
+
+    var metadata = Storage.get('meta');
+    if (!metadata) {
+      Restangular.one('meta').get().then(function (data) {
+        Storage.set('meta', data);
+        deferred.resolve(data);
+      }, function(response, getResponseHeaders) {
+        if (response.data['error']) {
+          console.info("error fetching metadata from server", response.data['error']);
+        }
+        deferred.reject('error');
+      });
+    } else {
+      deferred.resolve(metadata);
+    }
+    return deferred.promise;
+  };
 
 
  $rootScope.$safeApply = function() {
