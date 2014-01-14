@@ -24,5 +24,6 @@
 //= require angular-leaflet-directive
 //= require Google
 //= require_tree ./plupload/
+//= require ngDialog
 //= require app
 //= require_tree .

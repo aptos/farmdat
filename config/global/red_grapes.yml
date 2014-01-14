@@ -18,10 +18,9 @@ default:
     - Alfrocheiro Preto
     - Alicante Bouschet
     - Alicante Ganzin
-    - AlvarelhÃ£o
+    - Alvarelhão
     - Amorghiano
     - Ancellotta
-    - AndrÃ©
     - Aramon
     - Areni
     - Arrouya noir
@@ -63,9 +62,8 @@ default:
     - Brancellao
     - Bratkovina
     - Brocol
-    - Brun ArgentÃ©
     - Brun Fourca
-    - BÃ©quignol noir
+    - Béquignol noir
     - Cabernet Cubin
     - Cabernet Franc
     - Cabernet Mitos
@@ -74,7 +72,6 @@ default:
     - Caddiu
     - Caddiu Nieddu
     - Cagnulari see Graciano
-    - CaiÃ±o tinto
     - Caladoc
     - Calitor
     - Callet
@@ -88,12 +85,10 @@ default:
     - Carignan
     - Carignane
     - Carignano
-    - CariÃ±ena
     - Carmine
-    - CarmÃ©nÃ¨re
+    - Carménère
     - Carnelian
-    - CastelÃ£o
-    - CastelÃ£o
+    - Castelão
     - Castets
     - Catanese nero
     - Catanese nero
@@ -116,10 +111,7 @@ default:
     - Corvinone
     - Cot
     - Counoise
-    - Crljenak KaÅ¡telanski
     - Croatina
-    - CÃ©sar
-    - DarkenuÅ¡a
     - Dolcetto
     - Domina
     - Dornfelder
@@ -132,7 +124,6 @@ default:
     - Early Burgunder
     - Early Burgundy
     - Ederena
-    - EnfarinÃ© noir
     - Espadeiro
     - Farana
     - Fer
@@ -146,12 +137,9 @@ default:
     - Gamaret
     - Gamashara
     - Gamay
-    - Gamay 15
     - Gamay Beaujolais
     - Gamay St-Laurent
-    - Gamay du RhÃ´ne
     - Gamay noir
-    - GamÃ©
     - Garanoir
     - Garnacha
     - Garnatxa
@@ -178,7 +166,6 @@ default:
     - Jaubertin
     - Joubertin
     - Juan Garcia
-    - Juan IbÃ¡Ã±ez
     - Jurancon noir
     - Jurkovica
     - Kadarka
@@ -187,9 +174,6 @@ default:
     - Kindzmarauli
     - Kotsifali
     - Kratosija
-    - KÃ©kfrankos
-    - KÃ©koporto
-    - KÃ©koportÃ³
     - Lacrima di Morro
     - Lacrima nera
     - Lagrein
@@ -200,7 +184,6 @@ default:
     - Listan negro
     - Lladoner Pelut
     - Lledoner Pelut
-    - LÃ©on Millot
     - Madrasa
     - Magarach Bastardo
     - Magarach Ruby
@@ -254,20 +237,17 @@ default:
     - Monica
     - Montepulciano
     - Montuni
-    - MontÃ¹
     - Moreto
     - Moristel
     - Moristel
     - Mornen noir
     - Morrastel Bouschet
     - Mourisco tinto
-    - MourvÃ¨dre
-    - MouyssaguÃ¨s
+    - Mourvèdre
     - Mujuretuli
     - Muscardin
     - Muscat Bouschet
     - Muscat Hamburg
-    - MÃ¼llerebe
     - Napa Gamay
     - Nebbiolo
     - Negoska
@@ -288,7 +268,7 @@ default:
     - Nocera
     - Noir Hatif
     - Notardomenico
-    - NÃ©grette
+    - Négrette
     - Oeillade noire
     - Ojaleshi
     - Olivella nera
@@ -323,7 +303,6 @@ default:
     - Pinotage
     - Piquepoul noir
     - Plant Abouriou
-    - Plant PrÃ©coce
     - Plassa
     - Plavac Plavina
     - Plavina
@@ -340,17 +319,13 @@ default:
     - Poulsard
     - Pressac de Bourgogne
     - Preto Martinho
-    - Preto de MortÃ¡gua
     - Prieto Picudo
     - Primitivo
     - Prokupac
-    - PrÃ©coce NaugÃ©
-    - PrÃ©coce Noir
     - Raboso
     - Ramisco
     - Reberger
     - Refosco
-    - RefoÅ¡k
     - Rimava
     - Roche
     - Roesler
@@ -364,7 +339,6 @@ default:
     - Rouchet
     - Rubintos
     - Ruby Cabernet
-    - RuchÃ©
     - Rufeta
     - Rufete
     - Sagrantino
@@ -376,7 +350,7 @@ default:
     - Schiava
     - Schioppettino
     - Schwarzriesling
-    - SchÃ¶nburger
+    - Schönburger
     - Sciacarello
     - Sciascinoso
     - Segalin
@@ -386,13 +360,13 @@ default:
     - Sgavetta
     - Shiraz
     - Shiroka Melnishka Losa
+    - Sousão
     - St. Laurent
     - Sumarello
     - Sumoll
     - Susumaiello
     - Svatovavrinecke
     - Syrah
-    - SÃ©galin
     - Tannat
     - Tarrango
     - Tazzelenghe
@@ -436,7 +410,6 @@ default:
     - Uva di Canosa
     - Uva di Troia
     - Vaccarese
-    - VaccarÃ¨se
     - Valdiguié
     - Valentino nero
     - Velika Plavka

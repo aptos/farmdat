@@ -108,7 +108,7 @@ $label: #382B50;
   margin: 0 0 10px 0;
   padding: 0;
 }
-.hero-home .hero-title, .hero-home .hero-description {
+.hero-home .hero-title, .hero-home .hero-description, .nav-tabs-light {
   color: #fff;
   background-color: rgba(127, 107, 54, 0.55);
   padding: 5px 12px 5px 12px;
@@ -183,7 +183,6 @@ $label: #382B50;
   padding: 20px 0;
 }
 .nav-tabs-light {
-  border-top-color: rgba(255,255,255,0.35);
   border-bottom: none;
 }
 .nav-tabs-item.active .nav-tabs-anchor {
@@ -225,14 +224,47 @@ $label: #382B50;
 .margin-top-40 { margin-top: 40px;}
 
 ul.scrolling-list {
- list-style: none;
+  list-style: none;
+  border-top: 1px solid rgba(80, 62, 43, 0.11);
+  margin: 0;
+  p {margin: 0;}
+}
+ul.scrolling-list:hover {
+  background-color: rgba(222, 222, 222, 0.25);
+}
+
+
+ul.scrolling-list.force-two-lines li {
+  min-height: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .table-set {
   margin-bottom: 30px;
 }
 
+.description {
+  height: 280px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Raleway';
+  font-size: 1.1em;
+  overflow:scroll;
+}
+p.description:first-letter {
+  font-size: 1.3em;
+  color: #7f6b36;
+}
+
+.map-box {
+  font-size: 1em;
+}
+
 @media all and (max-width: 640px) {
+  .layout-single-column {
+    width: auto;
+  }
   .table-condensed {
     td, td[class*="span"] {
       display: block;
@@ -250,5 +282,23 @@ ul.scrolling-list {
     .item-label { color: $label; }
     .item { border-top:none; }
     .item-help { float: left; padding-right: 6px; }
+  }
+  .table-set {
+    border: 1px solid #e5e5e5;
+    border-radius: 7px;
+  }
+  .description {
+    height: auto;
+  }
+  .hero-title {
+    font-size: 2em;
+    line-height: 1.6em;
+  }
+  .hero-description {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .map-box {
+    font-size: 14px;
   }
 }

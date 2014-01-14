@@ -71,7 +71,6 @@ default:
     - Bosco
     - Bourboulenc
     - Bouvier
-    - BratislavskÃ© biele
     - Breidecker
     - Brustiano bianco
     - Bual
@@ -79,7 +78,6 @@ default:
     - Buonamico
     - Burger
     - Cainho branco
-    - CalagraÃ±o
     - Camaralet
     - Canari blanc
     - Cape Riesling
@@ -105,18 +103,16 @@ default:
     - Cocur
     - Coda di Volpe
     - Codega
-    - Codega
     - Colombard
     - Completer
     - Cortese
     - Courbu
-    - Courtillier MusquÃ©
     - Crato
     - Crato bianco
     - Crato branco
     - Criolla Grande
     - Crouchen
-    - Cserszegi FÅ±szeres
+    - Cserszegi Fűszeres
     - Cygne blanc
     - Dattier
     - Debina
@@ -138,9 +134,7 @@ default:
     - Esagna
     - Escanyavella
     - Esgana Cao
-    - Esgana CÃ£o
     - Esquitxagos
-    - EzerjÃ³
     - Faber
     - Faberrebe
     - Falanghina
@@ -153,12 +147,8 @@ default:
     - Fetiaska
     - Fiano
     - Findling
-    - FiÃ©
-    - FiÃ© gris
-    - FiÃ©t
     - Flora
     - Folle blanche
-    - FologosÃ£o
     - Francavida
     - Francusa
     - Freiburger
@@ -173,19 +163,17 @@ default:
     - Garnacha blanca
     - Garrido
     - Gellewza
-    - GewÃ¼rztraminer
-    - GirÃ³ blanc
+    - Gewürztraminer
+    - Giró blanc
     - Gloria
     - Godello
     - Goldburger
     - Goldriesling
     - Gouais blanc
     - Gouveio
-    - Gouveio
     - Graisse
     - Grasa
     - Grauburgunder
-    - GraÅ¡evina
     - Grecanico
     - Grechetto
     - Greco
@@ -201,7 +189,7 @@ default:
     - Grolleau gris
     - Gros Manseng
     - Gros Plant
-    - GrÃ¼ner Veltliner
+    - Grüner Veltliner
     - Guardavalle
     - Guarnaccia bianca
     - Gutedel
@@ -209,21 +197,13 @@ default:
     - Hondarrabi Zuri
     - Humagne blanche
     - Huxelrebe
-    - HÃ¡rslevelÅ±
     - Incrocio Manzoni
     - Inzolia
-    - Inzolia
     - Irsai Oliver
-    - Irsai OlivÃ©r
-    - Irsay Oliver
     - Italia
     - Izkiriota Handi
     - Izkiriota Ttipi
-    - IzsÃ¡ki
-    - IzsÃ¡ki SarfehÃ©r
-    - JacquÃ¨re
     - Jampal
-    - JaÃ©n blanca
     - Johannisberg Riesling
     - Juhfark
     - Juwel
@@ -243,15 +223,12 @@ default:
     - Lazki Rizling
     - Len de l'El
     - Len de l'Elh
-    - LeÃ nyka
     - Listan
     - Loin-de-l'oeil
     - Loureira
     - Luglienga
     - Lumassina
     - Macabeo
-    - Macabeo
-    - Macabeu
     - Macabeu
     - Maceratino
     - Madeleine Angevine
@@ -267,11 +244,8 @@ default:
     - Marzemina bianca
     - Mauzac
     - Melon de Bourgogne
-    - Melon de Bourgogne
     - Merlot blanc
     - Merseguera
-    - Meslier St-FranÃ§ois
-    - MezesfehÃ©r
     - Minella bianca
     - Miousap
     - Misket
@@ -295,7 +269,6 @@ default:
     - Muscadet
     - Muscadet
     - Muscat
-    - Muscat Blanc Ã Petits Grains
     - Muscat Frontignan
     - Muscat Ottonel
     - Muscat of Alexandria
@@ -313,7 +286,6 @@ default:
     - Orion
     - Ortega
     - Ortrugo
-    - OrÃ©mus
     - Pagedebit
     - Pallagrello bianco
     - Palomino
@@ -326,9 +298,7 @@ default:
     - Passerina
     - Pecorello
     - Pecorino
-    - Pedro GimÃ©nez
     - Pedro Luis
-    - Pedro XimÃ©nez
     - Perle
     - Perrum
     - Petit Courbu
@@ -355,8 +325,7 @@ default:
     - Planta Fina
     - Planta Nova
     - Plavai
-    - PoÅ¡ip
-    - PriÃ© blanc
+    - Prié blanc
     - Prosecco
     - Prunesta
     - Rabigato
@@ -368,19 +337,14 @@ default:
     - Retagliado bianco
     - Rheinriesling
     - Rhoditis
-    - Rhoditis
     - Ribolla
     - Rieslaner
     - Riesling
     - Riesling Italico
     - Rivaner
     - Rkatsiteli
-    - Rkatsiteli
-    - Robola
     - Robola
     - Roditis
-    - Roditis
-    - Rolle
     - Rolle
     - Rollo
     - Romorantin
@@ -388,12 +352,10 @@ default:
     - Roter Veltliner
     - Rotgipfler
     - Roupeiro
-    - Roupeiro
     - Roussanne
     - Roussette
     - Rovello bianco
     - Ruffiac
-    - RÃ¨ze
     - Sabro
     - Sacy
     - Saint-Pierre DorÃ©
@@ -406,7 +368,7 @@ default:
     - Savagnin blanc
     - Savatiano
     - Scheurebe
-    - SchÃ¶nburger
+    - Schönburger
     - Septiner
     - Sercial
     - Sercial
@@ -417,20 +379,15 @@ default:
     - Sipon
     - Smederevka
     - Spagnol
-    - SpÃ¤trot
     - Ste Marie
     - Steen
     - Sultana
     - Sylvaner
     - Symphony
-    - SzÃ¼rkebarÃ¡t
-    - SÃ¡rfehÃ©r
-    - SÃ©millon
+    - Sémillon
     - Tamares
-    - TamarÃªz
     - Tamianka
     - Taminga
-    - TamÃ®ioasa
     - Tempranillo blanco
     - Terrantez
     - Terret gris
@@ -438,23 +395,18 @@ default:
     - Tocai Friulano
     - Torbato
     - Torontel
-    - TorrontÃ©s
     - Tourbat
     - Trajadura
     - Traminac
     - Traminer
     - Tramini
-    - Tramini
     - Trbljan
-    - Trebbiano
     - Trebbiano
     - Treixadura
     - Tresallier
     - Trousseau gris
     - Tsaoussi
     - Tsolikauri
-    - TÃ©oulier
-    - Ugni blanc
     - Ugni blanc
     - Verdea
     - Verdeca
@@ -478,9 +430,7 @@ default:
     - Vinhao
     - Viognier
     - Viosinho
-    - Vital (grape)
     - Vitovska
-    - Viura
     - Viura
     - Voskehat
     - Vugava
@@ -488,12 +438,10 @@ default:
     - Weisser Gutedel
     - Weldra
     - Welschriesling
-    - WÃ¼rzer
+    - Würzer
     - Xarello
-    - XarelÂ·lo
     - Xuri Zerratua
     - Xynisteri
-    - Zala GyÃ¶ngye
     - Zalema
     - Zefir
     - Zenit

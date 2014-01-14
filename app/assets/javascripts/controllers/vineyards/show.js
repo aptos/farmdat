@@ -1,4 +1,4 @@
-function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout, Elevation) {
+function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout, Elevation, ngDialog, $sce) {
 
   angular.extend($scope, {
     defaults: {
@@ -69,6 +69,18 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout,
      return base_url + item.replace("/\s/g","_");
   };
 
+  $scope.wp_info = function (topic) {
+    $scope.title = topic;
+    $scope.topic = $sce.trustAsResourceUrl("http://en.wikipedia.org/wiki/" + topic);
+
+    ngDialog.open({
+      template: 'assets/iframeDialog.html',
+      showClose: true,
+      className: 'ngdialog-theme-flat ngdialog-theme-custom wp-iframe',
+      scope: $scope
+    });
+  };
+
   Restangular.one('vineyards',$routeParams.id).get().then(function (data) {
     $scope.vineyard = data;
     $scope.latlong = $scope.vineyard.latlong;
@@ -78,4 +90,4 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout,
   });
 
 }
-VineyardShowCtrl.$inject = ['$scope', 'Restangular', '$routeParams', '$location','$timeout', 'Elevation'];
+VineyardShowCtrl.$inject = ['$scope', 'Restangular', '$routeParams', '$location','$timeout', 'Elevation', 'ngDialog', '$sce'];

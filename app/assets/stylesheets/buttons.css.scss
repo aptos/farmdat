@@ -59,3 +59,21 @@
 .delete-icon:hover {
   color:#e62929;
 }
+
+a.wp-link {
+  border-bottom: 1px dashed #ccc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.wp-link:hover {
+  border-bottom: 1px solid #ccc;
+  text-decoration: none;
+}
+
+@media all and (max-width: 640px) {
+
+  .search-box {
+    width: auto;
+  }
+}

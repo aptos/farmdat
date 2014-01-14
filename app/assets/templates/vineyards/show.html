@@ -5,10 +5,10 @@
     </div>
   </div>
   <div class="image-header-bleed" ng-show="vineyard.image_url">
-    <div class="image-src" ng-class="{true: 'dimmed'}[dimmed]" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
+    <div class="image-src" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
   </div>
 
-  <header class="hero hero-home layout-single-column" ng-mouseenter="dimmed=true" ng-mouseleave="dimmed=false">
+  <header class="hero hero-home layout-single-column" >
     <div class="align-middle layout-single-column layout-foreground layout-fill-height">
       <div class="align-block">
         <div class="hero-title">
@@ -20,7 +20,7 @@
       </div>
     </div>
   </header>
-  <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[!!vineyard.image_url]" ng-mouseenter="dimmed=true" ng-mouseleave="dimmed=false">
+  <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[!!vineyard.image_url]">
     <ul class="nav-tabs-list">
       <li class="nav-tabs-item">
         <a class="nav-tabs-anchor" href="/">Welcome</a>
@@ -33,9 +33,9 @@
   <div class="container margin-top-40">
     <div class="row">
       <div class="col-md-6">
-        <span class="sans"><a ng-href="{{ava_url}}">{{vineyard.appellation}}</a></span>
-        <span class="sans ">{{vineyard.location}}</span>
-        <div class="">
+        <div class="sans"><a class="wp-link" ng-click="wp_info(vineyard.appellation)">{{vineyard.appellation}}</a></div>
+        <div class="sans ">{{vineyard.location}}</div>
+        <div>
           <p class="description">{{vineyard.description}}</p>
         </div>
         <div class="btn-set">
@@ -45,7 +45,7 @@
           <button class="btn btn-success" ng-show="vineyard.methods.biodynamic">Biodynamic</button>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 map-box">
         <div leaflet defaults="defaults" center="center" layers="layers" markers="markers" class="map-medium"></div>
         <span>{{m1.lat}},{{m1.lng}}</span> <span ng-show="vineyard.elevation" class="pull-right">el: {{vineyard.elevation | inFeet}}</span>
       </div>
@@ -63,7 +63,7 @@
         </tr>
         <tr><td class="muted item-label" >Varietal</td>
           <td class="item">
-            <a ng-href="http://en.wikipedia.org/wiki/{{block.varietal}}">{{block.varietal}}</a>
+            <a class="wp-link" ng-click="wp_info(block.varietal)">{{block.varietal}}</a>
           </td>
         </tr>
         <tr><td class="muted item-label" >Clones</td>
