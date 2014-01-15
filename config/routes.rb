@@ -19,6 +19,9 @@ Farmdat::Application.routes.draw do
   # Vineyards CRUD
   resources :vineyards
 
+  # Fruit Samples CRUD
+  resources :samples
+
   # S3 upload signature server
   resources :signed_url, only: :index
 

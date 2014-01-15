@@ -12,8 +12,7 @@
 	var $el = angular.element;
 	var isDef = angular.isDefined;
 	var style = (document.body || document.documentElement).style;
-	// var animationEndSupport = isDef(style.animation) || isDef(style.WebkitAnimation) || isDef(style.MozAnimation) || isDef(style.MsAnimation) || isDef(style.OAnimation);
-  var animationEndSupport = false;
+  var animationEndSupport = isDef(style.animation) || isDef(style.WebkitAnimation) || isDef(style.MozAnimation) || isDef(style.MsAnimation) || isDef(style.OAnimation);
 	var animationEndEvent = 'animationend webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend';
 
 	module.provider('ngDialog', function () {
@@ -44,7 +43,6 @@
 						if (dialogsCount === 1) {
 							$body.unbind('keyup').removeClass('ngdialog-open');
 						}
-
 						dialogsCount -= 1;
 						if (animationEndSupport) {
               $dialog.unbind(animationEndEvent).bind(animationEndEvent, function () {

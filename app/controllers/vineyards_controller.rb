@@ -30,7 +30,7 @@ class VineyardsController < ApplicationController
       if e.message.include? "Conflict"
         status = 409
       end
-      render :json => { error: e.message, task: @vineyard }, :status => status and return
+      render :json => { error: e.message, vineyard: @vineyard }, :status => status and return
     end
     render :json => @vineyard
   end

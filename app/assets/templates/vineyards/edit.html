@@ -36,18 +36,14 @@
     <div class="container margin-top-40">
       <form role="form-inline" name="vineyardEditForm">
         <div class="form-group">
-<!--           <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-            </div>
-          </div> -->
           <div class="row">
             <div class="col-md-6">
               <label class="sr-only" for="Appellation">Appellation</label>
-              <input class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" type="text" name="Appellation" name="appellation" ng-model="vineyard.appellation" typeahead="state for state in avas | filter:$viewValue | limitTo:8" placeholder="Appellation"></input>
+              <input class="sans no-distraction" type="text" name="Appellation" name="appellation" ng-model="vineyard.appellation" typeahead="state for state in avas | filter:$viewValue | limitTo:8" placeholder="Appellation"></input>
               <label class="sr-only" for="Location">Location</label>
-              <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="3" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
+              <textarea class="sans no-distraction" name="Location" geocode placeholder="Street, City, State", rows="3" ng-model="vineyard.location" latlong="latlong" maxlength="256" name="location" autocomplete="off"></textarea>
               <label class="sr-only" for="Description">Description</label>
-              <textarea class="col-xs-12 col-sm-12 col-md-12 sans no-distraction description" rows="6" name="Description" ng-model="vineyard.description" placeholder="Description">
+              <textarea class="sans no-distraction description" rows="6" name="Description" ng-model="vineyard.description" placeholder="Description">
               </textarea>
               <div class="btn-set">
                 <legend>Farming Methods</legend>
@@ -72,40 +68,40 @@
         Block {{$index + 1}} - <input ng-model="block.name" placeholder="Name"></input>
         <span ng-show="show_delete && vineyard.blocks.length > 1" ng-click="delete_block($index)"><i class="fa fa-minus-circle delete-icon"></i></span>
       </h4>
-      <table class="span8 table table-condensed">
+      <table class="table table-condensed">
         <tr><td class="muted input-label" >Acreage</td>
           <td class="input">
-            <input name="Acreage" type="text" ng-model="block.acreage" class="span6 text_field" placeholder="12">
+            <input name="Acreage" type="text" ng-model="block.acreage" class=" text_field" placeholder="12">
           </td>
         </tr>
         <tr><td class="muted input-label" >Varietal</td>
           <td class="input">
-            <input name="Varietal" type="text" ng-model="block.varietal" class="span6 text_field" typeahead="variety for variety in grapes | filter:$viewValue | limitTo:8" placeholder="Pinot Noir">
+            <input name="Varietal" type="text" ng-model="block.varietal" class=" text_field" typeahead="variety for variety in grapes | filter:$viewValue | limitTo:8" placeholder="Pinot Noir">
           </td>
         </tr>
         <tr><td class="muted input-label" >Clones</td>
           <td class="input">
-            <input name="Clones" type="text" ng-model="block.clones" class="span6 text_field" placeholder="Martini">
+            <input name="Clones" type="text" ng-model="block.clones" class=" text_field" placeholder="Martini">
           </td>
         </tr>
         <tr><td class="muted input-label" >Rootstock</td>
           <td class="input">
-            <input name="Rootstock" type="text" ng-model="block.rootstock" class="span6 text_field" placeholder="Riparia gloire">
+            <input name="Rootstock" type="text" ng-model="block.rootstock" class=" text_field" placeholder="Riparia gloire">
           </td>
         </tr>
         <tr><td class="muted input-label" >Year Planted</td>
           <td class="input">
-            <input name="Year" type="number" ng-model="block.year" class="span6 text_field" placeholder="1986">
+            <input name="Year" type="number" ng-model="block.year" class=" text_field" placeholder="1986">
           </td>
         </tr>
         <tr><td class="muted input-label" >Vine Spacing</td>
           <td class="input">
-            <input name="Spacing" type="text" ng-model="block.spacing" class="span6 text_field" placeholder="4' x 8'">
+            <input name="Spacing" type="text" ng-model="block.spacing" class=" text_field" placeholder="4' x 8'">
           </td>
         </tr>
         <tr><td class="muted input-label" >Trellis Style</td>
           <td class="input">
-            <input name="Trellis" type="text" ng-model="block.trellis" class="span6 text_field" placeholder="7' VSP">
+            <input name="Trellis" type="text" ng-model="block.trellis" class=" text_field" placeholder="7' VSP">
           </td>
         </tr>
       </table>

@@ -76,7 +76,7 @@ function VineyardShowCtrl($scope, Restangular, $routeParams, $location,$timeout,
     ngDialog.open({
       template: 'assets/iframeDialog.html',
       showClose: true,
-      className: 'ngdialog-theme-flat ngdialog-theme-custom wp-iframe',
+      className: 'ngdialog-theme-flat wp-iframe',
       scope: $scope
     });
   };
