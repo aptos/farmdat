@@ -61,7 +61,10 @@
             {{block.acreage}}
           </td>
         </tr>
-        <tr><td class="muted item-label" >Varietal</td>
+        <tr>
+          <td class="muted item-label" >
+            <div class="pull-left">Varietal</div> <div class="pull-right" ng-class="{red: 'centered dot red-grape', white: 'centered dot white-grape'}[block.grape_color]"></div>
+          </td>
           <td class="item">
             <a class="wp-link" ng-click="wp_info(block.varietal)">{{block.varietal}}</a>
           </td>

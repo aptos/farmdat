@@ -2,8 +2,10 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
 
   $scope.selected = undefined;
   $rootScope.getMeta().then(function (metadata) {
+    console.info("meta", metadata)
+    $scope.metadata = metadata;
     $scope.avas = metadata.avas;
-    $scope.grapes = metadata.grapes;
+    $scope.grapes = (metadata.red_grapes).concat(metadata.white_grapes);
   });
 
   $scope.saveInProgress = false;
@@ -119,6 +121,16 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
 
   $scope.header_image = function () {
     return "image-src style='background-image: url('" + vineyard.image_url + "')";
+  };
+
+  $scope.setGrapeColor = function (index) {
+    // defaults to white for not found
+    var is_red = $scope.metadata.red_grapes.indexOf($scope.vineyard.blocks[index].varietal) > 0;
+    $scope.vineyard.blocks[index]['grape_color'] = (is_red) ? "red" : "white";
+  };
+
+  $scope.toggleGrapeColor = function (index) {
+    $scope.vineyard.blocks[index]['grape_color'] = ($scope.vineyard.blocks[index]['grape_color'] == "red" ) ? "white" : "red";
   };
 
   var saveUpdates = function (newVal, oldVal) {

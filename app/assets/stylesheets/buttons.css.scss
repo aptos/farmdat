@@ -60,6 +60,27 @@
   color:#e62929;
 }
 
+.dot {
+  border: 1px solid;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  @include transition( all 0.2s ease );
+}
+
+.dot:hover {
+  border-color: #cecece;
+}
+
+.red-grape {
+  background-color: #404862;
+}
+
+.white-grape {
+  background-color: #A6A765;
+}
+
 a.wp-link {
   border-bottom: 1px dashed #ccc;
   text-decoration: none;

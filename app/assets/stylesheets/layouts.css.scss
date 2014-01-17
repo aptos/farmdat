@@ -155,6 +155,11 @@ $label: #382B50;
   vertical-align: middle;
 }
 
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .nav-tabs {
   position:relative;
   padding-bottom: 0;
@@ -187,7 +192,7 @@ $label: #382B50;
 }
 .nav-tabs-item.active .nav-tabs-anchor {
   color: #333332;
-  border-top: 1px #666665 solid;
+//  border-top: 1px #666665 solid;
 }
 .nav-tabs-light .nav-tabs-anchor {
   color: rgba(255,255,255,0.65);
