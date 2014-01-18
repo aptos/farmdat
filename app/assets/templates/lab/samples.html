@@ -17,46 +17,50 @@
 
 </div>
 <div class="container">
-  <div class="col-sm-6 col-md-6 col-lg-3">
-    <form role="form-inline" name="sampleEditForm">
-      <div class="form-group">
-        <table class="table table-condensed">
-          <tr><td class="muted input-label" >Vineyard</td>
-            <td class="input">
-              <input name="Vineyard" type="text" ng-model="sample.vineyard_name" class="text_field" placeholder="amaya ridge" required>
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Block</td>
-            <td class="input">
-              <input name="Block" type="text" ng-model="sample.block" class="text_field" placeholder="1" required>
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Sample Date</td>
-            <td class="input col-sm-1 col-md-1 col-lg-1">
-              <input type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="sample.date" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >Brix</td>
-            <td class="input">
-              <input name="Brix" type="number" ng-model="sample.brix" class="text_field" placeholder="23.2" required>
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >TA</td>
-            <td class="input">
-              <input name="TA" type="number" ng-model="sample.ta" class="ext_field" placeholder="0.58">
-            </td>
-          </tr>
-          <tr><td class="muted input-label" >pH</td>
-            <td class="input">
-              <input name="pH" type="number" ng-model="sample.ph" class="text_field" placeholder="3.4">
-            </td>
-          </tr>
-        </table>
-        <div>
-          <label class="sr-only" for="Notes">Notes</label>
-          <textarea class="sans no-distraction" rows="3" name="Notes" ng-model="sample.notes" placeholder="Notes">
-          </textarea>
-        </div>
+  <div class="col-sm-6 col-md-4 col-lg-4">
+    <form name="sampleEditForm">
+      <table class="table table-condensed">
+        <tr><td class="muted input-label" >Vineyard</td>
+          <td class="input">
+            <select class="form-control" name="Vineyard" ui-select2 ng-model="sample.vineyard_id" data-placeholder="Pick One..." ng-change="vineyard_selected(sample.vineyard_id)">
+              <option value=""></option>
+              <option ng-repeat="v in vineyard_list | orderBy:'text'" value="{{v.value}}">{{v.text}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Block</td>
+          <td class="input">
+            <select class="form-control" name="Block" ui-select2 ng-model="sample.block" data-placeholder="Pick One...">
+              <option value="combined">Combined</option>
+              <option ng-repeat="b in blocks | orderBy:'text'" value="{{b.value}}">{{b.text}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Sample Date</td>
+          <td class="input">
+            <input type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="sample.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Brix</td>
+          <td class="input">
+            <input name="Brix" type="text" ng-model="sample.brix" class="text_field" placeholder="23.2" smart-float required>
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >TA</td>
+          <td class="input">
+            <input name="TA" type="text" ng-model="sample.ta" class="ext_field" placeholder="0.58" smart-float>
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >pH</td>
+          <td class="input">
+            <input name="pH" type="text" ng-model="sample.ph" class="text_field" placeholder="3.4" smart-float>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <label class="sr-only" for="Notes">Notes</label>
+        <textarea class="form-control sans no-distraction" rows="3" name="Notes" ng-model="sample.notes" placeholder="Notes">
+        </textarea>
       </div>
     </form>
   </div>

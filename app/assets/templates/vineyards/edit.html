@@ -65,7 +65,7 @@
     <legend>Vineyard Specs</legend>
     <div class="col-xs-12 col-sm-6 col-md-4 no-distraction" ng-repeat="block in vineyard.blocks">
       <h4 ng-mouseenter="show_delete=true" ng-mouseleave="show_delete=false">
-        Block {{$index + 1}} - <input style="width: 12em;" ng-model="block.name" placeholder="Name"></input>
+        <input style="width: 12em;" ng-model="block.name" placeholder="Block Name" unique-name compare-group="{{blocknames()}}" required></input>
         <span ng-show="show_delete && vineyard.blocks.length > 1" ng-click="delete_block($index)"><i class="fa fa-minus-circle delete-icon"></i></span>
       </h4>
       <table class="table table-condensed">
@@ -79,7 +79,7 @@
             <div class="pull-left">Varietal</div> <div class="pull-right" ng-class="{red: 'centered dot red-grape', white: 'centered dot white-grape'}[block.grape_color]" ng-click="toggleGrapeColor($index)"></div>
         </td>
           <td class="input">
-            <input name="Varietal" type="text" ng-model="block.varietal" class=" text_field" typeahead="variety for variety in grapes | filter:$viewValue | limitTo:8" placeholder="Pinot Noir" ng-change="setGrapeColor($index)" typeahead-on-select="setGrapeColor($index)">
+            <input name="Varietal" type="text" ng-model="block.varietal" class=" text_field" typeahead="variety for variety in grapes | filter:$viewValue | limitTo:8" placeholder="Pinot Noir" ng-change="setGrapeColor($index)" typeahead-on-select="setGrapeColor($index)" required>
           </td>
         </tr>
         <tr><td class="muted input-label" >Clones</td>

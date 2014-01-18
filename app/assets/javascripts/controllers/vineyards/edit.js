@@ -93,14 +93,15 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
   });
 
   $scope.add_block = function () {
-    $scope.vineyard.blocks.push({id: $scope.vineyard.blocks.length});
+    $scope.vineyard.blocks.push({name: "Block " + ($scope.vineyard.blocks.length + 1)});
   };
 
   $scope.delete_block = function (index) {
     $scope.vineyard.blocks.splice(index, 1);
-    angular.forEach($scope.vineyard.blocks, function (block, id) {
-      block.id = id;
-    });
+  };
+
+  $scope.blocknames = function () {
+    return _.pluck($scope.vineyard.blocks, 'name');
   };
 
   if (!!$routeParams && $routeParams.id) {
@@ -114,7 +115,7 @@ function VineyardEditCtrl($rootScope, $scope, $debounce, $routeParams, $location
     }, saveFinished);
   } else {
     $scope.vineyard = {
-      blocks: [{id: 1}],
+      blocks: [{name: "Block 1"}],
     };
     get_location();
   }

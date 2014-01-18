@@ -10,8 +10,10 @@ class SamplesController < ApplicationController
 
     @samples = []
     @vineyards.each do |vineyard|
-      @samples << Sample.by_vineyard_id.key('vineyard._id').stale('update_after').all
+      @samples += Sample.by_vineyard_id.key(vineyard._id).all
     end
+    # @samples = @samples.sort { |a, b| [a['date'], a['vineyard_name']] <=> [b['date'], b['vineyard_name']]}
+
     render :json => @samples
   end
 

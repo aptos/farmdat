@@ -28,6 +28,9 @@
       <li class="nav-tabs-item">
         <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
       </li>
+      <li class="nav-tabs-item">
+        <a class="nav-tabs-anchor" href="/#/lab/samples">Lab</a>
+      </li>
     </ul>
   </nav>
   <div class="container margin-top-40">
@@ -54,7 +57,7 @@
   <div class="container margin-top-40">
     <legend>Vineyard Specs</legend>
     <div class="col-sm-6 col-md-4 no-distraction table-set" ng-repeat="block in vineyard.blocks">
-      <h4>Block {{$index + 1}} - {{block.name}}</h4>
+      <h4>{{block.name}}</h4>
       <table class="span8 table table-striped borderless">
         <tr><td class="muted item-label" >Acreage</td>
           <td class="item">

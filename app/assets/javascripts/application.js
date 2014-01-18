@@ -25,5 +25,7 @@
 //= require Google
 //= require_tree ./plupload/
 //= require ngDialog
+//= require select2
+//= require ui-select2
 //= require app
 //= require_tree .

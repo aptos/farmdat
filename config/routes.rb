@@ -17,9 +17,11 @@ Farmdat::Application.routes.draw do
   get "/accounts/create" => 'accounts#create'
 
   # Vineyards CRUD
+  get "/vineyards/mine" => 'vineyards#mine'
   resources :vineyards
 
   # Fruit Samples CRUD
+  get "/samples/mine" => 'samples#mine'
   resources :samples
 
   # S3 upload signature server

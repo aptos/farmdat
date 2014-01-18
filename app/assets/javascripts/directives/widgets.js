@@ -1,42 +1,77 @@
-angular.module('farmdatDirectives', []).
-  directive('contenteditable', function () {
-      return {
-          restrict: 'A', // only activate on element attribute
-          require: '?ngModel', // get a hold of NgModelController
-          link: function (scope, element, attrs, ngModel) {
-              if (!ngModel) return; // do nothing if no ng-model
-              var placeholder = (attrs.placeholder) ? attrs.placeholder : '';
-              // Specify how UI should be updated
-              ngModel.$render = function () {
-                  element.html(ngModel.$viewValue || placeholder);
-              };
+var farmdatDirectives = angular.module('farmdatDirectives', []);
 
-              // Listen for change events to enable binding
-              element.on('blur keyup change', function () {
-                  scope.$apply(readViewText);
-              });
-
-              // revert to placeholder if user leaves field empty
-              element.on('mouseleave mouseout', function () {
-                  if (element.html() === '') {
-                    html = placeholder;
-                    element.html(html);
-                  }
-              });
-
-              // No need to initialize, AngularJS will initialize the text based on ng-model attribute
-
-              // Write data to the model
-              function readViewText() {
-                  var html = element.html();
-                  // When we clear the content editable the browser leaves a <br> behind
-                  // If strip-br attribute is provided then we strip this out
-                  if (attrs.stripBr && html == '<br>') {
-                      html = '';
-                  }
-
-                  ngModel.$setViewValue(html);
-              }
-          }
+farmdatDirectives.directive('contenteditable', function () {
+  return {
+  restrict: 'A', // only activate on element attribute
+  require: '?ngModel', // get a hold of NgModelController
+  link: function (scope, element, attrs, ngModel) {
+      if (!ngModel) return; // do nothing if no ng-model
+      var placeholder = (attrs.placeholder) ? attrs.placeholder : '';
+      ngModel.$render = function () {
+        element.html(ngModel.$viewValue || placeholder);
       };
-  });
+
+      element.on('blur keyup change', function () {
+        scope.$apply(readViewText);
+      });
+
+      element.on('mouseleave mouseout', function () {
+        if (element.html() === '') {
+          html = placeholder;
+          element.html(html);
+        }
+      });
+
+      function readViewText() {
+        var html = element.html();
+        if (attrs.stripBr && html == '<br>') {
+          html = '';
+        }
+
+        ngModel.$setViewValue(html);
+      }
+    }
+  };
+});
+
+var FLOAT_REGEXP = /^\-?\d+((\.|\,)\d+)?$/;
+farmdatDirectives.directive('smartFloat', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$parsers.unshift(function(viewValue) {
+        if (FLOAT_REGEXP.test(viewValue)) {
+          ctrl.$setValidity('float', true);
+          return parseFloat(viewValue.replace(',', '.'));
+        } else {
+          ctrl.$setValidity('float', false);
+          return undefined;
+        }
+      });
+    }
+  };
+});
+
+// test unique property name against compare-group attribute, where the group *includes* the model being updated
+// uses unique rather than searching for indexOf because the array has already been updated with the model value
+farmdatDirectives.directive('uniqueName', function() {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function (scope, element, attrs, ngModel) {
+
+      function validate(value) {
+        var compareGroup = scope.$eval(attrs.compareGroup);
+        if (compareGroup && _.unique(compareGroup).length == compareGroup.length) {
+          ngModel.$setValidity('unique', true);
+        } else {
+          ngModel.$setValidity('unique', false);
+        }
+      }
+
+      scope.$watch( function() {
+        return ngModel.$viewValue;
+      }, validate);
+    }
+  };
+});
