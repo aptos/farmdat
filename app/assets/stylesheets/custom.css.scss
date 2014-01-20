@@ -103,6 +103,10 @@ iframe {
   height:100%
 }
 
+.popover {
+  max-width: 600px;
+}
+
 input.ng-invalid.ng-dirty {
   border: 1px solid #fa787e;
   border-radius: 5px;

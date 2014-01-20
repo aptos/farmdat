@@ -14,11 +14,13 @@
       </div>
     </div>
   </header>
-
 </div>
 <div class="container">
-  <div class="col-sm-6 col-md-4 col-lg-4">
+  <div ng-click="new_sample()" ><i class="fa fa-plus-circle clickable-icon"></i></div>
+  <div ng-show="show_form" class="floating-container col-sm-6 col-md-4 col-lg-4">
+    <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
     <form name="sampleEditForm">
+      <h3>Sample Data</h3>
       <table class="table table-condensed">
         <tr><td class="muted input-label" >Vineyard</td>
           <td class="input">
@@ -38,22 +40,22 @@
         </tr>
         <tr><td class="muted input-label" >Sample Date</td>
           <td class="input">
-            <input type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="sample.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
+            <input name="sampleDate" type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="sample.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
           </td>
         </tr>
         <tr><td class="muted input-label" >Brix</td>
           <td class="input">
-            <input name="Brix" type="text" ng-model="sample.brix" class="text_field" placeholder="23.2" smart-float required>
+            <input name="Brix" type="text" ng-model="sample.brix" class="text_field form-control" placeholder="23.2" smart-float required>
           </td>
         </tr>
         <tr><td class="muted input-label" >TA</td>
           <td class="input">
-            <input name="TA" type="text" ng-model="sample.ta" class="ext_field" placeholder="0.58" smart-float>
+            <input name="TA" type="text" ng-model="sample.ta" class="ext_field form-control" placeholder="0.58" smart-float>
           </td>
         </tr>
         <tr><td class="muted input-label" >pH</td>
           <td class="input">
-            <input name="pH" type="text" ng-model="sample.ph" class="text_field" placeholder="3.4" smart-float>
+            <input name="pH" type="text" ng-model="sample.ph" class="text_field form-control" placeholder="3.4" smart-float>
           </td>
         </tr>
       </table>
@@ -62,6 +64,51 @@
         <textarea class="form-control sans no-distraction" rows="3" name="Notes" ng-model="sample.notes" placeholder="Notes">
         </textarea>
       </div>
+      <div>
+        <button class="btn btn-success" ng-click="save()" ng-disabled="sampleEditForm.$invalid">Save</button>
+      </div>
     </form>
   </div>
+</div>
+<div class="container hidden-xs">
+  <div class="row heading">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1">Date</div>
+    <div class="col-sm-4 col-md-3 col-lg-3 text-center">Site</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">Brix</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">TA</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">ph</div>
+  </div>
+  <div class="scrolling-list row" ng-repeat="sample in samples | filter:query | orderBy:'date'">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1">{{sample.date}}</div>
+    <div class="col-sm-4 col-md-3 col-lg-3 text-center">
+      <h4>{{sample.vineyard_name}}</h4>
+      <h5>{{sample.block}}</h5>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">{{sample.brix}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">{{sample.ta}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">{{sample.ph}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">
+      <span ng-show="sample.notes">
+        <i class="fa fa-file-text clickable-icon" popover-append-to-body="true" popover-placement="left" popover="{{sample.notes}}" popover-title="Notes"></i>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container visible-xs">
+  <ul class="scrolling-list force-two-lines" ng-repeat="sample in samples | filter:query | orderBy:'date'">
+    <li>
+      <h5>{{sample.date}}</h5>
+      <h4>{{sample.vineyard_name}}</h4>
+      <h5>{{sample.block}}</h5>
+      <div class="row">
+        <div class="col-xs-4"><em>Brix: </em>{{sample.brix}}</div>
+        <div class="col-xs-4" ng-show="sample.ta"><em>TA: </em>{{sample.ta}}</div>
+        <div class="col-xs-4" ng-show="sample.ph"><em>pH: </em>{{sample.ph}}</div>
+      </div>
+      <div class="row" ng-show="sample.notes">
+        <i class="fa fa-file-text clickable-icon" ng-click="show_notes=!show_notes"></i>
+        <div ng-show="show_notes">{{sample.notes}}</div>
+      </div>
+    </li>
+  </ul>
 </div>

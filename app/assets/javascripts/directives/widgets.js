@@ -34,15 +34,18 @@ farmdatDirectives.directive('contenteditable', function () {
   };
 });
 
-var FLOAT_REGEXP = /^\-?\d+((\.|\,)\d+)?$/;
+var FLOAT_REGEXP = /^\-?\d+((\.)\d+)?$/;
 farmdatDirectives.directive('smartFloat', function() {
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
       ctrl.$parsers.unshift(function(viewValue) {
-        if (FLOAT_REGEXP.test(viewValue)) {
+        if (!angular.isDefined(viewValue) || viewValue.length === 0) {
           ctrl.$setValidity('float', true);
-          return parseFloat(viewValue.replace(',', '.'));
+          return viewValue;
+        } else if (FLOAT_REGEXP.test(viewValue)) {
+          ctrl.$setValidity('float', true);
+          return viewValue;
         } else {
           ctrl.$setValidity('float', false);
           return undefined;
