@@ -4,6 +4,16 @@ html, body {
 
 $label: #382B50;
 
+// qualitative color scheme
+.q-color-1 { color: #805EAF }
+.q-color-2 { color: #5FA05F }
+.q-color-3 { color: #C0752E }
+
+// margins and padding
+.margin-top-60 { margin-top: 60px; }
+.margin-bottom-60 { margin-bottom: 60px; }
+.padding-bottom-60 { padding-bottom: 60px; }
+
 .screen-content {
   position: relative;
   overflow: auto;
@@ -248,7 +258,9 @@ ul.scrolling-list.force-two-lines li {
 
 .row.scrolling-list {
   border-top: 1px solid rgba(80, 62, 43, 0.11);
-  .data-cell { margin-top: 12px; }
+  .data-cell {
+    margin-top: 12px;
+  }
 }
 
 .row.heading {
@@ -288,6 +300,14 @@ p.description:first-letter {
   border-radius: 7px;
   border-collapse: separate;
   box-shadow: 0 2px 40px rgba(0,0,0,.4);
+}
+
+.chart-medium {
+  margin-top:22px;
+  margin-bottom:10px;
+  display:none;
+  width:600px;
+  height:300px;
 }
 
 @media all and (max-width: 640px) {

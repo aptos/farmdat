@@ -18,6 +18,62 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, Restangular)
     });
   });
 
+  // Chart Functions
+  var position = "right";
+  $scope.timeline_config = {
+    legend: {
+      position: "nw",
+      margin: 5
+    },
+    colors: ["#805EAF","#5FA05F","#C0752E"],
+    lines : { show : true, lineWidth : 5 },
+    points: { show: true },
+    grid: {
+      hoverable: true
+    },
+    tooltip: true,
+    tooltipOpts: {
+      content: "%s: %y"
+    },
+    xaxis : {
+      mode: "time",
+      timeformat: "%b-%d",
+      timezone: "browser"
+    },
+    yaxes: [ { min: 0 }, {
+      alignTicksWithAxis: 1,
+      position: "left"
+    },{
+      alignTicksWithAxis: 1,
+      position: "right"
+    } ]
+  };
+
+  var chartData = function (selected, prop) {
+    var data = selected.map( function (sample) {
+      return [moment(sample.date).unix() * 1000, sample[prop]];
+    }).sort( function (a,b) { return a[0] - b[0]; });
+    return data;
+  };
+
+  $scope.getTimeline = function (vineyard, block) {
+    $scope.chart_title = vineyard + " - " + block;
+
+    var selected = _.filter($scope.samples, function (sample) {
+      return (sample.vineyard_name == vineyard && sample.block == block);
+    });
+
+    var brixData = chartData(selected, 'brix');
+    var taData = chartData(selected, 'ta');
+    var phData = chartData(selected, 'ph');
+
+    $scope.timeline = [
+    { label: 'Brix', data: brixData, yaxis: 1 },
+    { label: 'TA', data: taData, yaxis: 2 },
+    { label: 'pH', data: phData, yaxis: 3 }
+    ];
+  };
+
   // Form Functions
   $scope.saveInProgress = false;
 
@@ -56,6 +112,10 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, Restangular)
   $scope.close = function () {
     $scope.saveInProgress = false;
     $scope.show_form = false;
+  };
+
+  $scope.vineyards = function () {
+    $location.path("/vineyards");
   };
 
   $scope.delete = function () {

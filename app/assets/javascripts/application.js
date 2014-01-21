@@ -23,7 +23,12 @@
 //= require leaflet.markercluster
 //= require angular-leaflet-directive
 //= require Google
-//= require_tree ./plupload/
+//= require_tree ./plupload
+//= require moment.min
+//= require flot/jquery.flot
+//= require flot/jquery.flot.time.min
+//= require flot/jquery.flot.resize
+//= require flot/jquery.flot.tooltip.min
 //= require ngDialog
 //= require select2
 //= require ui-select2
