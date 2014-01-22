@@ -5,9 +5,9 @@ html, body {
 $label: #382B50;
 
 // qualitative color scheme
-.q-color-1 { color: #805EAF }
-.q-color-2 { color: #5FA05F }
-.q-color-3 { color: #C0752E }
+.q-color-1 { color: #805EAF; }
+.q-color-2 { color: rgba(75, 109, 75, 0.76); }
+.q-color-3 { color: #C0752E; }
 
 // margins and padding
 .margin-top-60 { margin-top: 60px; }
@@ -118,11 +118,15 @@ $label: #382B50;
   margin: 0 0 10px 0;
   padding: 0;
 }
-.hero-home .hero-title, .hero-home .hero-description, .nav-tabs-light {
+
+.hero-home.hero-light .hero-title, .hero-home.hero-light .hero-description, .nav-tabs-light {
   color: #fff;
-  background-color: rgba(127, 107, 54, 0.55);
+}
+
+.hero-home .hero-title, .hero-home .hero-description {
   padding: 5px 12px 5px 12px;
 }
+
 .hero-description {
   color: #666665;
   font-size: 18px;
@@ -201,8 +205,8 @@ $label: #382B50;
   border-bottom: none;
 }
 .nav-tabs-item.active .nav-tabs-anchor {
-  color: #333332;
-//  border-top: 1px #666665 solid;
+//  text-decoration: underline;
+  border-top: 2px #666665 solid;
 }
 .nav-tabs-light .nav-tabs-anchor {
   color: rgba(255,255,255,0.65);

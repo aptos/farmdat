@@ -7,20 +7,39 @@
   <header class="hero hero-standalone layout-single-column ">
     <h1 class="hero-title">Vineyard Collection</h1>
     <p class="hero-description">Vineyards you've created or are following</p>
-    <div class="hero-actions btn-set">
-      <div class="search-box">
-        <input type="text" class="form-control" ng-model="query" placeholder="Search" >
-      </div>
-    </div>
   </header>
-
 </div>
+<div class="layout-single-column">
+  <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[!!vineyard.image_url]">
+    <ul class="nav-tabs-list">
+      <li class="nav-tabs-item">
+        <a class="nav-tabs-anchor" href="/">Welcome</a>
+      </li>
+      <li class="nav-tabs-item active">
+        <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
+      </li>
+      <li class="nav-tabs-item">
+        <a class="nav-tabs-anchor" href="/#/lab/samples">Lab</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="container margin-top-60">
+  <div class="col-sx-1 col-sm-1 col-md-1 col-lg-1" ng-click="add_vineyard()" >
+    <i class="fa fa-plus-circle clickable-icon"></i>
+  </div>
+  <div class="col-md-offset-1 col-sx-10 col-sm-10 col-md-10 col-lg-10 search-box">
+    <input type="text" class="form-control" ng-model="query" placeholder="Search" >
+  </div>
+</div>
+
 <div class="container">
   <div class="col-sm-6 col-md-6">
-  <ul class="scrolling-list force-two-lines" ng-repeat="vineyard in vineyards">
-    <li ng-click="open(vineyard._id)">
-      <h4>{{vineyard.name}}</h4>
-      <p>{{vineyard.location}}</p>
-    </li>
-  </ul>
-</div>
+    <ul class="scrolling-list force-two-lines" ng-repeat="vineyard in vineyards">
+      <li ng-click="open(vineyard._id)">
+        <h4>{{vineyard.name}}</h4>
+        <p>{{vineyard.location}}</p>
+      </li>
+    </ul>
+  </div>

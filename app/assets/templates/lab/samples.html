@@ -6,27 +6,41 @@
   </div>
   <header class="hero hero-standalone layout-single-column ">
     <h1 class="hero-title">Lab</h1>
-    <p class="hero-description">Track sample data from the vineyard</p>
-    <div class="hero-actions btn-set">
-      <div class="search-box">
-        <input type="text" class="form-control" ng-model="query" placeholder="Search" >
-      </div>
-    </div>
-
-    <div ng-show="timeline" class="chart-container animated fadeIn">
-      <div class="centered"><h3>{{chart_title}}</h3></div>
-      <div chart class="chart-medium" ng-model="timeline" config="timeline_config" ></div>
-    </div>
-
+    <p class="hero-description">Track sample data from your vineyards</p>
   </header>
 </div>
 
+<div class="layout-single-column">
+  <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[!!vineyard.image_url]">
+    <ul class="nav-tabs-list">
+      <li class="nav-tabs-item">
+        <a class="nav-tabs-anchor" href="/">Welcome</a>
+      </li>
+      <li class="nav-tabs-item">
+        <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
+      </li>
+      <li class="nav-tabs-item active">
+        <a class="nav-tabs-anchor" href="/#/lab/samples">Lab</a>
+      </li>
+    </ul>
+  </nav>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sx-1 col-sm-1 col-md-1 col-lg-1" ng-click="new_sample()" ><i class="fa fa-plus-circle clickable-icon"></i></div>
+  <div ng-show="timeline" class="chart-container animated fadeIn">
+    <div class="text-center"><h3>{{chart_title}}</h3></div>
+    <div chart class="chart-medium" ng-model="timeline" config="timeline_config" ></div>
   </div>
-  <div ng-show="show_form" class="floating-container col-sm-6 col-md-4 col-lg-4">
+</div>
+
+<div class="container margin-top-60">
+  <div class="col-sx-1 col-sm-1 col-md-1 col-lg-1" ng-click="new_sample()" >
+    <i class="fa fa-plus-circle clickable-icon"></i>
+  </div>
+  <div class="col-md-offset-1 col-sx-10 col-sm-10 col-md-10 col-lg-10 search-box">
+    <input type="text" class="form-control" ng-model="query" placeholder="Search" >
+  </div>
+</div>
+<div class="container">
+  <div ng-show="show_form" class="floating-container col-sm-6 col-md-4 col-lg-4 animated fadeIn">
     <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
     <form name="sampleEditForm">
       <h3>Sample Data</h3>
@@ -87,15 +101,15 @@
     <div class="col-sm-1 col-md-1 col-lg-1 data-cell">TA</div>
     <div class="col-sm-1 col-md-1 col-lg-1 data-cell">ph</div>
   </div>
-  <div class="scrolling-list row" ng-repeat="sample in samples | filter:query | orderBy:'date'" ng-click="getTimeline(sample.vineyard_name, sample.block)">
-    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1">{{sample.date}}</div>
-    <div class="col-sm-4 col-md-4 col-lg-4 text-center">
+  <div class="scrolling-list row" ng-repeat="sample in samples | filter:query | orderBy:'date'">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.date}}</div>
+    <div class="col-sm-4 col-md-4 col-lg-4 text-center" ng-click="getTimeline(sample.vineyard_name, sample.block)">
       <h4>{{sample.vineyard_name}}</h4>
       <h5>{{sample.block}}</h5>
     </div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-1">{{sample.brix}}</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-2">{{sample.ta}}</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-3">{{sample.ph}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-1" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.brix}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-2" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.ta}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-3" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.ph}}</div>
     <div class="col-sm-1 col-md-1 col-lg-1 data-cell">
       <span ng-show="sample.notes">
         <i class="fa fa-file-text clickable-icon" popover-append-to-body="true" popover-placement="left" popover="{{sample.notes}}" popover-title="Notes"></i>

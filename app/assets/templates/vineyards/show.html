@@ -5,10 +5,10 @@
     </div>
   </div>
   <div class="image-header-bleed" ng-show="vineyard.image_url">
-    <div class="image-src" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
+    <div class="dimmed image-src" ng-style="{'background-image':'url(' + vineyard.image_url  + ')'}"></div>
   </div>
 
-  <header class="hero hero-home layout-single-column" >
+  <header class="hero hero-home layout-single-column" ng-class="{true: 'hero-light'}[!!vineyard.image_url]" >
     <div class="align-middle layout-single-column layout-foreground layout-fill-height">
       <div class="align-block">
         <div class="hero-title">

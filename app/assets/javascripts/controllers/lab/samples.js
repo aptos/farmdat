@@ -25,7 +25,7 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, Restangular)
       position: "nw",
       margin: 5
     },
-    colors: ["#805EAF","#5FA05F","#C0752E"],
+    colors: ["#805EAF","rgba(75, 109, 75, 0.76)","#C0752E"],
     lines : { show : true, lineWidth : 5 },
     points: { show: true },
     grid: {
