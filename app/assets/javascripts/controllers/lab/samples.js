@@ -1,12 +1,32 @@
-function LabSamplesCtrl($scope, $routeParams, $debounce, $location, Restangular) {
+function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Restangular) {
+
+  // utility functions
+  var getYear = function (ymd) { return ymd.split("-")[0]; };
 
   // Fetch Samples
   var refresh = function () {
     Restangular.one('samples', 'mine').getList().then( function (list) {
       $scope.samples = list;
+      $scope.seasons = _.uniq(_.map(_.pluck(list, 'date'), function (d) { return getYear(d); })).sort().reverse();
     });
   };
   refresh();
+
+  // Filter by query or season
+  var filterFilter = $filter('filter');
+  var orderByFilter = $filter('orderBy');
+  var matchYear = $filter('matchYear');
+  $scope.season = '2014';
+  $scope.filterItems = function() {
+    var q_samples = filterFilter($scope.samples, $scope.query);
+    var by_season = matchYear(q_samples, $scope.season);
+    var orderedItems = orderByFilter(by_season, ['vineyard_name','date']);
+
+    $scope.filtered_samples = orderedItems;
+  };
+
+  $scope.$watch('samples', $scope.filterItems);
+  $scope.$watch('query', $scope.filterItems);
 
   // Fetch Vineyard List, create Block list for each vineyard
   $scope.blocklist = {};
@@ -56,11 +76,17 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, Restangular)
     return data;
   };
 
-  $scope.getTimeline = function (vineyard, block) {
-    $scope.chart_title = vineyard + " - " + block;
+  $scope.getTimeline = function (date, vineyard, block) {
+    $scope.chart_title = (!!block) ? vineyard + " - " + block : vineyard;
+    $scope.season = date.split("-")[0];
+    $scope.current_year = new Date().getFullYear() == $scope.season;
 
     var selected = _.filter($scope.samples, function (sample) {
-      return (sample.vineyard_name == vineyard && sample.block == block);
+      var same_block = sample.vineyard_name == vineyard && sample.block == block;
+      var combined = sample.vineyard_name == vineyard && block == 'combined';
+      var this_season = (sample.date.split("-")[0] == $scope.season);
+
+      return (this_season && (same_block || combined));
     });
 
     var brixData = chartData(selected, 'brix');
@@ -73,6 +99,14 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, Restangular)
     { label: 'pH', data: phData, yaxis: 3 }
     ];
   };
+
+  // Table rendering
+  var prev_site = '';
+  $scope.break_by_site = function (name) {
+    var this_cls = (name == prev_site) ? '' : "scrolling-list-subgroup";
+    prev_site = name;
+    return this_cls;
+  }
 
   // Form Functions
   $scope.saveInProgress = false;
@@ -126,4 +160,4 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, Restangular)
     }
   };
 }
-LabSamplesCtrl.$inject = ['$scope','$routeParams','$debounce','$location','Restangular'];
+LabSamplesCtrl.$inject = ['$scope','$routeParams','$debounce','$location','$filter','Restangular'];

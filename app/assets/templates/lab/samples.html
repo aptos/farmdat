@@ -1,4 +1,5 @@
-<div class="screen-content">
+<div class="screen-content dirty-brown" >
+
   <div class="row metabar">
     <div class="col-xs-6 col-sm-6 col-md-6 btn-set pull-right">
       <button type="button" class="btn btn-info" ng-click="vineyards()">Vineyards</button>
@@ -8,130 +9,141 @@
     <h1 class="hero-title">Lab</h1>
     <p class="hero-description">Track sample data from your vineyards</p>
   </header>
-</div>
+  <!-- </div> -->
 
-<div class="layout-single-column">
-  <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[!!vineyard.image_url]">
-    <ul class="nav-tabs-list">
-      <li class="nav-tabs-item">
-        <a class="nav-tabs-anchor" href="/">Welcome</a>
-      </li>
-      <li class="nav-tabs-item">
-        <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
-      </li>
-      <li class="nav-tabs-item active">
-        <a class="nav-tabs-anchor" href="/#/lab/samples">Lab</a>
+  <div class="layout-single-column">
+    <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[!!vineyard.image_url]">
+      <ul class="nav-tabs-list">
+        <li class="nav-tabs-item">
+          <a class="nav-tabs-anchor" href="/">Welcome</a>
+        </li>
+        <li class="nav-tabs-item">
+          <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
+        </li>
+        <li class="nav-tabs-item active">
+          <a class="nav-tabs-anchor" href="/#/lab/samples">Lab</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div ng-show="timeline" class="chart-container animated fadeIn">
+      <div class="text-center">
+        <h3>{{chart_title}}</h3>
+        <h5>{{season}}</h5>
+      </div>
+      <div chart class="chart-medium visible-md visible-lg" ng-model="timeline" config="timeline_config" ></div>
+      <div chart class="chart-small visible-sm visible-xs" ng-model="timeline" config="timeline_config" ></div>
+    </div>
+  </div>
+
+  <div class="container margin-top-60">
+    <div class="col-sx-1 col-sm-1 col-md-1 col-lg-1" ng-click="new_sample()" >
+      <i class="fa fa-plus-circle clickable-icon"></i>
+    </div>
+    <div class="col-md-offset-1 col-sx-10 col-sm-10 col-md-8 col-lg-8">
+      <form class="form-inline" role="form">
+        <input type="text" class="form-control search-box search-box-small" ng-model="query" placeholder="Search" >
+        <span class="text-muted">Select Season</span><select class="form-control select-year" name="Season" ng-model="season" ng-change="filterItems()">
+          <option ng-repeat="s in seasons" value="{{s}}">{{s}}</option>
+        </select>
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <div ng-show="show_form" class="floating-container col-xs-10 col-sm-10 col-md-4 col-lg-4 animated fadeIn">
+      <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
+      <form name="sampleEditForm">
+        <h3>Sample Data</h3>
+        <table class="table table-condensed">
+          <tr><td class="muted input-label" >Vineyard</td>
+            <td class="input">
+              <select class="form-control" name="Vineyard" ui-select2 ng-model="sample.vineyard_id" data-placeholder="Pick One..." ng-change="vineyard_selected(sample.vineyard_id)">
+                <option value=""></option>
+                <option ng-repeat="v in vineyard_list | orderBy:'text'" value="{{v.value}}">{{v.text}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr><td class="muted input-label" >Block</td>
+            <td class="input">
+              <select class="form-control" name="Block" ui-select2 ng-model="sample.block" data-placeholder="Pick One...">
+                <option value="combined">Combined</option>
+                <option ng-repeat="b in blocks | orderBy:'text'" value="{{b.value}}">{{b.text}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr><td class="muted input-label" >Sample Date</td>
+            <td class="input">
+              <input name="sampleDate" type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="sample.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
+            </td>
+          </tr>
+          <tr><td class="muted input-label" >Brix</td>
+            <td class="input">
+              <input name="Brix" type="text" ng-model="sample.brix" class="text_field form-control" placeholder="23.2" smart-float required>
+            </td>
+          </tr>
+          <tr><td class="muted input-label" >TA</td>
+            <td class="input">
+              <input name="TA" type="text" ng-model="sample.ta" class="ext_field form-control" placeholder="0.58" smart-float>
+            </td>
+          </tr>
+          <tr><td class="muted input-label" >pH</td>
+            <td class="input">
+              <input name="pH" type="text" ng-model="sample.ph" class="text_field form-control" placeholder="3.4" smart-float>
+            </td>
+          </tr>
+        </table>
+        <div>
+          <label class="sr-only" for="Notes">Notes</label>
+          <textarea class="form-control sans no-distraction" rows="3" name="Notes" ng-model="sample.notes" placeholder="Notes">
+          </textarea>
+        </div>
+        <div>
+          <button class="btn btn-success" ng-click="save()" ng-disabled="sampleEditForm.$invalid">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container white-rounded padding-bottom-60 hidden-xs">
+    <div class="row heading">
+      <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1">Date</div>
+      <div class="col-sm-4 col-md-4 col-lg-4 text-center">Site</div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell">Brix</div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell">TA</div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell">ph</div>
+    </div>
+    <div class="scrolling-list row" ng-repeat="sample in filtered_samples" ng-class="break_by_site(sample.vineyard_name)">
+      <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.date}}</div>
+      <div class="col-sm-4 col-md-4 col-lg-4 text-center" ng-click="getTimeline(sample.date, sample.vineyard_name, sample.block)">
+        <h4>{{sample.vineyard_name}}</h4>
+        <h5>{{sample.block}}</h5>
+      </div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-1" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.brix}}</div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-2" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.ta}}</div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-3" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.ph}}</div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell">
+        <span ng-show="sample.notes">
+          <i class="fa fa-file-text clickable-icon" popover-append-to-body="true" popover-placement="left" popover="{{sample.notes}}" popover-title="Notes"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="container white-rounded visible-xs">
+    <ul class="scrolling-list force-two-lines" ng-repeat="sample in samples | filter:query | orderBy:['vineyard_name','date']" ng-class="break_by_site(sample.vineyard_name)">
+      <li>
+        <div ng-click="getTimeline(sample.date, sample.vineyard_name, sample.block)">
+          <h5>{{sample.date}}</h5>
+          <h4>{{sample.vineyard_name}}</h4>
+          <h5>{{sample.block}}</h5>
+          <div class="row">
+            <div class="col-xs-4"><em>Brix: </em><span class="q-color-1">{{sample.brix}}</span></div>
+            <div class="col-xs-4" ng-show="sample.ta"><em>TA: </em><span class="q-color-2">{{sample.ta}}</span></div>
+            <div class="col-xs-4" ng-show="sample.ph"><em>pH: </em><span class="q-color-3">{{sample.ph}}</span></div>
+          </div>
+        </div>
+        <div class="row" ng-show="sample.notes">
+          <i class="fa fa-file-text clickable-icon" ng-click="show_notes=!show_notes"></i>
+          <div ng-show="show_notes">{{sample.notes}}</div>
+        </div>
       </li>
     </ul>
-  </nav>
-
-  <div ng-show="timeline" class="chart-container animated fadeIn">
-    <div class="text-center"><h3>{{chart_title}}</h3></div>
-    <div chart class="chart-medium" ng-model="timeline" config="timeline_config" ></div>
   </div>
-</div>
-
-<div class="container margin-top-60">
-  <div class="col-sx-1 col-sm-1 col-md-1 col-lg-1" ng-click="new_sample()" >
-    <i class="fa fa-plus-circle clickable-icon"></i>
-  </div>
-  <div class="col-md-offset-1 col-sx-10 col-sm-10 col-md-10 col-lg-10 search-box">
-    <input type="text" class="form-control" ng-model="query" placeholder="Search" >
-  </div>
-</div>
-<div class="container">
-  <div ng-show="show_form" class="floating-container col-sm-6 col-md-4 col-lg-4 animated fadeIn">
-    <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
-    <form name="sampleEditForm">
-      <h3>Sample Data</h3>
-      <table class="table table-condensed">
-        <tr><td class="muted input-label" >Vineyard</td>
-          <td class="input">
-            <select class="form-control" name="Vineyard" ui-select2 ng-model="sample.vineyard_id" data-placeholder="Pick One..." ng-change="vineyard_selected(sample.vineyard_id)">
-              <option value=""></option>
-              <option ng-repeat="v in vineyard_list | orderBy:'text'" value="{{v.value}}">{{v.text}}</option>
-            </select>
-          </td>
-        </tr>
-        <tr><td class="muted input-label" >Block</td>
-          <td class="input">
-            <select class="form-control" name="Block" ui-select2 ng-model="sample.block" data-placeholder="Pick One...">
-              <option value="combined">Combined</option>
-              <option ng-repeat="b in blocks | orderBy:'text'" value="{{b.value}}">{{b.text}}</option>
-            </select>
-          </td>
-        </tr>
-        <tr><td class="muted input-label" >Sample Date</td>
-          <td class="input">
-            <input name="sampleDate" type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="sample.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
-          </td>
-        </tr>
-        <tr><td class="muted input-label" >Brix</td>
-          <td class="input">
-            <input name="Brix" type="text" ng-model="sample.brix" class="text_field form-control" placeholder="23.2" smart-float required>
-          </td>
-        </tr>
-        <tr><td class="muted input-label" >TA</td>
-          <td class="input">
-            <input name="TA" type="text" ng-model="sample.ta" class="ext_field form-control" placeholder="0.58" smart-float>
-          </td>
-        </tr>
-        <tr><td class="muted input-label" >pH</td>
-          <td class="input">
-            <input name="pH" type="text" ng-model="sample.ph" class="text_field form-control" placeholder="3.4" smart-float>
-          </td>
-        </tr>
-      </table>
-      <div>
-        <label class="sr-only" for="Notes">Notes</label>
-        <textarea class="form-control sans no-distraction" rows="3" name="Notes" ng-model="sample.notes" placeholder="Notes">
-        </textarea>
-      </div>
-      <div>
-        <button class="btn btn-success" ng-click="save()" ng-disabled="sampleEditForm.$invalid">Save</button>
-      </div>
-    </form>
-  </div>
-</div>
-<div class="container padding-bottom-60 hidden-xs">
-  <div class="row heading">
-    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1">Date</div>
-    <div class="col-sm-4 col-md-4 col-lg-4 text-center">Site</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">Brix</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">TA</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">ph</div>
-  </div>
-  <div class="scrolling-list row" ng-repeat="sample in samples | filter:query | orderBy:'date'">
-    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.date}}</div>
-    <div class="col-sm-4 col-md-4 col-lg-4 text-center" ng-click="getTimeline(sample.vineyard_name, sample.block)">
-      <h4>{{sample.vineyard_name}}</h4>
-      <h5>{{sample.block}}</h5>
-    </div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-1" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.brix}}</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-2" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.ta}}</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell q-color-3" ng-click="getTimeline(sample.vineyard_name, sample.block)">{{sample.ph}}</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">
-      <span ng-show="sample.notes">
-        <i class="fa fa-file-text clickable-icon" popover-append-to-body="true" popover-placement="left" popover="{{sample.notes}}" popover-title="Notes"></i>
-      </span>
-    </div>
-  </div>
-</div>
-<div class="container visible-xs">
-  <ul class="scrolling-list force-two-lines" ng-repeat="sample in samples | filter:query | orderBy:'date'">
-    <li>
-      <h5>{{sample.date}}</h5>
-      <h4>{{sample.vineyard_name}}</h4>
-      <h5>{{sample.block}}</h5>
-      <div class="row">
-        <div class="col-xs-4"><em>Brix: </em><span class="q-color-1">{{sample.brix}}</span></div>
-        <div class="col-xs-4" ng-show="sample.ta"><em>TA: </em><span class="q-color-2">{{sample.ta}}</span></div>
-        <div class="col-xs-4" ng-show="sample.ph"><em>pH: </em><span class="q-color-3">{{sample.ph}}</span></div>
-      </div>
-      <div class="row" ng-show="sample.notes">
-        <i class="fa fa-file-text clickable-icon" ng-click="show_notes=!show_notes"></i>
-        <div ng-show="show_notes">{{sample.notes}}</div>
-      </div>
-    </li>
-  </ul>
-</div>

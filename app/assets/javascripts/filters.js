@@ -41,6 +41,18 @@ farmdatFilters.filter('range', function() {
   };
 });
 
+farmdatFilters.filter('matchYear', function () {
+  return function (list, year) {
+    var filtered_list = [];
+    if (!angular.isDefined(year)) return list;
+    var getYear = function (ymd) { return ymd.split("-")[0]; };
+    angular.forEach(list, function (item) {
+      if (getYear(item.date) === year) filtered_list.push(item);
+    });
+    return filtered_list;
+  };
+});
+
 farmdatFilters.filter('truncate', function () {
   return function (text, length, end, disabled) {
     if (!text) return;
