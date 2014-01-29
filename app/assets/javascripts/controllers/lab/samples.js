@@ -42,6 +42,7 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Res
   var position = "right";
   $scope.timeline_config = {
     legend: {
+      show: false,
       position: "nw",
       margin: 5
     },

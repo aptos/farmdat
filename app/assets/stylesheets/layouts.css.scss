@@ -347,6 +347,10 @@ p.description:first-letter {
   border: solid 5px rgba(127, 107, 54, 0.43);
 }
 
+.label-brix { background-color: #805EAF;}
+.label-ta { background-color: rgba(75, 109, 75, 0.76);}
+.label-ph { background-color: #C0752E; }
+
 @media all and (max-width: 640px) {
   .layout-single-column {
     width: auto;
