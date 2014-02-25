@@ -122,8 +122,10 @@
         </div>
       </div>
       <div class="row" ng-show="activity.notes">
-        <i class="fa fa-file-text clickable-icon" ng-click="show_notes=!show_notes"></i>
-        <div ng-show="show_notes">{{activity.notes}}</div>
+        <blockquote class="">
+          {{activity.notes | truncate:256:'...':more_notes}}
+          <a><i ng-class="{true: 'fa fa-caret-right',false: 'fa fa-caret-up'}[!more_notes]" ng-click="more_notes=!more_notes" ng-show="activity.notes.length >= 256"></i></a>
+        </blockquote>
       </div>
     </li>
   </ul>
