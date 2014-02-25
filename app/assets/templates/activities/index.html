@@ -1,0 +1,130 @@
+<div class="screen-content dirty-brown" >
+
+  <div class="row metabar">
+    <div class="col-xs-6 col-sm-6 col-md-6 btn-set pull-right">
+      <button type="button" class="btn btn-info" ng-click="vineyards()">Vineyards</button>
+    </div>
+  </div>
+  <header class="hero hero-standalone layout-single-column ">
+    <h1 class="hero-title">Activities</h1>
+    <p class="hero-description">Track daily activities in the vineyard</p>
+  </header>
+  <!-- </div> -->
+
+  <div class="layout-single-column">
+    <nav class="nav-tabs layout-single-column" ng-class="{true: 'nav-tabs-light'}[!!vineyard.image_url]">
+      <ul class="nav-tabs-list">
+        <li class="nav-tabs-item">
+          <a class="nav-tabs-anchor" href="/">Welcome</a>
+        </li>
+        <li class="nav-tabs-item">
+          <a class="nav-tabs-anchor" href="/#/vineyards">Vineyards</a>
+        </li>
+        <li class="nav-tabs-item">
+          <a class="nav-tabs-anchor" href="/#/lab/samples">Lab</a>
+        </li>
+        <li class="nav-tabs-item active">
+          <a class="nav-tabs-anchor" href="/#/activities">Activities</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container margin-top-60">
+    <div class="col-sx-1 col-sm-1 col-md-1 col-lg-1" ng-click="new_activity()" >
+      <i class="fa fa-plus-circle clickable-icon"></i>
+    </div>
+    <div class="col-md-offset-1 col-sx-10 col-sm-10 col-md-8 col-lg-8">
+      <form class="form-inline" role="form">
+        <input type="text" class="form-control search-box search-box-small" ng-model="query" placeholder="Search" >
+        <span class="text-muted">Select Season</span><select class="form-control select-year" name="Season" ng-model="season" ng-change="filterItems()">
+        <option ng-repeat="s in seasons" value="{{s}}">{{s}}</option>
+      </select>
+    </form>
+  </div>
+</div>
+<div class="container">
+  <div ng-show="show_form" class="floating-container col-xs-10 col-sm-10 col-md-4 col-lg-4 animated fadeIn">
+    <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
+    <form name="activityEditForm">
+      <h3>Activity</h3>
+      <table class="table table-condensed">
+        <tr><td class="muted input-label" >Vineyard</td>
+          <td class="input">
+            <select class="form-control" name="Vineyard" ui-select2 ng-model="activity.vineyard_id" data-placeholder="Pick One..." ng-change="vineyard_selected(activity.vineyard_id)">
+              <option value=""></option>
+              <option ng-repeat="v in vineyard_list | orderBy:'text'" value="{{v.value}}">{{v.text}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Block</td>
+          <td class="input">
+            <select class="form-control" name="Block" ui-select2 ng-model="activity.block" data-placeholder="Pick One...">
+              <option value="combined">Combined</option>
+              <option ng-repeat="b in blocks | orderBy:'text'" value="{{b.value}}">{{b.text}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Activity Date</td>
+          <td class="input">
+            <input name="activityDate" type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="activity.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Activity</td>
+          <td class="input">
+            <input class="sans no-distraction" type="text" name="Activity" name="job" ng-model="activity.job" typeahead="job for job in jobs | filter:$viewValue | limitTo:8" placeholder="Pruning"></input>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <label class="sr-only" for="Notes">Notes</label>
+        <textarea class="form-control sans no-distraction" rows="3" name="Notes" ng-model="activity.notes" placeholder="Notes">
+        </textarea>
+      </div>
+      <div>
+        <button class="btn btn-success" ng-click="save()" ng-disabled="activityEditForm.$invalid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container white-rounded padding-bottom-60 hidden-xs">
+  <div class="row heading">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1">
+      <span>Date</span>
+      <span class="pull-right clickable-icon"><i ng-class="{true: 'fa fa-clock-o', false: 'fa fa-calendar'}[dateformat=='timeago']" ng-click="toggle_date()"></i></span>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 text-center">Site</div>
+    <div class="col-sm-4 col-md-4 col-lg-4">Job</div>
+  </div>
+  <div class="scrolling-list row" ng-repeat="activity in filtered_activities" ng-class="break_by_site(activity.vineyard_name)">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1" >{{activity.date | moment:dateformat}}</div>
+    <div class="col-sm-4 col-md-4 col-lg-4 text-center">
+      <h4>{{activity.vineyard_name}}</h4>
+      <h5>{{activity.block}}</h5>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 data-cell">{{activity.job}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">
+      <span ng-show="activity.notes">
+        <i class="fa fa-file-text clickable-icon" popover-append-to-body="true" popover-placement="left" popover="{{activity.notes}}" popover-title="Notes"></i>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container white-rounded visible-xs">
+  <ul class="scrolling-list force-two-lines" ng-repeat="activity in activities | filter:query | orderBy:['vineyard_name','date']" ng-class="break_by_site(activity.vineyard_name)">
+    <li>
+      <div>
+        <h5>{{activity.date | moment:'D MMM \'YY'}} <span class="pull-right text-muted">{{activity.date | moment:'timeago'}}</span></h5>
+        <h4>{{activity.vineyard_name}}</h4>
+        <h5>{{activity.block}}</h5>
+        <div class="row">
+          <div class="col-xs-4"><span>{{activity.job}}</span></div>
+        </div>
+      </div>
+      <div class="row" ng-show="activity.notes">
+        <i class="fa fa-file-text clickable-icon" ng-click="show_notes=!show_notes"></i>
+        <div ng-show="show_notes">{{activity.notes}}</div>
+      </div>
+    </li>
+  </ul>
+</div>

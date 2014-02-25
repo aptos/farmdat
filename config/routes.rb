@@ -24,6 +24,10 @@ Farmdat::Application.routes.draw do
   get "/samples/mine" => 'samples#mine'
   resources :samples
 
+  # Vineyard Activity CRUD
+  get "/activities/mine" => 'activities#mine'
+  resources :activities
+
   # S3 upload signature server
   resources :signed_url, only: :index
 

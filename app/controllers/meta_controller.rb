@@ -16,6 +16,7 @@ class MetaController < ApplicationController
     @meta['red_grapes'] = Global.red_grapes.names
     @meta['white_grapes'] = Global.white_grapes.names
 
+    @meta['jobs'] = Global.jobs.names
     if admin?
       @meta['admin'] = true
     end
