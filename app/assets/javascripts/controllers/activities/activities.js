@@ -63,11 +63,8 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
   // Form Functions
   $scope.saveInProgress = false;
 
-  $scope.dateOptions = {
-    'year-format': "'yy'",
-    'starting-day': 0,
-  };
-  $scope.dateFormat = 'dd-MMMM-yyyy';
+  $scope.min_date = "2000-01-01";
+  $scope.max_date = "2016-01-01";
 
   $scope.vineyard_selected = function (id) {
     if (!id) return;
@@ -85,7 +82,11 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
     if (($scope.activityEditForm.$valid) && (!$scope.saveInProgress) ) {
       $scope.saveInProgress = true;
       if ($scope.activity._id) {
-        $scope.activity.put().then($scope.close, $scope.close);
+        console.info("id", $scope.activity._id, $scope.activity)
+        $scope.activity.put().then(function () {
+          $scope.close();
+          refresh();
+        }, $scope.close);
       } else {
         Restangular.all('activities').post($scope.activity).then( function () {
           $scope.close();
@@ -99,6 +100,14 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
     $scope.saveInProgress = false;
     $scope.show_form = false;
   };
+
+  $scope.edit = function (id) {
+    console.info("edit", id)
+    Restangular.one('activities', id).get().then(function (activity) {
+      $scope.activity = Restangular.copy(activity);
+      $scope.show_form = true;
+    });
+  }
 
   $scope.vineyards = function () {
     $location.path("/vineyards");

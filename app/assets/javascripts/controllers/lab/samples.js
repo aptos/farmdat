@@ -112,11 +112,8 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Res
   // Form Functions
   $scope.saveInProgress = false;
 
-  $scope.dateOptions = {
-    'year-format': "'yy'",
-    'starting-day': 0,
-  };
-  $scope.dateFormat = 'dd-MMMM-yyyy';
+  $scope.min_date = "2000-01-01";
+  $scope.max_date = "2016-01-01";
 
   $scope.vineyard_selected = function (id) {
     if (!id) return;

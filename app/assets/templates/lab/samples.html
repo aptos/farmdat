@@ -79,7 +79,7 @@
         </tr>
         <tr><td class="muted input-label" >Sample Date</td>
           <td class="input">
-            <input name="sampleDate" type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="sample.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
+            <input name="sampleDate" type="text" class="form-control text_field date-input" min-date="{{min_date}}" max-date="{{max_date}}" ng-model="sample.date" my-datepicker required>
           </td>
         </tr>
         <tr><td class="muted input-label" >Brix</td>

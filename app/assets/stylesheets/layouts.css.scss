@@ -280,6 +280,11 @@ ul.scrolling-list.force-two-lines li {
   .data-cell {
     margin-top: 12px;
   }
+  .edit {
+    padding: 5px;
+    background-color: #fff;
+    border: 1px dotted #Aa0000;
+  }
 }
 
 .scrolling-list.scrolling-list-subgroup {
@@ -323,6 +328,11 @@ p.description:first-letter {
   border-radius: 7px;
   border-collapse: separate;
   box-shadow: 0 2px 40px rgba(0,0,0,.4);
+}
+
+.floating-container.fixed-top-10 {
+  position: fixed;
+  top: 10%;
 }
 
 .chart-medium {

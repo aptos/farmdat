@@ -18,7 +18,8 @@
 //= require angular-animate.min
 //= require angular-sanitize.min
 //= require restangular.min
-//= require ui-bootstrap-tpls-0.9.0
+//= require ui-bootstrap-tpls-0.10.0
+//= require jquery-ui-1.10.4.custom
 //= require leaflet
 //= require leaflet.markercluster
 //= require angular-leaflet-directive

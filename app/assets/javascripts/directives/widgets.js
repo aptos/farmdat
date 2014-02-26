@@ -1,5 +1,39 @@
 var farmdatDirectives = angular.module('farmdatDirectives', []);
 
+farmdatDirectives.directive('myDatepicker', function () {
+  return {
+    restrict:'A',
+    require:'ngModel',
+    link:function (scope, element, attrs, ngModel) {
+      var minDateObject = new Date();
+      if (attrs.minDate) {
+        var day = moment(attrs.minDate, "YYYY-MM-DD");
+        console.info("Date", day)
+        minDateObject = day.toDate();
+      }
+      element.datepicker({
+        showOn:"both",
+        buttonText:"<i class='fa fa-calendar'></i>",
+        changeYear:true,
+        changeMonth:true,
+        dateFormat:'yy-mm-dd',
+        minDate:minDateObject,
+        onSelect:function (dateText, inst) {
+          ngModel.$setViewValue(dateText);
+          scope.$apply();
+        }
+      });
+      attrs.$observe('minDate', function (value) {
+        if (!value) {
+          return;
+        }
+        minDateObject = moment(value, "YYYY-MM-DD").toDate();
+        element.datepicker("option", "minDate", minDateObject);
+      });
+    }
+  };
+});
+
 farmdatDirectives.directive('contenteditable', function () {
   return {
   restrict: 'A', // only activate on element attribute

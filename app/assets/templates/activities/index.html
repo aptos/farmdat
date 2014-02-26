@@ -43,8 +43,10 @@
     </form>
   </div>
 </div>
+
+<!-- Form -->
 <div class="container">
-  <div ng-show="show_form" class="floating-container col-xs-10 col-sm-10 col-md-4 col-lg-4 animated fadeIn">
+  <div ng-show="show_form" class="floating-container fixed-top-10 col-xs-10 col-sm-10 col-md-4 col-lg-4 animated fadeIn">
     <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
     <form name="activityEditForm">
       <h3>Activity</h3>
@@ -67,12 +69,12 @@
         </tr>
         <tr><td class="muted input-label" >Activity Date</td>
           <td class="input">
-            <input name="activityDate" type="text" class="form-control" datepicker-popup='dd-MMMM-yyyy' ng-model="activity.date" is-open="opened" datepicker-options="dateOptions" show-weeks="false" ng-required="true" close-text="Close" />
+           <input name="activityDate" type="text" class="form-control text_field date-input" min-date="{{min_date}}" max-date="{{max_date}}" ng-model="activity.date" my-datepicker required>
           </td>
         </tr>
         <tr><td class="muted input-label" >Activity</td>
           <td class="input">
-            <input class="sans no-distraction" type="text" name="Activity" name="job" ng-model="activity.job" typeahead="job for job in jobs | filter:$viewValue | limitTo:8" placeholder="Pruning"></input>
+            <input class="form-control sans no-distraction" type="text" name="Activity" name="job" ng-model="activity.job" typeahead="job for job in jobs | filter:$viewValue | limitTo:8" placeholder="Pruning" required></input>
           </td>
         </tr>
       </table>
@@ -87,39 +89,48 @@
     </form>
   </div>
 </div>
+
+<!-- Large Format List -->
 <div class="container white-rounded padding-bottom-60 hidden-xs">
   <div class="row heading">
     <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1">
       <span>Date</span>
       <span class="pull-right clickable-icon"><i ng-class="{true: 'fa fa-clock-o', false: 'fa fa-calendar'}[dateformat=='timeago']" ng-click="toggle_date()"></i></span>
     </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 text-center">Site</div>
     <div class="col-sm-4 col-md-4 col-lg-4">Job</div>
+    <div class="col-sm-4 col-md-4 col-lg-4 text-center">Site</div>
   </div>
   <div class="scrolling-list row" ng-repeat="activity in filtered_activities" ng-class="break_by_site(activity.vineyard_name)">
-    <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1" >{{activity.date | moment:dateformat}}</div>
-    <div class="col-sm-4 col-md-4 col-lg-4 text-center">
-      <h4>{{activity.vineyard_name}}</h4>
-      <h5>{{activity.block}}</h5>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 data-cell">{{activity.job}}</div>
-    <div class="col-sm-1 col-md-1 col-lg-1 data-cell">
-      <span ng-show="activity.notes">
-        <i class="fa fa-file-text clickable-icon" popover-append-to-body="true" popover-placement="left" popover="{{activity.notes}}" popover-title="Notes"></i>
-      </span>
+    <div class="row" ng-mouseenter="show_edit=true" ng-mouseleave="show_edit=false" ng-init="show_edit=false">
+      <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 data-cell" >{{activity.date | moment:dateformat}}</div>
+      <div class="col-sm-3 col-md-3 col-lg-3 data-cell">{{activity.job}}</div>
+      <div class="col-sm-3 col-md-3 col-lg-3 text-center">
+        <h4>{{activity.vineyard_name}}</h4>
+        <h5>{{activity.block}}</h5>
+      </div>
+      <div class="col-sm-1 col-md-1 col-lg-1 data-cell">
+        <span ng-show="activity.notes">
+          <i class="fa fa-file-text clickable-icon" popover-append-to-body="true" popover-placement="left" popover="{{activity.notes}}" popover-title="Notes"></i>
+        </span>
+      </div>
+      <div ng-show="show_edit" class="col-sm-1 col-md-1 col-lg-1 data-cell animated fadeIn">
+        <i class="fa fa-pencil clickable-icon" ng-click="edit(activity._id)"></i>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Mobile Format List -->
 <div class="container white-rounded visible-xs">
   <ul class="scrolling-list force-two-lines" ng-repeat="activity in activities | filter:query | orderBy:['vineyard_name','date']" ng-class="break_by_site(activity.vineyard_name)">
     <li>
       <div>
         <h5>{{activity.date | moment:'D MMM \'YY'}} <span class="pull-right text-muted">{{activity.date | moment:'timeago'}}</span></h5>
-        <h4>{{activity.vineyard_name}}</h4>
-        <h5>{{activity.block}}</h5>
         <div class="row">
           <div class="col-xs-4"><span>{{activity.job}}</span></div>
         </div>
+        <h4>{{activity.vineyard_name}}</h4>
+        <h5>{{activity.block}}</h5>
       </div>
       <div class="row" ng-show="activity.notes">
         <blockquote class="">
