@@ -97,14 +97,14 @@
       <span>Date</span>
       <span class="pull-right clickable-icon"><i ng-class="{true: 'fa fa-clock-o', false: 'fa fa-calendar'}[dateformat=='timeago']" ng-click="toggle_date()"></i></span>
     </div>
-    <div class="col-sm-4 col-md-4 col-lg-4">Job</div>
-    <div class="col-sm-4 col-md-4 col-lg-4 text-center">Site</div>
+    <div class="col-sm-3 col-md-3 col-lg-3">Job</div>
+    <div class="col-sm-3 col-md-3 col-lg-3">Site</div>
   </div>
   <div class="scrolling-list row" ng-repeat="activity in filtered_activities" ng-class="break_by_site(activity.vineyard_name)">
     <div class="row" ng-mouseenter="show_edit=true" ng-mouseleave="show_edit=false" ng-init="show_edit=false">
       <div class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 data-cell" >{{activity.date | moment:dateformat}}</div>
       <div class="col-sm-3 col-md-3 col-lg-3 data-cell">{{activity.job}}</div>
-      <div class="col-sm-3 col-md-3 col-lg-3 text-center">
+      <div class="col-sm-3 col-md-3 col-lg-3">
         <h4>{{activity.vineyard_name}}</h4>
         <h5>{{activity.block}}</h5>
       </div>
@@ -122,8 +122,8 @@
 
 <!-- Mobile Format List -->
 <div class="container white-rounded visible-xs">
-  <ul class="scrolling-list force-two-lines" ng-repeat="activity in activities | filter:query | orderBy:['vineyard_name','date']" ng-class="break_by_site(activity.vineyard_name)">
-    <li>
+  <ul class="scrolling-list force-two-lines" >
+    <li ng-repeat="activity in activities | filter:query | orderBy:['vineyard_name','date']" ng-class="break_by_site(activity.vineyard_name)">
       <div>
         <h5>{{activity.date | moment:'D MMM \'YY'}} <span class="pull-right text-muted">{{activity.date | moment:'timeago'}}</span></h5>
         <div class="row">

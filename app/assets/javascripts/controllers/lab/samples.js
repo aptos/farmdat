@@ -1,4 +1,4 @@
-function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Restangular) {
+function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Restangular, ngDialog) {
 
   // utility functions
   var getYear = function (ymd) { return ymd.split("-")[0]; };
@@ -37,6 +37,18 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Res
       $scope.blocklist[vineyard._id] = vineyard.blocks.map( function (block) { return {value: block.name, text: block.name }; });
     });
   });
+
+  // Chart Dialog
+  $scope.showChartDialog = function (date, vineyard, block) {
+    console.info("show Chart", date, vineyard, block)
+    getTimeline(date, vineyard, block);
+    ngDialog.open({
+      template: 'assets/chartDialog.html',
+      showClose: true,
+      className: 'ngdialog-theme-flat',
+      scope: $scope
+    });
+  };
 
   // Chart Functions
   var position = "right";
@@ -77,7 +89,7 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Res
     return data;
   };
 
-  $scope.getTimeline = function (date, vineyard, block) {
+  var getTimeline = function (date, vineyard, block) {
     $scope.chart_title = (!!block) ? vineyard + " - " + block : vineyard;
     $scope.season = date.split("-")[0];
     $scope.current_year = new Date().getFullYear() == $scope.season;
@@ -158,4 +170,4 @@ function LabSamplesCtrl($scope, $routeParams, $debounce, $location, $filter, Res
     }
   };
 }
-LabSamplesCtrl.$inject = ['$scope','$routeParams','$debounce','$location','$filter','Restangular'];
+LabSamplesCtrl.$inject = ['$scope','$routeParams','$debounce','$location','$filter','Restangular', 'ngDialog'];

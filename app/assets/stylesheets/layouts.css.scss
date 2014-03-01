@@ -258,16 +258,19 @@ border-top: 2px #666665 solid;
 .margin-top-40 { margin-top: 40px;}
 
 ul.scrolling-list {
-  border-top: 1px solid rgba(80, 62, 43, 0.11);
   list-style: none;
+  padding-left: 10px;
+}
+
+.scrolling-list li {
+  border-top: 1px solid rgba(80, 62, 43, 0.11);
   margin: 0;
   p {margin: 0;}
 }
 
-.scrolling-list:hover {
-  background-color: rgba(222, 222, 222, 0.25);
+.scrolling-list-clickable:hover {
+  background-color: #eee;
 }
-
 
 ul.scrolling-list.force-two-lines li {
   min-height: 60px;
@@ -287,7 +290,7 @@ ul.scrolling-list.force-two-lines li {
   }
 }
 
-.scrolling-list.scrolling-list-subgroup {
+.row.scrolling-list.scrolling-list-subgroup, .scrolling-list li.scrolling-list-subgroup {
   border-top: 3px solid rgba(80, 62, 43, 0.11);
 }
 
@@ -296,6 +299,10 @@ ul.scrolling-list.force-two-lines li {
   background-color: rgba(127, 107, 54, 0.55);
   color: white;
   padding: 8px 0 5px;
+  border-radius: 5px;
+}
+.row.heading-lab {
+  background-color: rgba(19, 8, 63, 0.55);
 }
 
 .table-set {
@@ -354,7 +361,6 @@ p.description:first-letter {
 .chart-container {
   background: #fff;
   padding: 12px;
-  border: solid 5px rgba(127, 107, 54, 0.43);
 }
 
 .label-brix { background-color: #805EAF;}
@@ -401,4 +407,5 @@ p.description:first-letter {
   .map-box {
     font-size: 14px;
   }
+  .scrolling-list-clickable { padding: 5px; }
 }
