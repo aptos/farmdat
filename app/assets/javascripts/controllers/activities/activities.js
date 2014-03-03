@@ -4,6 +4,7 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
   var getYear = function (ymd) { return ymd.split("-")[0]; };
 
   $scope.selected = undefined;
+  $scope.current_user = $rootScope.current_user;
   $rootScope.getMeta().then(function (metadata) {
     $scope.metadata = metadata;
     $scope.jobs = metadata.jobs;
@@ -82,7 +83,6 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
     if (($scope.activityEditForm.$valid) && (!$scope.saveInProgress) ) {
       $scope.saveInProgress = true;
       if ($scope.activity._id) {
-        console.info("id", $scope.activity._id, $scope.activity)
         $scope.activity.put().then(function () {
           $scope.close();
           refresh();
@@ -102,7 +102,6 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
   };
 
   $scope.edit = function (id) {
-    console.info("edit", id)
     Restangular.one('activities', id).get().then(function (activity) {
       $scope.activity = Restangular.copy(activity);
       $scope.show_form = true;
@@ -120,5 +119,14 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
       $scope.activity.remove();
     }
   };
+
+  // Photo Album
+  $scope.max_size = { width: 960, height: 960, quality: 80 };
+  $scope.include_thumbs = true;
+  $scope.get_folder = function (key) {
+    key += ('/' + moment().format('MMDDYY'));
+    return 'photos/' + key;
+  };
+
 }
 ActivitiesCtrl.$inject = ['$scope','$rootScope','$routeParams','$debounce','$location','$filter','Restangular'];

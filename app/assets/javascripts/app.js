@@ -34,6 +34,10 @@ farmdatModule.config(['$routeProvider',function($routeProvider) {
 
 farmdatModule.run(['$rootScope', '$window', '$q', 'Restangular', 'Storage', function($rootScope, $window, $q, Restangular, Storage) {
 
+  var user = $("#globals").html();
+  if (!!user) $rootScope.current_user = $.parseJSON(user);
+  console.info("user", $rootScope.current_user)
+
   $rootScope.getMeta = function () {
     var deferred = $q.defer();
 
@@ -55,33 +59,33 @@ farmdatModule.run(['$rootScope', '$window', '$q', 'Restangular', 'Storage', func
   };
 
 
- $rootScope.$safeApply = function() {
-  var $scope, fn, force = false;
-  if(arguments.length == 1) {
-    var arg = arguments[0];
-    if(typeof arg == 'function') {
-      fn = arg;
+  $rootScope.$safeApply = function() {
+    var $scope, fn, force = false;
+    if(arguments.length == 1) {
+      var arg = arguments[0];
+      if(typeof arg == 'function') {
+        fn = arg;
+      }
+      else {
+        $scope = arg;
+      }
     }
     else {
-      $scope = arg;
+      $scope = arguments[0];
+      fn = arguments[1];
+      if(arguments.length == 3) {
+        force = !!arguments[2];
+      }
     }
-  }
-  else {
-    $scope = arguments[0];
-    fn = arguments[1];
-    if(arguments.length == 3) {
-      force = !!arguments[2];
+    $scope = $scope || this;
+    fn = fn || function() { };
+    if(force || !$scope.$$phase) {
+      $scope.$apply ? $scope.$apply(fn) : $scope.apply(fn);
     }
-  }
-  $scope = $scope || this;
-  fn = fn || function() { };
-  if(force || !$scope.$$phase) {
-    $scope.$apply ? $scope.$apply(fn) : $scope.apply(fn);
-  }
-  else {
-    fn();
-  }
-};
+    else {
+      fn();
+    }
+  };
 
   // basic media query for angularjs
   $rootScope.mobile = function() {

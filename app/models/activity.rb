@@ -8,7 +8,7 @@ class Activity < CouchRest::Model::Base
   property :date, Date
   property :job, String
   property :notes, String
-
+  property :album, Array
   timestamps!
 
   design do

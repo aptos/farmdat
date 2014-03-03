@@ -46,7 +46,7 @@
 
 <!-- Form -->
 <div class="container">
-  <div ng-show="show_form" class="floating-container fixed-top-10 col-xs-10 col-sm-10 col-md-4 col-lg-4 animated fadeIn">
+  <div ng-show="show_form" class="floating-container fixed-top-10 col-xs-10 col-sm-10 col-md-5 col-lg-5 animated fadeIn">
     <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
     <form name="activityEditForm">
       <h3>Activity</h3>
@@ -69,12 +69,20 @@
         </tr>
         <tr><td class="muted input-label" >Activity Date</td>
           <td class="input">
-           <input name="activityDate" type="text" class="form-control text_field date-input" min-date="{{min_date}}" max-date="{{max_date}}" ng-model="activity.date" my-datepicker required>
+            <input name="activityDate" type="text" class="form-control text_field date-input" min-date="{{min_date}}" max-date="{{max_date}}" ng-model="activity.date" my-datepicker required>
           </td>
         </tr>
         <tr><td class="muted input-label" >Activity</td>
           <td class="input">
             <input class="form-control sans no-distraction" type="text" name="Activity" name="job" ng-model="activity.job" typeahead="job for job in jobs | filter:$viewValue | limitTo:8" placeholder="Pruning" required></input>
+          </td>
+        </tr>
+        <tr><td class="muted input-label" >Album</td>
+          <td>
+            <div aws-multi-uploader folder="get_folder(current_user.email)" ng-model="activity.album" resize="max_size" thumbs="include_thumbs"></div>
+            <ul>
+              <li ng-repeat="photo in activity.album">{{photo.name}}</li>
+            </ul>
           </td>
         </tr>
       </table>

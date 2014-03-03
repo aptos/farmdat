@@ -8,7 +8,6 @@ farmdatDirectives.directive('myDatepicker', function () {
       var minDateObject = new Date();
       if (attrs.minDate) {
         var day = moment(attrs.minDate, "YYYY-MM-DD");
-        console.info("Date", day)
         minDateObject = day.toDate();
       }
       element.datepicker({

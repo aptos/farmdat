@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  before_filter :authenticate_user!
+  respond_to :json
 
   def index
     @activities = Activity.by_vineyard_id.stale('update_after').all
