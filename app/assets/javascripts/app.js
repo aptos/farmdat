@@ -36,7 +36,6 @@ farmdatModule.run(['$rootScope', '$window', '$q', 'Restangular', 'Storage', func
 
   var user = $("#globals").html();
   if (!!user) $rootScope.current_user = $.parseJSON(user);
-  console.info("user", $rootScope.current_user)
 
   $rootScope.getMeta = function () {
     var deferred = $q.defer();

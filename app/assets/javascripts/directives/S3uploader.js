@@ -153,7 +153,7 @@ aws.directive('awsMultiUploader',[ '$http', function ($http) {
         max_file_size:'10mb',
         multipart: true,
         filters: [
-          { title : "Image files", extensions : "jpg,jpeg,gif,png" }
+        { title : "Image files", extensions : "jpg,jpeg,gif,png" }
         ],
         browse_button: browse_button,
         preinit: {
@@ -200,15 +200,21 @@ aws.directive('awsMultiUploader',[ '$http', function ($http) {
         $('#loading').hide();
         progress.finish();
         var s3_uri = $(response.response).find('Location').text();
-        album.push({name: file.name, uri: s3_uri});
+        if (file.thumb) {
+          var i = _.findIndex(album, { name: file.orig_name });
+          album[i].thumb = s3_uri;
+        } else {
+          album.push({ name: file.name, uri: s3_uri });
+        }
         ngModel.$setViewValue(album);
         scope.$apply();
+
         if (!('thumb' in file) && (attrs.thumbs) ) {
           file.thumb = true;
+          file.orig_name = file.name;
           file.name = file.name.replace(/(.*)\.(.*?)$/, "$1-thumb.$2");
           file.loaded = 0;
           file.percent = 0;
-          console.info("uploading thumb", file)
           file.status = plupload.QUEUED;
           up.trigger("QueueChanged");
           up.refresh();

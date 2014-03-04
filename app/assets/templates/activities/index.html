@@ -80,12 +80,21 @@
         <tr><td class="muted input-label" >Album</td>
           <td>
             <div aws-multi-uploader folder="get_folder(current_user.email)" ng-model="activity.album" resize="max_size" thumbs="include_thumbs"></div>
-            <ul>
-              <li ng-repeat="photo in activity.album">{{photo.name}}</li>
-            </ul>
           </td>
         </tr>
       </table>
+      <div class="album-container animated fadeIn" ng-show="activity.album.length">
+        <ul class="thumbs">
+          <li ng-repeat="photo in activity.album">
+            <div class="thumbnail">
+              <img src="{{photo.thumb}}">
+            </div>
+            <div class="caption">
+              {{photo.name}}
+            </div>
+          </li>
+        </ul>
+      </div>
       <div>
         <label class="sr-only" for="Notes">Notes</label>
         <textarea class="form-control sans no-distraction" rows="3" name="Notes" ng-model="activity.notes" placeholder="Notes">
