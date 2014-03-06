@@ -319,10 +319,38 @@ ul.thumbs > li{
   zoom:1;
   *display:inline;
   list-style: none;
-  border: 1px solid #ccc;
   border-radius: 3px;
   text-align: center;
   margin: 8px;
+  .thumbnail {
+    position: relative;
+    height: 100px;
+    width: 150px;
+    padding: 0;
+    background-color: #B7AC8F;
+  }
+  .caption {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+  .delete {
+    position: absolute;
+    top: 0px;
+    z-index: 9;
+    background: #cc5454 !important;
+    color: #fff !important;
+    border: 1px solid #e62929;
+    width: 100%;
+    line-height: 1.6em;
+  }
+  .close {
+    color: #fff;
+    line-height: 1.1em;
+    padding-right: 5px;
+  }
+  .close:hover {
+    opacity: 1;
+  }
 }
 
 .rotate90 {

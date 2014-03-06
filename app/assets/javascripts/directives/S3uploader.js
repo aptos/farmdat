@@ -105,14 +105,13 @@ aws.directive('awsUploader',[ '$http', function ($http) {
   };
 }]);
 
-aws.directive('awsMultiUploader',[ '$http', function ($http) {
+aws.directive('awsPhotoUploader',[ '$http', function ($http) {
   return {
     restrict:'A',
     require:'ngModel',
     link:function (scope, element, attrs, ngModel) {
       var folder = 'uploads';
       var browse_button = 'addDocument';
-      var album = [];
       var progress = {
         start: function (file) {
           scope.progressVisible = true;
@@ -150,6 +149,7 @@ aws.directive('awsMultiUploader',[ '$http', function ($http) {
       scope.aws_uploader = new plupload.Uploader({
         runtimes:'html5,html4',
         multiple_queues: true,
+        multi_selection: false,
         max_file_size:'10mb',
         multipart: true,
         filters: [
@@ -197,6 +197,8 @@ aws.directive('awsMultiUploader',[ '$http', function ($http) {
       });
 
       scope.aws_uploader.bind('FileUploaded', function (up, file, response) {
+        var album = ngModel.$modelValue || [];
+        console.info("album", album)
         $('#loading').hide();
         progress.finish();
         var s3_uri = $(response.response).find('Location').text();
@@ -229,7 +231,7 @@ aws.directive('awsMultiUploader',[ '$http', function ($http) {
       });
     },
     template: '<div class="upload-wrap">' +
-    '<button id="addDocument" class="btn btn-primary" type="button"><span>Choose Photos</span></button>' +
+    '<button id="addDocument" class="btn btn-primary" type="button"><span>Choose Photo</span></button>' +
     '<div class="progress" ng-show="progressVisible" style="margin-top: 10px">' +
     '<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;">' +
     '<span>{{filename}} {{ progress }}%</span>' +

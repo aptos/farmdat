@@ -26,6 +26,7 @@ Farmdat::Application.routes.draw do
 
   # Vineyard Activity CRUD
   get "/activities/mine" => 'activities#mine'
+  delete "/activities/:id/album" => 'activities#delete_photo'
   resources :activities
 
   # S3 upload signature server

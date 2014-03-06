@@ -241,6 +241,7 @@
   color: #ff7000;
 }
 a.signin-link {
+  text-decoration: underline;
   color: #929292;
   -webkit-transition: color 300ms linear;
   -moz-transition: color 300ms linear;

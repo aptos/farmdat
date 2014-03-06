@@ -54,4 +54,17 @@ module ApplicationHelper
 		@mailgun ||= Mailgun()
 	end
 
+  #
+  # s3 object delete by url
+  #
+  def s3_delete object_url
+    begin
+      key = URI.decode object_url.sub(/^.*\/\/.+?\//,'')
+      AWS.s3.buckets[ENV['AWS_S3_BUCKET']].objects[key].delete
+    rescue Exception => e
+      logger.error "S3 Error: #{e.inspect}"
+      return false
+    end
+  end
+
 end

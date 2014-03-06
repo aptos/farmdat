@@ -75,6 +75,7 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
 
   $scope.new_activity = function () {
     $scope.activity = { job: '' };
+    $scope.activity.date = moment().format("YYYY-MM-DD");
     $scope.activityEditForm.$setPristine();
     $scope.show_form = true;
   };
@@ -106,7 +107,28 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
       $scope.activity = Restangular.copy(activity);
       $scope.show_form = true;
     });
-  }
+  };
+
+  $scope.delete_photo = function (index) {
+    console.info("delete photo")
+    if ($scope.activity._id)  {
+      var photo = $scope.activity.album[index]
+      $scope.activity.customDELETE("album", {index: index}).then( function () {
+        $scope.activity.album.splice(index,1);
+        console.info("Deleted photo!")
+      }, function (e) {
+        console.error("ERROR: Delete photo failed",e);
+      });
+    } else {
+      var new_activity = Restangular.one("activities", "new");
+      new_activity.album = angular.copy($scope.activity.album);
+      new_activity.customDELETE("album", {index: index}).then( function () {
+        $scope.activity.album.splice(index,1);
+      }, function (e) {
+        console.error("ERROR: Delete photo failed",e);
+      });
+    }
+  };
 
   $scope.vineyards = function () {
     $location.path("/vineyards");

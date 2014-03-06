@@ -79,15 +79,18 @@
         </tr>
         <tr><td class="muted input-label" >Album</td>
           <td>
-            <div aws-multi-uploader folder="get_folder(current_user.email)" ng-model="activity.album" resize="max_size" thumbs="include_thumbs"></div>
+            <div aws-photo-uploader folder="get_folder(current_user.email)" ng-model="activity.album" resize="max_size" thumbs="include_thumbs"></div>
           </td>
         </tr>
       </table>
       <div class="album-container animated fadeIn" ng-show="activity.album.length">
         <ul class="thumbs">
-          <li ng-repeat="photo in activity.album">
+          <li ng-repeat="photo in activity.album" ng-mouseenter="show_delete=true" ng-mouseleave="show_delete=false" ng-init="show_delete=false">
             <div class="thumbnail">
-              <img src="{{photo.thumb}}">
+              <div class="delete animated fadeIn" ng-click="delete_photo($index)" ng-show="show_delete" >
+                <span>Remove </span><i class="fa fa-times-circle close"></i>
+              </div>
+              <img ng-src="{{photo.thumb}}">
             </div>
             <div class="caption">
               {{photo.name}}

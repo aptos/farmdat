@@ -61,6 +61,30 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def delete_photo
+    index = params[:index]
+
+    if photo = params[:activity]['album'][index.to_i]
+      logger.info("delete photo! #{photo.inspect}")
+      s3_delete photo['uri']
+      s3_delete photo['thumb']
+    end
+
+    @activity = Activity.find(params[:id])
+    # Removed photos from existing activity
+    if @activity
+      @activity.attributes = params[:activity]
+      if @activity.save
+        render :json => @activity
+      else
+        respond_with(@activity.errors, status: :unprocessable_entity)
+      end
+    else
+      # Removed photos for unsaved (new) activity
+      render :json => { status: 'Deleted' }
+    end
+  end
+
   def destroy
     @activity = Activity.find(params[:activity])
 
