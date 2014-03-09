@@ -148,7 +148,7 @@ aws.directive('awsPhotoUploader',[ '$http', function ($http) {
 
       scope.aws_uploader = new plupload.Uploader({
         runtimes:'html5,html4',
-        multiple_queues: true,
+        // multiple_queues: true,
         multi_selection: false,
         max_file_size:'10mb',
         multipart: true,
@@ -231,7 +231,8 @@ aws.directive('awsPhotoUploader',[ '$http', function ($http) {
       });
     },
     template: '<div class="upload-wrap">' +
-    '<button id="addDocument" class="btn btn-primary" type="button"><span>Choose Photo</span></button>' +
+    '<button id="addDocument" class="btn btn-primary" type="button">' +
+    '<span><i class="fa fa-lg fa-camera-retro"></i></span></button>' +
     '<div class="progress" ng-show="progressVisible" style="margin-top: 10px">' +
     '<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;">' +
     '<span>{{filename}} {{ progress }}%</span>' +

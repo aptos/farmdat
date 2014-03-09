@@ -24,7 +24,7 @@
 //= require leaflet.markercluster
 //= require angular-leaflet-directive
 //= require Google
-//= require_tree ./plupload
+//= require ./plupload/plupload.full
 //= require moment.min
 //= require flot/jquery.flot
 //= require flot/jquery.flot.time.min
@@ -33,5 +33,7 @@
 //= require ngDialog
 //= require select2
 //= require ui-select2
+//= require exif
+//= require binaryajax
 //= require app
 //= require_tree .
