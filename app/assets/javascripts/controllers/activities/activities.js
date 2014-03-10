@@ -1,4 +1,4 @@
-function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, $filter, Restangular) {
+function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, $filter, Restangular, $fileUploader, $http) {
 
   // utility functions
   var getYear = function (ymd) { return ymd.split("-")[0]; };
@@ -145,10 +145,39 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
   // Photo Album
   $scope.max_size = { width: 960, height: 960, quality: 80 };
   $scope.include_thumbs = true;
-  $scope.get_folder = function (key) {
+  var get_folder = function (key) {
     key += ('/' + moment().format('MMDDYY'));
     return 'photos/' + key;
   };
+  var uploader = $scope.uploader = $fileUploader.create({
+    scope: $scope,
+    url: 'https://aptos.s3.amazonaws.com/'
+  });
+
+  var corsForm = function (folder, item) {
+    $http({ method: 'GET', url: 'signed_url', params: {folder: folder} }).
+    success(function (data) {
+      item.formData = item.formData.concat([
+        {key: data.key},
+        {AWSAccessKeyId: data.access_key},
+        {acl: 'public-read'},
+        {policy: data.policy},
+        {signature: data.signature},
+        {success_action_status: '201'}
+      ]);
+      $scope.uploader.url = 'https://' + data.bucket + ".s3.amazonaws.com/";
+      console.info("CORS item formData", item.formData)
+    }).
+    error(function(data, status, headers, config){
+      console.error(data.error);
+    });
+  };
+
+  uploader.bind('afteraddingfile', function (event, item) {
+    console.info('file added', item, uploader);
+    var folder = get_folder($scope.current_user.email);
+    corsForm(folder, item)
+  });
 
 }
-ActivitiesCtrl.$inject = ['$scope','$rootScope','$routeParams','$debounce','$location','$filter','Restangular'];
+ActivitiesCtrl.$inject = ['$scope','$rootScope','$routeParams','$debounce','$location','$filter','Restangular','$fileUploader','$http'];
