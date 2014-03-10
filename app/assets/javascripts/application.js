@@ -33,7 +33,5 @@
 //= require ngDialog
 //= require select2
 //= require ui-select2
-//= require exif
-//= require binaryajax
 //= require app
 //= require_tree .
