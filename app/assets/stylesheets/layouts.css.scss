@@ -301,6 +301,10 @@ tr .upload-wrap {
   }
 }
 
+.borderless {
+  border: none !important;
+}
+
 .album-container {
   width: auto;
   height: 180px;
@@ -336,10 +340,17 @@ ul.thumbs > li{
   .delete {
     position: absolute;
     top: 0px;
-    z-index: 9;
+    z-index: 10;
     background: #cc5454 !important;
     color: #fff !important;
     border: 1px solid #e62929;
+    width: 100%;
+    line-height: 1.6em;
+  }
+  .progress {
+    position: absolute;
+    top: 0px;
+    z-index: 9;
     width: 100%;
     line-height: 1.6em;
   }

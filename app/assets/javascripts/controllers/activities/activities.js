@@ -159,5 +159,10 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
     item.resizeReorient(resizeOptions, getExif);
   });
 
+  uploader.bind('complete', function (event, xhr, item) {
+    console.info("upload complete!", item)
+    item.remove();
+  });
+
 }
 ActivitiesCtrl.$inject = ['$scope','$rootScope','$routeParams','$debounce','$location','$filter','Restangular','$fileUploader','$http'];
