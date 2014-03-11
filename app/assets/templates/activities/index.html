@@ -46,7 +46,7 @@
 
 <!-- Form -->
 <div class="container">
-  <div ng-show="show_form" class="floating-container fixed-top-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 animated fadeIn">
+  <div ng-show="show_form" class="floating-container fixed-top-10 col-xs-10 col-sm-10 col-md-6 col-lg-6 animated fadeIn">
     <span ng-click="close()" ng-show="show_form" ><i class="fa fa-times-circle close pull-right"></i></span>
     <form name="activityEditForm">
       <h3>Activity</h3>
@@ -79,65 +79,43 @@
         </tr>
         <tr><td class="muted input-label" >Album</td>
           <td>
-            <!-- <div aws-photo-uploader folder="get_folder(current_user.email)" ng-model="activity.album" resize="max_size" thumbs="include_thumbs"></div> -->
-            <input ng-file-select type="file" multiple  />
+            <div ng-file-select>
+              <button  class="btn btn-success">
+                <i class="fa fa-camera-retro fa-lg"></i>
+              </button>
+              <input id="fileElem" type="file" name='file' multiple style="display:none;" />
+            </div>
+
+            <!-- Display upload items image thumbs -->
+            <div ng-show="uploader.queue.length" class="album-container animated fadeIn">
+              <ul class="thumbs">
+                <li ng-repeat="item in uploader.queue" ng-mouseenter="show_delete=true" ng-mouseleave="show_delete=false" ng-init="show_delete=false">
+                  <div class="thumbnail">
+                    <div class="delete animated fadeIn" ng-click="item.remove()" ng-show="show_delete" >
+                      <span>Remove </span><i class="fa fa-times-circle close"></i>
+                    </div>
+                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item.file, maxHeight: 100 }"></div>
+                  </div>
+                  <div class="caption">
+                    {{item.file.name}}
+                    <span ng-show="item.isSuccess"><i class="fa fa-check-circle"></i></span>
+                    <span ng-show="item.isCancel"><i class="fa fa-times-circle"></i></span>
+                    <span ng-show="item.isError"><i class="fa fa-exclamation-circle"></i></span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
           </td>
         </tr>
       </table>
 
+      <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+        <span class="fa fa-cloud-upload"></span> Upload all
+      </button>
 
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th width="50%">Name</th>
-            <th ng-show="uploader.isHTML5">Size</th>
-            <th ng-show="uploader.isHTML5">Progress</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="item in uploader.queue">
-            <td>
-              <strong>{{ item.file.name }}</strong>
-              <!-- Image preview -->
-              <!--auto height-->
-              <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
-              <!--auto width-->
-              <div ng-show="uploader.isHTML5" ng-thumb="{ file: item.file, height: 120 }"></div>
-              <!--fixed width and height -->
-              <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
-            </td>
-            <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
-            <td ng-show="uploader.isHTML5">
-              <div class="progress" style="margin-bottom: 0;">
-                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-              </div>
-            </td>
-            <td class="text-center">
-              <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-              <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-              <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-            </td>
-            <td nowrap>
-              <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                <span class="glyphicon glyphicon-upload"></span> Upload
-              </button>
-              <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-              </button>
-              <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                <span class="glyphicon glyphicon-trash"></span> Remove
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
-<!--       <div class="album-container animated fadeIn" ng-show="activity.album.length">
+      <!-- Display Current Album of uploaded image thumbs -->
+      <div class="album-container animated fadeIn" ng-show="activity.album.length">
         <ul class="thumbs">
           <li ng-repeat="photo in activity.album" ng-mouseenter="show_delete=true" ng-mouseleave="show_delete=false" ng-init="show_delete=false">
             <div class="thumbnail">
@@ -151,7 +129,8 @@
             </div>
           </li>
         </ul>
-      </div> -->
+      </div>
+
       <div>
         <label class="sr-only" for="Notes">Notes</label>
         <textarea class="form-control sans no-distraction" rows="3" name="Notes" ng-model="activity.notes" placeholder="Notes">

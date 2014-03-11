@@ -303,7 +303,7 @@ tr .upload-wrap {
 
 .album-container {
   width: auto;
-  height: 230px;
+  height: 180px;
   border: 1px solid #ccc;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -319,7 +319,6 @@ ul.thumbs > li{
   zoom:1;
   *display:inline;
   list-style: none;
-  border-radius: 3px;
   text-align: center;
   margin: 8px;
   .thumbnail {
@@ -327,7 +326,8 @@ ul.thumbs > li{
     height: 100px;
     width: 150px;
     padding: 0;
-    background-color: #B7AC8F;
+    background-color: #EBEBEB;
+    border: none !important;
   }
   .caption {
     border-top: 1px solid #ccc;

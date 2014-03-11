@@ -31,6 +31,7 @@ class SignedUrlController < ApplicationController
         { "bucket" =>  ENV['AWS_S3_BUCKET']},
         [ "starts-with", "$key", "" ],
         { "acl" => "public-read" },
+        ["starts-with", "$Content-Type", ""],
         ["starts-with", "$success_action_status", ""]
       ]
       }.to_json).gsub(/\n/,'')

@@ -143,15 +143,20 @@ function ActivitiesCtrl($scope, $rootScope, $routeParams, $debounce, $location, 
   };
 
   // Photo Album
-  $scope.max_size = { width: 960, height: 960, quality: 80 };
   $scope.include_thumbs = true;
+  var resizeOptions = { maxHeight: 900 };
   var uploader = $scope.uploader = $fileUploader.create({
     scope: $scope
   });
 
+  var getExif = function (data) {
+    console.info("EXIF", data);
+  }
+
   uploader.bind('afteraddingfile', function (event, item) {
     var folder = ['photos',$scope.current_user.email, moment().format('MMDDYY')].join("/");
-    item.addCorsFormData('signed_url',folder)
+    item.addCorsFormData('signed_url',folder);
+    item.resizeReorient(resizeOptions, getExif);
   });
 
 }

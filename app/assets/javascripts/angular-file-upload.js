@@ -70,12 +70,13 @@ app.directive('ngFileSelect', [ '$fileUploader', function ($fileUploader) {
         link: function (scope, element, attributes) {
             $fileUploader.isHTML5 || element.removeAttr('multiple');
 
-            element.bind('change', function () {
-                scope.$emit('file:add', $fileUploader.isHTML5 ? this.files : this, scope.$eval(attributes.ngFileSelect));
-                ($fileUploader.isHTML5 && element.attr('multiple')) && element.prop('value', null);
+            element.find("button").bind("click", function(){
+                element.find("input")[0].click();
+                element.find("input").bind("change",function(){
+                    scope.$emit('file:add', $fileUploader.isHTML5 ? this.files : this, scope.$eval(attributes.ngFileSelect));
+                    ($fileUploader.isHTML5 && $(this).attr('multiple')) && $(this).prop('value', null);
+                });
             });
-
-            element.prop('value', null); // FF fix
         }
     };
 }]);
@@ -390,7 +391,11 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
                 });
             });
 
-            form.append(item.alias, item.file);
+            if (!!item.blob) {
+                form.append('file', item.blob, item.file.name);
+            } else {
+                form.append(item.alias, item.file);                
+            }
 
             xhr.upload.onprogress = function (event) {
                 var progress = event.lengthComputable ? event.loaded * 100 / event.total : 0;
@@ -589,13 +594,46 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
                     {acl: 'public-read'},
                     {policy: data.policy},
                     {signature: data.signature},
-                    {success_action_status: '201'}
+                    {success_action_status: '201'},
+                    {'Content-Type': 'image/jpeg'}
                     ]);
             }).
-              error(function(data, status, headers, config){
+            error(function(data, status, headers, config){
               return { error: data.error } ;
-            });
+          });
         },
+
+        resizeReorient: function (options, callback) {
+            var item = this;
+            var options = options || { };
+
+            options.maxMetaDataSize = 262144;
+            options.disableImageHead = false;
+
+            loadImage.parseMetaData(item.file, function (data) {
+                if (data.exif) {
+                    item.exif = data.exif.getAll();
+                    options.orientation = data.exif.get('Orientation');
+                    loadImage(
+                        item.file,
+                        function (img) {
+                            img.toBlob(
+                                function (resizedImage) {
+                                    var blob = new Blob([
+                                        data.imageHead,
+                                        loadImage.blobSlice.call(resizedImage, 20)
+                                        ], {type: resizedImage.type});
+                                    item.blob = blob;
+                                },
+                                'image/jpeg'
+                                );
+                        },
+                        options
+                        );
+                    if (callback) callback(item.exif);
+                }
+            });
+},
 
         /**
          * Destroys form and input

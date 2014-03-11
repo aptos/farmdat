@@ -35,5 +35,6 @@
 //= require ui-select2
 //= require angular-file-upload
 //= require load-image.min
+//= require canvas-to-blob
 //= require app
 //= require_tree .
