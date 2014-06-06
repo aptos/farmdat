@@ -80,19 +80,25 @@
         <tr><td class="muted input-label" >Album</td>
           <td>
             <div ng-file-select>
-              <button  class="btn btn-success">
+              <button  class="btn btn-success" ng-show="!uploader.queue.length || !uploader.getNotUploadedItems().length">
                 <i class="fa fa-camera-retro fa-lg"></i>
               </button>
-              <input id="fileElem" type="file" name='file' multiple style="display:none;" />
+              <input id="fileElem" type="file" name='file' accept="image/*" style="display:none;" />
             </div>
+            <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-hide="!uploader.getNotUploadedItems().length">
+              <span class="fa fa-cloud-upload"></span> Upload
+            </button>
 
             <!-- Display upload items image thumbs -->
-            <div ng-show="uploader.queue.length" class="album-container animated fadeIn">
+            <div ng-show="uploader.queue.length" class="album-container borderless animated fadeIn">
               <ul class="thumbs">
                 <li ng-repeat="item in uploader.queue" ng-mouseenter="show_delete=true" ng-mouseleave="show_delete=false" ng-init="show_delete=false">
                   <div class="thumbnail">
                     <div class="delete animated fadeIn" ng-click="item.remove()" ng-show="show_delete" >
                       <span>Remove </span><i class="fa fa-times-circle close"></i>
+                    </div>
+                    <div class="progress" style="margin-bottom: 0;" ng-show="item.isUploading">
+                      <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
                     </div>
                     <div ng-show="uploader.isHTML5" ng-thumb="{ file: item.file, maxHeight: 100 }"></div>
                   </div>
@@ -110,9 +116,6 @@
         </tr>
       </table>
 
-      <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
-        <span class="fa fa-cloud-upload"></span> Upload all
-      </button>
 
       <!-- Display Current Album of uploaded image thumbs -->
       <div class="album-container animated fadeIn" ng-show="activity.album.length">
